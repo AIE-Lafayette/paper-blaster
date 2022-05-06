@@ -36,7 +36,6 @@ public class MovementBehavior : MonoBehaviour
 
     public void Move()
     {
-
         if (_rigidbody.velocity.magnitude > MaxSpeed)
             _rigidbody.velocity = _rigidbody.velocity.normalized * MaxSpeed;
 
