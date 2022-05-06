@@ -46,7 +46,6 @@ public class GameManagerBehavior : MonoBehaviour
             GameObject spawn = Instantiate(_asteroid, new Vector3(pos.x, 0, pos.y), Quaternion.identity);
             _asteroids.Add(spawn);
         }
-        Debug.Log("Spawned Asteroids");
     }
 
     void AsteroidCheck() 
