@@ -29,4 +29,9 @@ public class GameManagerBehavior : MonoBehaviour
         _score += amount;
         _difficultyThreshold++;
     }
+
+    IEnumerator Idle() 
+    {
+        yield return new WaitForSeconds(5.0f);
+    }
 }
