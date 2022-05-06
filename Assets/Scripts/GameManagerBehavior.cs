@@ -12,9 +12,9 @@ public class GameManagerBehavior : MonoBehaviour
 
     //Spawning Asteroids variables
     [SerializeField] private GameObject _asteroid;
-    private List<GameObject> _asteroids;
-    private float _rectX = 22.25f;
-    private float _rectZ = 12.5f;
+    [SerializeField] private List<GameObject> _asteroids;
+    private float _rectCornerX = 22.25f;
+    private float _rectCornerZ = 12.5f;
 
     void Start()
     {
@@ -42,28 +42,7 @@ public class GameManagerBehavior : MonoBehaviour
     {
         for (int i = 0; i < amount; i++) 
         {
-            Vector2 pos = new Vector2();
-            int side = Random.Range(0, 4);
-            if (side == 0) 
-            {
-                pos.x = Random.Range(0, _rectX);
-                pos.y = 0;
-            }
-            if (side == 1)
-            {
-                pos.x = Random.Range(0, _rectX);
-                pos.y = _rectZ;
-            }
-            if (side == 2)
-            {
-                pos.x = 0;
-                pos.y = Random.Range(0, _rectZ);
-            }
-            if (side == 3)
-            {
-                pos.x = _rectX;
-                pos.y = Random.Range(0, _rectZ);
-            }
+            Vector2 pos = RandomPointOnPerimeter(0, 0, _rectCornerX, _rectCornerZ);
             GameObject spawn = Instantiate(_asteroid, new Vector3(pos.x, 0, pos.y), Quaternion.identity);
             _asteroids.Add(spawn);
         }
@@ -81,5 +60,32 @@ public class GameManagerBehavior : MonoBehaviour
         {
             Debug.Log("All asteroids cleared.");
         }
+    }
+
+    Vector2 RandomPointOnPerimeter(float x1, float y1, float x2, float y2) 
+    {
+        Vector2 point = new Vector2();
+        int side = Random.Range(0, 4);
+        if (side == 0)
+        {
+            point.x = Random.Range(0, x2);
+            point.y = y1;
+        }
+        if (side == 1)
+        {
+            point.x = Random.Range(0, x2);
+            point.y = y2;
+        }
+        if (side == 2)
+        {
+            point.x = x1;
+            point.y = Random.Range(0, y2);
+        }
+        if (side == 3)
+        {
+            point.x = x2;
+            point.y = Random.Range(0, y2);
+        }
+        return point;
     }
 }
