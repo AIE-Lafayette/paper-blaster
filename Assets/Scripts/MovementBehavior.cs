@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MovementBehavior : MonoBehaviour
@@ -42,4 +40,5 @@ public class MovementBehavior : MonoBehaviour
 
         _rigidbody.AddForce(MoveDirection * _moveSpeed * Time.deltaTime);
     }
+
 }

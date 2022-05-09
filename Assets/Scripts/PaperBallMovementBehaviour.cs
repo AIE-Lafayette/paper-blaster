@@ -1,19 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PaperBallMovementBehaviour : MonoBehaviour
+public class PaperBallMovementBehaviour : MovementBehavior
 {
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    //Called when this object is added to a scene
+    void Start() {
+        //Gives the paper ball a random direction and makes applies a force
+        MoveDirection = new Vector3(Random.Range(-100, 100), 0, Random.Range(-100, 100));
+        Move();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
