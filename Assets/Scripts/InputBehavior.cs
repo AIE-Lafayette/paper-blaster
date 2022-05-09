@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class InputBehavior : MonoBehaviour
 {
+    //Player movement behavior to activate the thruster
     private PlayerMovement _playerMovement;
 
- 
+     /// <summary>
+     /// On awake get the player movement component from this object
+     /// </summary>
     void Awake()
     {
         _playerMovement = GetComponent<PlayerMovement>();
     }
 
-    // Update is called once per frame
+    /// Gets the thruster input every frame
     void Update()
     {
         GetThrusterInput();
     }
 
+    /// Checks if the space bar is pressed, if so activate the thruster of the player
     void GetThrusterInput()
     {
         if (Input.GetButton("Jump"))
