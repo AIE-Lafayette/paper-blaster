@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MovementBehavior
 {
-    public Camera Camera;
+    private Camera _camera;
     private Vector3 _movePosition;
     private Rigidbody _rb;
     private bool _thruster;
@@ -15,6 +15,7 @@ public class PlayerMovement : MovementBehavior
         _rb = GetComponent<Rigidbody>();
         MaxSpeed = 20;
         MoveSpeed = 4500;
+        _camera = Camera.main;
     }
 
     private void FixedUpdate()
@@ -25,7 +26,7 @@ public class PlayerMovement : MovementBehavior
     private void LookAtCursor()
     {
         RaycastHit hit;
-        Ray ray = Camera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
             _movePosition = hit.point;
