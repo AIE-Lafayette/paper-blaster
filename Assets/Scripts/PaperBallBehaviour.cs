@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PaperBallBehaviour : MonoBehaviour
 {
+    private GameObject _paperBall;
+    
     //The size variations of paper balls
     private enum PaperBallSize { Small, Medium, Large }
 
@@ -13,14 +15,15 @@ public class PaperBallBehaviour : MonoBehaviour
     //Called when the paper ball is added to a scene
     private void Start()
     {
+        _size = PaperBallSize.Large;
         UpdateScale();
     }
 
     //Updates the paper ball's scale based on 
     private void UpdateScale()
     {
-
-        switch (_size) {
+        switch (_size)
+        {
             case PaperBallSize.Small:
             {
                 transform.localScale = new Vector3(1, 1, 1);
@@ -64,9 +67,6 @@ public class PaperBallBehaviour : MonoBehaviour
 
     private void Break() 
     {
-        for (int i = 0; i < 2; i++)
-        {
-            
-        }
+        
     }
 }
