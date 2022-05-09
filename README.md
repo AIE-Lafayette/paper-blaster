@@ -1,1 +1,1 @@
-paper-blaster
+Paper blaster
