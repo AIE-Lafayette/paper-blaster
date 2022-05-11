@@ -94,9 +94,11 @@ public class PaperBallBehaviour : MonoBehaviour
             PaperBallBehaviour paperBallBehaviour = paperBall.GetComponent<PaperBallBehaviour>();
             paperBallBehaviour.Size = Size - 1;
 
-            PaperBallMovementBehaviour movementBehaviour = paperBall.GetComponent<PaperBallMovementBehaviour>();
-            movementBehaviour.MoveSpeed *= 2;
-            movementBehaviour.MaxSpeed *= 2;
+            PaperBallMovementBehaviour movementBehaviour = GetComponent<PaperBallMovementBehaviour>();
+            PaperBallMovementBehaviour newMovementBehaviour = paperBall.GetComponent<PaperBallMovementBehaviour>();
+            newMovementBehaviour.PreviousDirection = movementBehaviour.MoveDirection;
+            newMovementBehaviour.MoveSpeed *= 5;
+            newMovementBehaviour.MaxSpeed *= 5;
         }
 
         return true;

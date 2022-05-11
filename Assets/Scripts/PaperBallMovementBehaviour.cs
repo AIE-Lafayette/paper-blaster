@@ -12,16 +12,16 @@ public class PaperBallMovementBehaviour : MovementBehavior
     void Start()
     {
         //If this paper ball was assigned with a previous direction...
-        if (PreviousDirection != null) 
+        if (PreviousDirection.z != 0 && PreviousDirection.x != 0) 
         {
             //Offset that direction and make that the new move direction
-            Vector3 offset = new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
-            MoveDirection = PreviousDirection + offset;
+            Vector3 offset = new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5)).normalized;
+            MoveDirection = (PreviousDirection + offset).normalized;
         }
         else
         {
             //Otherwise, give the paper ball a random direction
-            MoveDirection = new Vector3(Random.Range(-100, 100), 0, Random.Range(-100, 100));
+            MoveDirection = new Vector3(Random.Range(-100, 100), 0, Random.Range(-100, 100)).normalized;
         }
 
         Move();
