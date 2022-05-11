@@ -15,7 +15,7 @@ public class PaperBallMovementBehaviour : MovementBehavior
         if (PreviousDirection != null) 
         {
             //Offset that direction and make that the new move direction
-            Vector3 offset = new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10));
+            Vector3 offset = new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1));
             MoveDirection = PreviousDirection + offset;
         }
         else

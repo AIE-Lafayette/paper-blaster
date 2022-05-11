@@ -93,7 +93,10 @@ public class PaperBallBehaviour : MonoBehaviour
 
             PaperBallBehaviour paperBallBehaviour = paperBall.GetComponent<PaperBallBehaviour>();
             paperBallBehaviour.Size = Size - 1;
-            paperBallBehaviour._spawnTime = Time.time;
+
+            PaperBallMovementBehaviour movementBehaviour = paperBall.GetComponent<PaperBallMovementBehaviour>();
+            movementBehaviour.MoveSpeed *= 2;
+            movementBehaviour.MaxSpeed *= 2;
         }
 
         return true;
