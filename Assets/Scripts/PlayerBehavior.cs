@@ -8,6 +8,7 @@ public class PlayerBehavior : MonoBehaviour
     private HealthBehavior _health;
     private Rigidbody _player;
     private float _timer = 0;
+    public static int PlayerHealth = 3;
 
     // Start is called before the first frame update
     void Awake()
@@ -46,6 +47,7 @@ public class PlayerBehavior : MonoBehaviour
                 return;
             //Takes damage and resets player to the middle
             _health.TakeDamage(1);
+            PlayerHealth = _health.CurrentHealth;
             _player.position = new Vector3(0f, .5f, 0f);
             _player.velocity = Vector3.zero;
             //Sets the timer to the current time to reset timer
