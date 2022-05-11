@@ -339,6 +339,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 809559351251896805, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
+      propertyPath: _maxSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 809559351251896805, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
+      propertyPath: _moveSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8145326319615778745, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -385,15 +393,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8145326319615778746, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
       propertyPath: _maxSpeed
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8145326319615778746, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
       propertyPath: _moveSpeed
-      value: 1000
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8145326319615778749, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
       propertyPath: m_Name
       value: Paper Ball
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8145326319615778746, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
