@@ -47,7 +47,7 @@ public class PlayerMovement : MovementBehavior
         //Set the direction to look and rotate to that direction
         Vector3 direction = (_movePosition - transform.position).normalized;
         Quaternion rot = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 7.5f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 6.5f);
 
         //Set the new rotation without the x or z to only rotate on the y axis
         Quaternion newRot = transform.rotation;
