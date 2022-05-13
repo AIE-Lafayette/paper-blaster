@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MovementBehavior
 {
@@ -36,7 +37,7 @@ public class PlayerMovement : MovementBehavior
     {
         //Call for raycasting to get where the cursor actually is on the game screen
         RaycastHit hit;
-        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
         //If the cast is true an the mouse is on the screen
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
