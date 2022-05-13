@@ -11,7 +11,7 @@ public class PaperBallBehaviour : MonoBehaviour
     private GameObject _paperBall;
     
     //The size variations of paper balls
-    private enum PaperBallSize { Small, Medium, Large }
+    public enum PaperBallSize { Small, Medium, Large }
 
     private PaperBallSize _size = PaperBallSize.Large;
     //The size of this paper ball
@@ -109,21 +109,23 @@ public class PaperBallBehaviour : MonoBehaviour
         //If the paper ball can't be broken, return
         if (Size == PaperBallSize.Small) return false;
 
-        PaperBallMovementBehaviour movementBehaviour = GetComponent<PaperBallMovementBehaviour>();
-
         //Creates two smaller paper balls
         for (int i = 0; i < 2; i++)
         {
             GameObject paperBall = Instantiate(_paperBall);
-            paperBall.transform.position = transform.position;
-
             PaperBallBehaviour paperBallBehaviour = paperBall.GetComponent<PaperBallBehaviour>();
-            paperBallBehaviour.Size = Size - 1;
-            paperBallBehaviour._moveSpeed = 30;
-            paperBallBehaviour._rigidbody.velocity = _rigidbody.velocity;
+            paperBallBehaviour.Initiate(transform.position, Size - 1, _rigidbody.velocity, _moveSpeed + 10);
         }
 
         return true;
+    }
+
+    public void Initiate(Vector3 position, PaperBallSize size, Vector3 velocity, float moveSpeed)
+    {
+        transform.position = position;
+        Size = size;
+        _moveSpeed = moveSpeed;
+        _rigidbody.velocity = velocity;
     }
 
     void Update() 
