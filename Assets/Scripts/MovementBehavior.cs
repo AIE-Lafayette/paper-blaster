@@ -56,6 +56,8 @@ public class MovementBehavior : MonoBehaviour
         set { _moveSpeed = value; }
     }
 
+    public Rigidbody Rigidbody { get => _rigidbody; set => _rigidbody = value; }
+
     /// <summary>
     /// Before the game starts set the rigidbody, camera, and the borders for the respawns
     /// </summary>
@@ -117,15 +119,15 @@ public class MovementBehavior : MonoBehaviour
     /// <summary>
     /// Called when any object needs to move
     /// </summary>
-    public void Move()
+    virtual public void Move()
     {
-        //If the object is moving above the max speed
+        //Move in the correct direction scaled up by the move speed
+        _rigidbody.AddForce(MoveDirection * _moveSpeed * Time.deltaTime, ForceMode.Impulse);
+
+                //If the object is moving above the max speed
         if (_rigidbody.velocity.magnitude > MaxSpeed)
             //Set the velocity to be the max speed
             _rigidbody.velocity = _rigidbody.velocity.normalized * MaxSpeed;
-
-        //Move in the correct direction scaled up by the move speed
-        _rigidbody.AddForce(MoveDirection * _moveSpeed * Time.deltaTime);
     }
 
 }

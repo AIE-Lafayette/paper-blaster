@@ -8,13 +8,6 @@ public class PaperBallBehaviour : MonoBehaviour
     //A reference to paper balls
     private GameObject _paperBall;
 
-    //The time that the paper ball was spawned
-    private float _spawnTime;
-
-    //The cooldown for breaking into more paper balls
-    private float _breakCooldown;
-
-    
     //The size variations of paper balls
     public enum PaperBallSize { Small, Medium, Large }
 
@@ -88,19 +81,11 @@ public class PaperBallBehaviour : MonoBehaviour
         //Creates two smaller paper balls
         for (int i = 0; i < 2; i++)
         {
-            GameObject paperBall = Instantiate(_paperBall);
-            PaperBallBehaviour paperBallBehaviour = paperBall.GetComponent<PaperBallBehaviour>();
-            
-            paperBallBehaviour.Initiate(transform.position, Size - 1, _rigidbody.velocity, _moveSpeed + 10);
-
-            paperBallBehaviour.Size = Size - 1;
-
             PaperBallMovementBehaviour movementBehaviour = GetComponent<PaperBallMovementBehaviour>();
-            PaperBallMovementBehaviour newMovementBehaviour = paperBall.GetComponent<PaperBallMovementBehaviour>();
-            newMovementBehaviour.PreviousDirection = movementBehaviour.MoveDirection;
-            newMovementBehaviour.MoveSpeed *= 5;
-            newMovementBehaviour.MaxSpeed *= 5;
->>>>>>> parent of f521609 (Remaking paperballbehaviour)
+            GameObject paperBall = Instantiate(_paperBall);
+
+            PaperBallBehaviour newPBBehaviour = paperBall.GetComponent<PaperBallBehaviour>();
+            newPBBehaviour.Initiate(transform.position, Size - 1, movementBehaviour.Rigidbody.velocity, movementBehaviour.MoveSpeed + 10);
         }
 
         return true;
@@ -108,10 +93,11 @@ public class PaperBallBehaviour : MonoBehaviour
 
     public void Initiate(Vector3 position, PaperBallSize size, Vector3 velocity, float moveSpeed)
     {
+        PaperBallMovementBehaviour movementBehaviour = GetComponent<PaperBallMovementBehaviour>();
         transform.position = position;
         Size = size;
-        _moveSpeed = moveSpeed;
-        _rigidbody.velocity = velocity;
+        movementBehaviour.MoveSpeed = moveSpeed;
+        movementBehaviour.Rigidbody.velocity = velocity;
     }
 
     void Update() 
