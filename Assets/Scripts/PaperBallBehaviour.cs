@@ -24,6 +24,7 @@ public class PaperBallBehaviour : MonoBehaviour
         //Gives the paper ball a random direction
         MovementBehavior movementBehavior = GetComponent<MovementBehavior>();
         movementBehavior.MoveDirection = new Vector3(Random.Range(-500.0f, 500.0f), 0, Random.Range(-500.0f, 500.0f)).normalized;
+        movementBehavior.Move();
     }
 
     //Updates the paper ball's scale based on 
