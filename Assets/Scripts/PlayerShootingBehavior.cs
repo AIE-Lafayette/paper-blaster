@@ -22,7 +22,7 @@ public class PlayerShootingBehavior : MonoBehaviour
         }
     }
 
-    void Shoot() 
+    public void Shoot() 
     {
         if (_readyToAttack) 
         {

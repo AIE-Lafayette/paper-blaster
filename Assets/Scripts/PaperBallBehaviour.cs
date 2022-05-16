@@ -72,7 +72,7 @@ public class PaperBallBehaviour : MonoBehaviour
         _moveDirection = new Vector3(Random.Range(-500.0f, 500.0f), 0, Random.Range(-500.0f, 500.0f)).normalized;
 
         //Move in the correct direction scaled up by the move speed
-        _rigidbody.AddForce(_moveDirection * _moveSpeed * Time.deltaTime, ForceMode.Impulse);
+        _rigidbody.AddForce(_moveDirection * _moveSpeed, ForceMode.Impulse);
 
 
         //If the object is moving above the max speed

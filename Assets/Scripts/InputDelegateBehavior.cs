@@ -7,12 +7,14 @@ public class InputDelegateBehavior : MonoBehaviour
 {
     private PlayerControls _playerControls;
     private PlayerMovement _playerMovement;
+    private PlayerShootingBehavior _playerShooting;
 
     // Start is called before the first frame update
     void Awake()
     {
         _playerControls = new PlayerControls();
         _playerMovement = GetComponent<PlayerMovement>();
+        _playerShooting = GetComponent<PlayerShootingBehavior>();
     }
 
     private void OnEnable()
@@ -30,5 +32,8 @@ public class InputDelegateBehavior : MonoBehaviour
     {
         _playerControls.Ship.Movement.started += (InputAction.CallbackContext context) =>
              _playerMovement.ActivateThruster();
+
+        _playerControls.Ship.Shoot.started += (InputAction.CallbackContext context) =>
+            _playerShooting.Shoot();
     }
 }
