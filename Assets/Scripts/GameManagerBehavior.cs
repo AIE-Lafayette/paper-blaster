@@ -12,7 +12,8 @@ public class GameManagerBehavior : MonoBehaviour
 
     //Spawning Asteroids variables
     [SerializeField] private GameObject _asteroid;
-    [SerializeField] private List<GameObject> _asteroids;
+    //[SerializeField] private List<GameObject> _asteroids;
+    public static int PaperBalls;
     private float _rectCornerX = 22.25f;
     private float _rectCornerZ = 12.5f;
 
@@ -50,23 +51,23 @@ public class GameManagerBehavior : MonoBehaviour
             //Spawn an asteroid in a random position and add it to the list of asteroids
             Vector2 pos = RandomPointOnPerimeter(0, 0, _rectCornerX, _rectCornerZ);
             GameObject spawn = Instantiate(_asteroid, new Vector3(pos.x, 0.5f, pos.y), Quaternion.identity);
-            _asteroids.Add(spawn);
+            PaperBalls++;
             //spawn.GetComponent<PaperBallBehaviour>().GameManager = this;
         }
     }
 
     void AsteroidCheck() 
     {
-        //Check if destroyed asteroids to remove them from the list
-        for (int i = 0; i < _asteroids.Count; i++) 
-        {
-            if(_asteroids[i] == null)
-                _asteroids.RemoveAt(i);
-        }
+        ////Check if destroyed asteroids to remove them from the list
+        //for (int i = 0; i < _asteroids.Count; i++) 
+        //{
+        //    //if(_asteroids[i] == null)
+        //        /_asteroids.RemoveAt(i);
+        //}
         //If there are no more asteroids
-        if (_asteroids.Count == 0)
+        if (PaperBalls == 0)
         {
-            Debug.Log("All asteroids cleared.");
+            Debug.Log("All Paper balls cleared.");
         }
     }
 
@@ -100,10 +101,5 @@ public class GameManagerBehavior : MonoBehaviour
             point.y = Random.Range(0, y2);
         }
         return point;
-    }
-
-    public void AddToList(GameObject element) 
-    {
-        _asteroids.Add(element);
     }
 }

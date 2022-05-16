@@ -125,7 +125,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352184efb3a01034d8298c1e2db92152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _paperBall: {fileID: 0}
-  GameManager: {fileID: 0}
-  _moveSpeed: 0
-  _maxSpeed: 0
+  _paperBall: {fileID: 4746855676856087294}
