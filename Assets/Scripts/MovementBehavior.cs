@@ -79,7 +79,7 @@ public class MovementBehavior : MonoBehaviour
         //Set the top and bottom border by using the camera view and the height of the screen
         //as the original border
         _topBorder = _cam.ScreenToWorldPoint(new Vector3(0.0f, Screen.height, _distanceY)).z;
-        _bottomBorder = -_topBorder;
+        _bottomBorder = _cam.ScreenToWorldPoint(new Vector3(0.0f, 0.0f, _distanceY)).z;
 
         //This is the basic buffer size for all objects, but can be changed in their specific classes
         Buffer = 0.5f;

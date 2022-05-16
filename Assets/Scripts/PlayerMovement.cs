@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MovementBehavior
 {
@@ -17,7 +18,7 @@ public class PlayerMovement : MovementBehavior
     {
         _rb = GetComponent<Rigidbody>();
         MaxSpeed = 20;
-        MoveSpeed = 4500;
+        MoveSpeed = 30;
         _camera = Camera.main;
     }
 
