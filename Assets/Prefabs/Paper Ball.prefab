@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _paperBall: {fileID: 8145326319615778749}
-  _moveSpeed: 10
+  _moveSpeed: 30
   _maxSpeed: 30
 --- !u!114 &3594863362583972264
 MonoBehaviour:
