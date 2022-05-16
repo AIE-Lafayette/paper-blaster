@@ -8,13 +8,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7558511300810923312}
-  - component: {fileID: 3491237803180694841}
-  - component: {fileID: 2083985218423187187}
-  - component: {fileID: 8065068479517605916}
-  - component: {fileID: 7880583349223457702}
-  - component: {fileID: 4883577001470123460}
-  - component: {fileID: 1308889741104856067}
+  - component: {fileID: 8145326319615778745}
+  - component: {fileID: 8145326319615778744}
+  - component: {fileID: 8145326319615778751}
+  - component: {fileID: 8145326319615778750}
+  - component: {fileID: 8145326319615778747}
+  - component: {fileID: 809559351251896805}
+  - component: {fileID: 1179498968666488751}
   m_Layer: 0
   m_Name: Paper Ball
   m_TagString: PaperBall
@@ -126,21 +126,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 352184efb3a01034d8298c1e2db92152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _paperBall: {fileID: 3649948056600177460}
-  GameManager: {fileID: 0}
-  _moveSpeed: 1
-  _maxSpeed: 1
---- !u!114 &1308889741104856067
+  _paperBall: {fileID: 8145326319615778749}
+--- !u!114 &1179498968666488751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3649948056600177460}
+  m_GameObject: {fileID: 8145326319615778749}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51962f0232598bc4fa9cfb4c2728d369, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d5d2b895889459469be51301180ca51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 1
-  _moveSpeed: 1
+  _maxSpeed: 50
+  _moveSpeed: 40
