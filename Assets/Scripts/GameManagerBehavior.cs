@@ -49,8 +49,9 @@ public class GameManagerBehavior : MonoBehaviour
         {
             //Spawn an asteroid in a random position and add it to the list of asteroids
             Vector2 pos = RandomPointOnPerimeter(0, 0, _rectCornerX, _rectCornerZ);
-            GameObject spawn = Instantiate(_asteroid, new Vector3(pos.x, 0, pos.y), Quaternion.identity);
+            GameObject spawn = Instantiate(_asteroid, new Vector3(pos.x, 0.5f, pos.y), Quaternion.identity);
             _asteroids.Add(spawn);
+            spawn.GetComponent<PaperBallBehaviour>().GameManager = this;
         }
     }
 
@@ -99,5 +100,10 @@ public class GameManagerBehavior : MonoBehaviour
             point.y = Random.Range(0, y2);
         }
         return point;
+    }
+
+    public void AddToList(GameObject element) 
+    {
+        _asteroids.Add(element);
     }
 }

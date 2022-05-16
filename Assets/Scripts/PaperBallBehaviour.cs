@@ -9,6 +9,8 @@ public class PaperBallBehaviour : MonoBehaviour
     [SerializeField]
     //A reference to paper balls
     private GameObject _paperBall;
+
+    public GameManagerBehavior GameManager;
     
     //The size variations of paper balls
     public enum PaperBallSize { Small, Medium, Large }
@@ -88,6 +90,7 @@ public class PaperBallBehaviour : MonoBehaviour
             case "Player": 
             {
                 Break();
+                other.GetComponent<PlayerBehavior>().OnHit();
                 //Award the player with points
                 Destroy(gameObject);
                 break;
@@ -98,6 +101,7 @@ public class PaperBallBehaviour : MonoBehaviour
                 {
                     //Award the player with points here
                 }
+                    other.GetComponent<DeathBehavior>().Death();
                 Destroy(gameObject);
                 break;
             }
@@ -112,9 +116,11 @@ public class PaperBallBehaviour : MonoBehaviour
         //Creates two smaller paper balls
         for (int i = 0; i < 2; i++)
         {
-            GameObject paperBall = Instantiate(_paperBall);
+            GameObject paperBall = Instantiate(_paperBall, transform.position, Quaternion.identity);
             PaperBallBehaviour paperBallBehaviour = paperBall.GetComponent<PaperBallBehaviour>();
             paperBallBehaviour.Initiate(transform.position, Size - 1, _rigidbody.velocity, _moveSpeed + 10);
+            GameManager.AddToList(paperBall);
+            paperBallBehaviour.GameManager = GameManager;
         }
 
         return true;
