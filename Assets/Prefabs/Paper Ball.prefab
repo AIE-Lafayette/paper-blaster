@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8145326319615778750}
   - component: {fileID: 8145326319615778747}
   - component: {fileID: 809559351251896805}
-  - component: {fileID: 1179498968666488751}
   m_Layer: 0
   m_Name: Paper Ball
   m_TagString: PaperBall
@@ -127,17 +126,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _paperBall: {fileID: 8145326319615778749}
---- !u!114 &1179498968666488751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8145326319615778749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d5d2b895889459469be51301180ca51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxSpeed: 50
-  _moveSpeed: 40
+  _moveSpeed: 10
+  _maxSpeed: 30
