@@ -101,7 +101,7 @@ public class PaperBallBehaviour : MonoBehaviour
             GameObject paperBall = Instantiate(_paperBall);
 
             PaperBallBehaviour newPBBehaviour = paperBall.GetComponent<PaperBallBehaviour>();
-            newPBBehaviour.Initiate(transform.position, Size - 1, movementBehaviour.Rigidbody.velocity, movementBehaviour.MoveSpeed + 10);
+            newPBBehaviour.Initiate(transform.position, Size - 1, movementBehavior.Rigidbody.velocity, movementBehavior.MoveSpeed + 10);
 
             GameManagerBehavior.PaperBalls++;
         }
