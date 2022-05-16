@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 1144945964196428385}
   - component: {fileID: 3061858087210204184}
   - component: {fileID: 8020240914197901398}
-  - component: {fileID: 732730796}
   - component: {fileID: 2949097350667779383}
+  - component: {fileID: 732730796}
   m_Layer: 0
   m_Name: Sticker
   m_TagString: Untagged
@@ -110,8 +110,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3e57623f35f93458540de1cb6ff4b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 10
+  _maxSpeed: 1
   _moveSpeed: 500
+--- !u!114 &2949097350667779383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7784282804930428154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b48be6b9f9e81784c88b0f8022ed0718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}
 --- !u!54 &732730796
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -128,16 +141,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2949097350667779383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7784282804930428154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b48be6b9f9e81784c88b0f8022ed0718, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _target: {fileID: 0}
