@@ -24,9 +24,9 @@ public class InputBehavior : MonoBehaviour
     /// Checks if the space bar is pressed, if so activate the thruster of the player
     void GetInput()
     {
-        if (Input.GetButton("Jump"))
-        {
-            _playerMovement.ActivateThruster();
-        }
+        //if (Input.GetButton("Jump"))
+        //{
+        //    _playerMovement.ActivateThruster();
+        //}
     }
 }

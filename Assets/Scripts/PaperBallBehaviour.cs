@@ -130,10 +130,10 @@ public class PaperBallBehaviour : MonoBehaviour
 
     void Update() 
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Break();
-            Destroy(gameObject);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Break();
+        //    Destroy(gameObject);
+        //}
     }
 }
