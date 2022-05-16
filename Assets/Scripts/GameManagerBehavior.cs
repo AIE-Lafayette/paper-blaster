@@ -11,7 +11,7 @@ public class GameManagerBehavior : MonoBehaviour
     private int _difficultyThresholdMax = 5;
 
     //Spawning Asteroids variables
-    [SerializeField] private GameObject _asteroid;
+    [SerializeField] private GameObject _paperball;
     //[SerializeField] private List<GameObject> _asteroids;
     public static int PaperBalls;
     private float _rectCornerX = 22.25f;
@@ -25,6 +25,8 @@ public class GameManagerBehavior : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(PaperBalls);
+
         //If the difficulty threshold is more than the max difficulty threshold
         if (_difficultyThreshold > _difficultyThresholdMax) 
         {
@@ -50,7 +52,7 @@ public class GameManagerBehavior : MonoBehaviour
         {
             //Spawn an asteroid in a random position and add it to the list of asteroids
             Vector2 pos = RandomPointOnPerimeter(0, 0, _rectCornerX, _rectCornerZ);
-            GameObject spawn = Instantiate(_asteroid, new Vector3(pos.x, 0.5f, pos.y), Quaternion.identity);
+            GameObject spawn = Instantiate(_paperball, new Vector3(pos.x, 0.5f, pos.y), Quaternion.identity);
             PaperBalls++;
             //spawn.GetComponent<PaperBallBehaviour>().GameManager = this;
         }
