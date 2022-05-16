@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MovementBehavior
 {
@@ -16,8 +17,8 @@ public class PlayerMovement : MovementBehavior
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        MaxSpeed = 20;
-        MoveSpeed = 4500;
+        MaxSpeed = 3;
+        MoveSpeed = 5;
         _camera = Camera.main;
     }
 
@@ -36,7 +37,7 @@ public class PlayerMovement : MovementBehavior
     {
         //Call for raycasting to get where the cursor actually is on the game screen
         RaycastHit hit;
-        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
         //If the cast is true an the mouse is on the screen
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
@@ -47,7 +48,7 @@ public class PlayerMovement : MovementBehavior
         //Set the direction to look and rotate to that direction
         Vector3 direction = (_movePosition - transform.position).normalized;
         Quaternion rot = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 7.5f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 6.5f);
 
         //Set the new rotation without the x or z to only rotate on the y axis
         Quaternion newRot = transform.rotation;
