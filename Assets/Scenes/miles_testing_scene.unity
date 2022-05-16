@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271196b9626b9784da6595f9044acd02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _asteroid: {fileID: 8145326319615778749, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
+  _asteroid: {fileID: 3649948056600177460, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
   _asteroids: []
 --- !u!4 &146641351
 Transform:
@@ -515,14 +515,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerPrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 1787192362397199490, guid: 9ef57fcc80b70ea418a588bd25479bc9, type: 3}
-      propertyPath: _maxSpeed
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1787192362397199490, guid: 9ef57fcc80b70ea418a588bd25479bc9, type: 3}
-      propertyPath: _moveSpeed
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4546267567136395399, guid: 9ef57fcc80b70ea418a588bd25479bc9, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -541,11 +533,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4546267567136395399, guid: 9ef57fcc80b70ea418a588bd25479bc9, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4546267567136395399, guid: 9ef57fcc80b70ea418a588bd25479bc9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4546267567136395399, guid: 9ef57fcc80b70ea418a588bd25479bc9, type: 3}
       propertyPath: m_LocalRotation.y
@@ -557,7 +549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4546267567136395399, guid: 9ef57fcc80b70ea418a588bd25479bc9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4546267567136395399, guid: 9ef57fcc80b70ea418a588bd25479bc9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y

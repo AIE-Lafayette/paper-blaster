@@ -7,13 +7,11 @@ public class PlayerBehavior : MonoBehaviour
 {
     private HealthBehavior _health;
     private Rigidbody _player;
-    private float _timer = 0;
     public static int PlayerHealth = 3;
-    private RoutineBehaviour.TimedAction _iframesAction;
+    private RoutineBehaviour.TimedAction _iframesTimer;
     [SerializeField]private MeshRenderer _renderer;
-
-    private bool _iframesCheck;
-    private bool _iframesCheckCheck;
+    [SerializeField]private BoxCollider _collider;
+    private bool _iframesActive;
 
     // Start is called before the first frame update
     void Awake()
@@ -23,7 +21,7 @@ public class PlayerBehavior : MonoBehaviour
 
         _health.CurrentHealth = 3;
         //_renderer = GetComponent<MeshRenderer>();
-        _iframesAction = new RoutineBehaviour.TimedAction();
+        _iframesTimer = new RoutineBehaviour.TimedAction();
     }
 
     // Update is called once per frame
@@ -31,19 +29,16 @@ public class PlayerBehavior : MonoBehaviour
     {
         if (_health.CurrentHealth <= 0)
             OnDeath();
-        if (!_iframesAction.IsActive)
-            _iframesAction = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, 0.5f);
+        if (!_iframesTimer.IsActive)
+            _iframesTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, 0.5f);
     }
 
     void UpdateVisual() 
     {
-        if (_iframesCheckCheck)
+        if (_iframesActive)
         {
-            _iframesCheck = !_iframesCheck;
-            if (_iframesCheck)
-                _renderer.enabled = false;
-            if (!_iframesCheck)
-                _renderer.enabled = true;
+            _renderer.enabled = !_renderer.enabled;
+            //_collider.enabled = !_collider.enabled;
         }
     }
 
@@ -57,20 +52,26 @@ public class PlayerBehavior : MonoBehaviour
 
     public void OnHit()
     {
-        if (!_iframesCheckCheck)
+        if (!_iframesActive)
         {
             //Takes damage and resets player to the middle
             _health.TakeDamage(1);
             PlayerHealth = _health.CurrentHealth;
-            _player.position = new Vector3(11.25f, .5f, 6.25f);
+            _player.position = new Vector3(11.25f, 0.5f, 6.25f);
             _player.velocity = Vector3.zero;
-            //Sets the timer to the current time to reset timer
-            _timer = Time.time;
+
+            //Timer of i-frames
+            _iframesActive = true;
+            RoutineBehaviour.Instance.StartNewTimedAction(args => IframeReset(), TimedActionCountType.SCALEDTIME, 3);
+            _iframesTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, 0.5f);
         }
-        //Timer of i-frames
-        _iframesCheckCheck = true;
-        RoutineBehaviour.Instance.StartNewTimedAction(args => _iframesCheckCheck = false, TimedActionCountType.SCALEDTIME, 3);
-        _iframesAction = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, 0.5f);
-        RoutineBehaviour.Instance.StopTimedAction(_iframesAction);
+    }
+
+    void IframeReset() 
+    {
+        _iframesActive = false;
+        RoutineBehaviour.Instance.StopTimedAction(_iframesTimer);
+        _renderer.enabled = true;
+        //_collider.enabled = true;
     }
 }
