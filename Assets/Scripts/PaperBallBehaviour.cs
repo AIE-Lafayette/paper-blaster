@@ -15,20 +15,15 @@ public class PaperBallBehaviour : MonoBehaviour
     //The size of this paper ball
     private PaperBallSize Size { get => _size; set => _size = value; }
 
-    //Called when the paper ball is initiated
-    private void Awake()
-    {
-        //Gives the paper ball a random direction
-        MovementBehavior movementBehavior = GetComponent<MovementBehavior>();
-        movementBehavior.MoveDirection = new Vector3(Random.Range(-500.0f, 500.0f), 0, Random.Range(-500.0f, 500.0f)).normalized;
-        movementBehavior.Move();
-    }
-
     //Called when the paper ball is added to a scene
     private void Start()
     {
         //Updates the paper ball's size
         UpdateScale();
+
+        //Gives the paper ball a random direction
+        MovementBehavior movementBehavior = GetComponent<MovementBehavior>();
+        movementBehavior.MoveDirection = new Vector3(Random.Range(-500.0f, 500.0f), 0, Random.Range(-500.0f, 500.0f)).normalized;
     }
 
     //Updates the paper ball's scale based on 
