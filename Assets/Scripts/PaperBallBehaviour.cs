@@ -97,8 +97,8 @@ public class PaperBallBehaviour : MonoBehaviour
                 if (!Break())
                 {
                     //Award the player with points here
-                    Destroy(gameObject);
                 }
+                Destroy(gameObject);
                 break;
             }
         }
