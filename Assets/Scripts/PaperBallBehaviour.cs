@@ -20,7 +20,13 @@ public class PaperBallBehaviour : MonoBehaviour
     //Called when the paper ball is added to a scene
     private void Start()
     {
+        //Updates the paper ball's size
         UpdateScale();
+
+        //Gives the paper ball a random direction
+        MovementBehavior movementBehavior = GetComponent<MovementBehavior>();
+        movementBehavior.MoveDirection =
+        new Vector3(Random.Range(-500.0f, 500.0f), 0, Random.Range(-500.0f, 500.0f)).normalized;
     }
 
     //Updates the paper ball's scale based on 
@@ -85,11 +91,13 @@ public class PaperBallBehaviour : MonoBehaviour
         //Creates two smaller paper balls
         for (int i = 0; i < 2; i++)
         {
-            PaperBallMovementBehaviour movementBehaviour = GetComponent<PaperBallMovementBehaviour>();
+            MovementBehavior movementBehavior = GetComponent<MovementBehavior>();
             GameObject paperBall = Instantiate(_paperBall);
 
             PaperBallBehaviour newPBBehaviour = paperBall.GetComponent<PaperBallBehaviour>();
-            newPBBehaviour.Initiate(transform.position, Size - 1, movementBehaviour.Rigidbody.velocity, movementBehaviour.MoveSpeed + 10);
+            newPBBehaviour.Initiate(transform.position, Size - 1,
+             movementBehavior.Rigidbody.velocity, movementBehavior.MoveSpeed + 10);
+            newPBBehaviour.Start();
         }
 
         return true;
@@ -97,11 +105,11 @@ public class PaperBallBehaviour : MonoBehaviour
 
     public void Initiate(Vector3 position, PaperBallSize size, Vector3 velocity, float moveSpeed)
     {
-        PaperBallMovementBehaviour movementBehaviour = GetComponent<PaperBallMovementBehaviour>();
+        MovementBehavior movementBehavior = GetComponent<MovementBehavior>();
         transform.position = position;
         Size = size;
-        movementBehaviour.MoveSpeed = moveSpeed;
-        movementBehaviour.Rigidbody.velocity = velocity;
+        movementBehavior.MoveSpeed = moveSpeed;
+        movementBehavior.Rigidbody.velocity = velocity;
     }
 
     void Update() 
