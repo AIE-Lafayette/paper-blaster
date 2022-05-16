@@ -51,7 +51,7 @@ public class GameManagerBehavior : MonoBehaviour
             Vector2 pos = RandomPointOnPerimeter(0, 0, _rectCornerX, _rectCornerZ);
             GameObject spawn = Instantiate(_asteroid, new Vector3(pos.x, 0.5f, pos.y), Quaternion.identity);
             _asteroids.Add(spawn);
-            spawn.GetComponent<PaperBallBehaviour>().GameManager = this;
+            //spawn.GetComponent<PaperBallBehaviour>().GameManager = this;
         }
     }
 

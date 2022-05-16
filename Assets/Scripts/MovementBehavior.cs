@@ -122,7 +122,7 @@ public class MovementBehavior : MonoBehaviour
     virtual public void Move()
     {
         //Move in the correct direction scaled up by the move speed
-        _rigidbody.AddForce(MoveDirection * _moveSpeed * Time.deltaTime, ForceMode.Impulse);
+        _rigidbody.AddForce(MoveDirection * _moveSpeed, ForceMode.Impulse);
 
                 //If the object is moving above the max speed
         if (_rigidbody.velocity.magnitude > MaxSpeed)
