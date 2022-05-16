@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8145326319615778750}
   - component: {fileID: 8145326319615778747}
   - component: {fileID: 809559351251896805}
-  - component: {fileID: 1179498968666488751}
   m_Layer: 0
   m_Name: Paper Ball
   m_TagString: PaperBall
