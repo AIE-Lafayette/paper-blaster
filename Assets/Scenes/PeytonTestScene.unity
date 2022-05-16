@@ -250,6 +250,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203528950}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &892251474 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4746855676856087294, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
+  m_PrefabInstance: {fileID: 8306608577821956554}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1332047236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -549,7 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271196b9626b9784da6595f9044acd02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _asteroid: {fileID: 3649948056600177460, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
+  _asteroid: {fileID: 892251474}
   _asteroids: []
 --- !u!4 &2051441382
 Transform:
@@ -572,6 +577,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1613840032, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
+      propertyPath: _maxSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1613840032, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
+      propertyPath: _moveSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1991217237147911418, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
       propertyPath: m_RootOrder
       value: 0
