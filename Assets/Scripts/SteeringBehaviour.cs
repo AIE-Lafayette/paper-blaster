@@ -6,27 +6,20 @@ public class SteeringBehaviour : MonoBehaviour
 {
     //The transform of the behaviour's target
     [SerializeField]
-    private Transform _target;
-
-    //The force that the behaviour will have
-    [SerializeField]
-    private float _force;
+    protected Transform _target;
 
     //The owner's movementBehaviour component
-    private MovementBehavior _movementBehaviour;
+    protected MovementBehavior OwnerMovementBehaviour;
 
     //Returns the direction to the target from the owner
-    private Vector3 DirectionToTarget 
+    protected Vector3 DirectionToTarget 
     {
-        get 
-        {
-            return (_target.position - transform.position).normalized;
-        }
+        get => (_target.position - transform.position).normalized;
     }
 
     //Called when this component is initialized
     private void Awake()
     {
-        _movementBehaviour = GetComponent<MovementBehavior>();
+        OwnerMovementBehaviour = GetComponent<MovementBehavior>();
     }
 }

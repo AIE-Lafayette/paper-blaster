@@ -13,7 +13,6 @@ public class MovementBehavior : MonoBehaviour
 
     //The variables needed to actually move the game object
     private Rigidbody _rigidbody;
-    
     private Vector3 _moveDirection;
     [SerializeField]
     private float _maxSpeed;
@@ -89,7 +88,7 @@ public class MovementBehavior : MonoBehaviour
     /// Update checks for if this object is ever outside of the border, then respawns the object 
     /// at the correct location
     /// </summary>
-    private void Update()
+    virtual protected void Update()
     {
         //If the object is too far to the left
         if (transform.position.x < _leftBorder - Buffer)
@@ -120,15 +119,15 @@ public class MovementBehavior : MonoBehaviour
     /// <summary>
     /// Called when any object needs to move
     /// </summary>
-    public virtual void Move()
+    virtual public void Move()
     {
-        //If the object is moving above the max speed
+        //Move in the correct direction scaled up by the move speed
+        _rigidbody.AddForce(MoveDirection * _moveSpeed, ForceMode.Impulse);
+
+                //If the object is moving above the max speed
         if (_rigidbody.velocity.magnitude > MaxSpeed)
             //Set the velocity to be the max speed
             _rigidbody.velocity = _rigidbody.velocity.normalized * MaxSpeed;
-
-        //Move in the correct direction scaled up by the move speed
-        _rigidbody.AddForce(MoveDirection * _moveSpeed * Time.deltaTime, ForceMode.Impulse);
     }
 
 }

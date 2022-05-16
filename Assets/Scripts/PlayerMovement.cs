@@ -17,8 +17,8 @@ public class PlayerMovement : MovementBehavior
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        MaxSpeed = 20;
-        MoveSpeed = 30;
+        MaxSpeed = 3;
+        MoveSpeed = 5;
         _camera = Camera.main;
     }
 
@@ -37,7 +37,7 @@ public class PlayerMovement : MovementBehavior
     {
         //Call for raycasting to get where the cursor actually is on the game screen
         RaycastHit hit;
-        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = _camera.ScreenPointToRay(Mouse.current.position.ReadValue());
         //If the cast is true an the mouse is on the screen
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {

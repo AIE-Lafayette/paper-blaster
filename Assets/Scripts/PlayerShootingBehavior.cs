@@ -14,15 +14,7 @@ public class PlayerShootingBehavior : MonoBehaviour
         _readyToAttack = true;
     }
 
-    void Update()
-    {
-        if (Input.GetButton("Fire1")) 
-        {
-            Shoot();
-        }
-    }
-
-    void Shoot() 
+    public void Shoot() 
     {
         if (_readyToAttack) 
         {
