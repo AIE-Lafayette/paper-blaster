@@ -56,14 +56,17 @@ public class PaperBallBehaviour : MonoBehaviour
     {
         switch (other.tag)
         {
-            //If the paper ball collides with a player or bullet...
+            //If the paper ball collides with a player, break the ball and damage the player.
             case "Player": 
             {
                 Break();
+                Destroy(gameObject);
                 break;
             }
+            //If the paper ball collides with a player's bullet, break the paper ball and award the player with points.
             case "PlayerBullet":
             {
+                //If the ball wasn't able to break any further, Award the player with extra points
                 if (!Break())
                 {
                     //Award the player with points here

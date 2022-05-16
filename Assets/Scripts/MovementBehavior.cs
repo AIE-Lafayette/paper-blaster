@@ -88,7 +88,7 @@ public class MovementBehavior : MonoBehaviour
     /// Update checks for if this object is ever outside of the border, then respawns the object 
     /// at the correct location
     /// </summary>
-    private void Update()
+    virtual protected void Update()
     {
         //If the object is too far to the left
         if (transform.position.x < _leftBorder - Buffer)

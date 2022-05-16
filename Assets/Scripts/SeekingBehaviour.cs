@@ -8,6 +8,5 @@ public class SeekingBehaviour : SteeringBehaviour
     private void Update()
     {
         OwnerMovementBehaviour.MoveDirection = DirectionToTarget;
-        OwnerMovementBehaviour.MoveSpeed *= Force;
     }
 }
