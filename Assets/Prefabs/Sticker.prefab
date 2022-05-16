@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4299663181747415937}
   - component: {fileID: 1144945964196428385}
   - component: {fileID: 3061858087210204184}
+  - component: {fileID: 8020240914197901398}
+  - component: {fileID: 7852580550069014621}
   m_Layer: 0
   m_Name: Sticker
   m_TagString: Untagged
@@ -95,3 +97,30 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8020240914197901398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7784282804930428154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3e57623f35f93458540de1cb6ff4b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxSpeed: 0
+  _moveSpeed: 0
+--- !u!114 &7852580550069014621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7784282804930428154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3886edec7e2fa544b85ea66be09bd81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 0}

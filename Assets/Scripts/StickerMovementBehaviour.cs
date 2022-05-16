@@ -18,6 +18,6 @@ public class StickerMovementBehaviour : MovementBehavior
     override protected void Update()
     {
         Move();
-        base.Move();
+        base.Update();
     }
 }
