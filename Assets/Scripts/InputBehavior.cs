@@ -15,14 +15,14 @@ public class InputBehavior : MonoBehaviour
         _playerMovement = GetComponent<PlayerMovement>();
     }
 
-    /// Gets the input every frame
+    /// Gets the thruster input every frame
     void Update()
     {
-        GetInput();
+        GetThrusterInput();
     }
 
     /// Checks if the space bar is pressed, if so activate the thruster of the player
-    void GetInput()
+    void GetThrusterInput()
     {
         if (Input.GetButton("Jump"))
         {

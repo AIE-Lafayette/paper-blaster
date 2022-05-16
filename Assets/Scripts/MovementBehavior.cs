@@ -56,8 +56,6 @@ public class MovementBehavior : MonoBehaviour
         set { _moveSpeed = value; }
     }
 
-    public Rigidbody Rigidbody { get => _rigidbody; set => _rigidbody = value; }
-
     /// <summary>
     /// Before the game starts set the rigidbody, camera, and the borders for the respawns
     /// </summary>
@@ -78,7 +76,7 @@ public class MovementBehavior : MonoBehaviour
         //Set the top and bottom border by using the camera view and the height of the screen
         //as the original border
         _topBorder = _cam.ScreenToWorldPoint(new Vector3(0.0f, Screen.height, _distanceY)).z;
-        _bottomBorder = _cam.ScreenToWorldPoint(new Vector3(0.0f, 0.0f, _distanceY)).z;
+        _bottomBorder = -_topBorder;
 
         //This is the basic buffer size for all objects, but can be changed in their specific classes
         Buffer = 0.5f;
@@ -88,7 +86,7 @@ public class MovementBehavior : MonoBehaviour
     /// Update checks for if this object is ever outside of the border, then respawns the object 
     /// at the correct location
     /// </summary>
-    virtual protected void Update()
+    private void Update()
     {
         //If the object is too far to the left
         if (transform.position.x < _leftBorder - Buffer)
@@ -119,15 +117,15 @@ public class MovementBehavior : MonoBehaviour
     /// <summary>
     /// Called when any object needs to move
     /// </summary>
-    virtual public void Move()
+    public void Move()
     {
-        //Move in the correct direction scaled up by the move speed
-        _rigidbody.AddForce(MoveDirection * _moveSpeed, ForceMode.Impulse);
-
-                //If the object is moving above the max speed
+        //If the object is moving above the max speed
         if (_rigidbody.velocity.magnitude > MaxSpeed)
             //Set the velocity to be the max speed
             _rigidbody.velocity = _rigidbody.velocity.normalized * MaxSpeed;
+
+        //Move in the correct direction scaled up by the move speed
+        _rigidbody.AddForce(MoveDirection * _moveSpeed * Time.deltaTime);
     }
 
 }
