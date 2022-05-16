@@ -67,6 +67,7 @@ public class PaperBallBehaviour : MonoBehaviour
             {
                 Break();
                 Destroy(gameObject);
+                    other.GetComponent<PlayerBehavior>().OnHit();
                 break;
             }
             //If the paper ball collides with a player's bullet, break the paper ball and award the player with points.
@@ -77,6 +78,7 @@ public class PaperBallBehaviour : MonoBehaviour
                 {
                     //Award the player with points here
                 }
+                other.GetComponent<DeathBehavior>().Death();
                 Destroy(gameObject);
                 break;
             }
@@ -114,10 +116,10 @@ public class PaperBallBehaviour : MonoBehaviour
 
     void Update() 
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Break();
-            Destroy(gameObject);
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Break();
+        //    Destroy(gameObject);
+        //}
     }
 }
