@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7060710b9c6b80845aeecc0fcc2df725, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timer: 3
+  _timer: 0.5
   _particleOnDeath: 0
   _particleEffect: {fileID: 0}
 --- !u!1 &6694436006330608078
