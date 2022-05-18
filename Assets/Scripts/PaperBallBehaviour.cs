@@ -27,6 +27,11 @@ public class PaperBallBehaviour : MonoBehaviour
         movementBehavior.Move();
     }
 
+    private void Awake()
+    {
+        GameManagerBehavior.CurrentPaperAmount++;
+    }
+
     //Updates the paper ball's scale based on 
     private void UpdateScale()
     {
@@ -64,6 +69,9 @@ public class PaperBallBehaviour : MonoBehaviour
             case "Player": 
             {
                 Break();
+                GameManagerBehavior.CurrentPaperAmount--;
+                GameManagerBehavior.Score++;
+                GameManagerBehavior.CurrentScore++;
                 Destroy(gameObject);
                 other.GetComponent<PlayerBehavior>().OnHit();
                 break;
@@ -77,6 +85,9 @@ public class PaperBallBehaviour : MonoBehaviour
                     //Award the player with points here
                 }
                 other.GetComponent<DeathBehavior>().Death();
+                GameManagerBehavior.CurrentPaperAmount--;
+                GameManagerBehavior.Score++;
+                GameManagerBehavior.CurrentScore++;
                 Destroy(gameObject);
                 break;
             }
