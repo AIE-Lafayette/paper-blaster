@@ -70,6 +70,7 @@ public class GameManagerBehavior : MonoBehaviour
         //Spawn the given amount of objects
         for (int i = 0; i < amount; i++) 
         {
+            //Test
             Vector2 spawnPosition = RandomPointOnPerimeter(0, 0, _rectCornerX, _rectCornerZ);
             SteeringBehaviour sticker = Instantiate(spawn, new Vector3(spawnPosition.x, 0.5f, spawnPosition.y), Quaternion.identity).GetComponent<SteeringBehaviour>();
             sticker.SetTarget(_playerTransform);
