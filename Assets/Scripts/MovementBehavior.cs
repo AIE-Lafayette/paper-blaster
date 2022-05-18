@@ -114,6 +114,12 @@ public class MovementBehavior : MonoBehaviour
             //spawn the object on the top side with the same x and y axis
             transform.position = new Vector3(transform.position.x, transform.position.y, _bottomBorder - Buffer);
         }
+
+                       //If the object is moving above the max speed
+        if (_rigidbody.velocity.magnitude > MaxSpeed)
+            //Set the velocity to be the max speed
+            _rigidbody.velocity = _rigidbody.velocity.normalized * MaxSpeed;
+            
     }
 
     /// <summary>
@@ -123,11 +129,6 @@ public class MovementBehavior : MonoBehaviour
     {
         //Move in the correct direction scaled up by the move speed
         _rigidbody.AddForce(MoveDirection * _moveSpeed, ForceMode.Impulse);
-
-                //If the object is moving above the max speed
-        if (_rigidbody.velocity.magnitude > MaxSpeed)
-            //Set the velocity to be the max speed
-            _rigidbody.velocity = _rigidbody.velocity.normalized * MaxSpeed;
     }
 
 }

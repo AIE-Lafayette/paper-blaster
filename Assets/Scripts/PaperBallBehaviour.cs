@@ -60,11 +60,12 @@ public class PaperBallBehaviour : MonoBehaviour
     {
         switch (other.tag)
         {
-            //If the paper ball collides with a player, break the ball and damage the player.
+                       //If the paper ball collides with a player, break the ball and damage the player.
             case "Player": 
             {
                 Break();
                 Destroy(gameObject);
+                other.GetComponent<PlayerBehavior>().OnHit();
                 break;
             }
             //If the paper ball collides with a player's bullet, break the paper ball and award the player with points.
@@ -75,6 +76,7 @@ public class PaperBallBehaviour : MonoBehaviour
                 {
                     //Award the player with points here
                 }
+                other.GetComponent<DeathBehavior>().Death();
                 Destroy(gameObject);
                 break;
             }
@@ -104,7 +106,7 @@ public class PaperBallBehaviour : MonoBehaviour
     public void Initiate(Vector3 position, PaperBallSize size, Vector3 velocity, float moveSpeed)
     {
         MovementBehavior movementBehavior = GetComponent<MovementBehavior>();
-        transform.position = position;
+        transform.position = new Vector3(position.x, 0.5f, position.z);
         Size = size;
         movementBehavior.MoveSpeed = moveSpeed;
         movementBehavior.Rigidbody.velocity = velocity;
