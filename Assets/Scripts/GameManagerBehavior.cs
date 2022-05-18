@@ -21,6 +21,9 @@ public class GameManagerBehavior : MonoBehaviour
     private float _rectCornerX = 22.25f;
     private float _rectCornerZ = 12.5f;
 
+    [SerializeField]
+    Transform _playerTransform;
+
     void Start()
     {
         _page = 1;

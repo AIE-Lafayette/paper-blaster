@@ -8,6 +8,11 @@ public class SteeringBehaviour : MonoBehaviour
     [SerializeField]
     protected Transform _target;
 
+    public void SetTarget(Transform target)
+    {
+        _target = target;
+    }
+
     //The owner's movementBehaviour component
     protected MovementBehavior OwnerMovementBehaviour;
 
