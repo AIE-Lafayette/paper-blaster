@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StickerMovementBehaviour : MovementBehavior
 {
+
     override public void Move()
     {
         Rigidbody.AddForce(MoveDirection * MoveSpeed * Time.deltaTime);
