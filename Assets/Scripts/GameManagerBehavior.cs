@@ -121,21 +121,30 @@ public class GameManagerBehavior : MonoBehaviour
 
     public static int Score;
     public static int CurrentScore;
-    private int _page;
-    public static int CurrentPaperAmount;
-    private bool _pageCheck;
-    private int _stickerThreshold;
-
-    //Spawning variables
-    private int _stickerSpawnSpeed;
+    private int _page;
+
+    public static int CurrentPaperAmount;
+
+    private bool _pageCheck;
+
+    private int _stickerThreshold;
+
+
+
+    //Spawning variables
+
+    private int _stickerSpawnSpsadfas
     private int _paperSpawnAmount;
     private RoutineBehaviour.TimedAction _spawnStickerAction;
     [SerializeField] private GameObject _paperBall;
     [SerializeField] private GameObject _sticker;
         if (CurrentScore > _stickerThreshold) 
         {
-            if (!_spawnStickerAction.IsActive)
-            {
-                _spawnStickerAction = RoutineBehaviour.Instance.StartNewTimedAction(args => SpawnObject(1, _sticker), TimedActionCountType.SCALEDTIME, _stickerSpawnSpeed);
+            if (!_spawnStickerAction.IsActive)
+
+            {
+
+                _spawnStickerAction = RoutineBehaviour.Instance.StartNewTimedAction(args => SpawnObject(1, _sticker), TimedActionCountType.SCALEDTIME, _stickerSpawnSpeed);
+
             }
         }
