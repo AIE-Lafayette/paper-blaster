@@ -107,7 +107,7 @@ public class PaperBallBehaviour : MonoBehaviour
 
             PaperBallBehaviour newPBBehaviour = paperBall.GetComponent<PaperBallBehaviour>();
             newPBBehaviour.Initiate(transform.position, Size - 1,
-             movementBehavior.Rigidbody.velocity, movementBehavior.MoveSpeed + 10);
+             movementBehavior.Rigidbody.velocity, movementBehavior.MoveSpeed);
             newPBBehaviour.Start();
         }
 
