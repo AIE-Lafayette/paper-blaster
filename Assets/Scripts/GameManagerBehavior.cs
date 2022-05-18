@@ -71,7 +71,7 @@ public class GameManagerBehavior : MonoBehaviour
         for (int i = 0; i < amount; i++) 
         {
             Vector2 spawnPosition = RandomPointOnPerimeter(0, 0, _rectCornerX, _rectCornerZ);
-            SteeringBehaviour steer = Instantiate(spawn, new Vector3(spawnPosition.x, 0.5f, spawnPosition.y), Quaternion.identity).GetComponent<SteeringBehaviour>();
+            SteeringBehaviour steer = Instantiate(spawn, new Vector3(spawnPosition.x, 0.5f, spawnPosition.y), Quaternion.identity).AddComponent<SteeringBehaviour>();
             steer.SetTarget(_playerTransform);
         }
     }
