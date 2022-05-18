@@ -17,7 +17,7 @@ public class GameManagerBehavior : MonoBehaviour
     private int _paperSpawnAmount;
     private RoutineBehaviour.TimedAction _spawnStickerAction;
     [SerializeField] private GameObject _paperBall;
-    [SerializeField] private GameObject[] _stickers;
+    [SerializeField] private GameObject _sticker;
     private float _rectCornerX = 22.25f;
     private float _rectCornerZ = 12.5f;
 
@@ -53,8 +53,7 @@ public class GameManagerBehavior : MonoBehaviour
         {
             if (!_spawnStickerAction.IsActive)
             {
-                int stickerIndex = Random.Range(1, _stickers.Length);
-                _spawnStickerAction = RoutineBehaviour.Instance.StartNewTimedAction(args => SpawnObject(1, _stickers[stickerIndex]), TimedActionCountType.SCALEDTIME, _stickerSpawnSpeed);
+                _spawnStickerAction = RoutineBehaviour.Instance.StartNewTimedAction(args => SpawnObject(1, _sticker), TimedActionCountType.SCALEDTIME, _stickerSpawnSpeed);
             }
         }
     }
