@@ -27,9 +27,4 @@ public class SteeringBehaviour : MonoBehaviour
     {
         OwnerMovementBehaviour = GetComponent<MovementBehavior>();
     }
-
-    public void SetTarget(Transform target) 
-    {
-        _target = target;
-    }
 }
