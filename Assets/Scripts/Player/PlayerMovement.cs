@@ -9,6 +9,13 @@ public class PlayerMovement : MovementBehavior
     private Camera _camera;
     private Vector3 _movePosition;
     private Rigidbody _rb;
+    private bool _thrusterOn;
+
+    public bool ThrusterOn
+    {
+        get { return _thrusterOn; }
+        set { _thrusterOn = value; }
+    }
 
     /// <summary>
     /// On start set the max speed and the move speed
@@ -17,8 +24,8 @@ public class PlayerMovement : MovementBehavior
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        MaxSpeed = 3;
-        MoveSpeed = 5;
+        MaxSpeed = 5;
+        MoveSpeed = 7;
         _rb.drag = .75f;
         _camera = Camera.main;
     }
@@ -29,6 +36,9 @@ public class PlayerMovement : MovementBehavior
     private void FixedUpdate()
     {
         LookAtCursor();
+
+        if (_thrusterOn)
+            ActivateThruster();
     }
 
     /// <summary>
@@ -57,6 +67,11 @@ public class PlayerMovement : MovementBehavior
         newRot.z = 0;
         //Rotate to the new rotation
         transform.rotation = newRot;
+    }
+
+    public override void Move()
+    {
+        _rb.AddForce(MoveDirection * MoveSpeed, ForceMode.Acceleration);
     }
 
     /// <summary>
