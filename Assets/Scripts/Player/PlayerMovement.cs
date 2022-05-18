@@ -24,8 +24,8 @@ public class PlayerMovement : MovementBehavior
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        MaxSpeed = 5;
-        MoveSpeed = 7;
+        MaxSpeed = 6;
+        MoveSpeed = 3;
         _rb.drag = .75f;
         _camera = Camera.main;
     }

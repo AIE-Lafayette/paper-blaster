@@ -20,6 +20,7 @@ public class GameManagerBehavior : MonoBehaviour
     [SerializeField] private GameObject _sticker;
     private float _rectCornerX = 22.25f;
     private float _rectCornerZ = 12.5f;
+    [SerializeField] private Transform _playerTransform;
 
     [SerializeField]
     Transform _playerTransform;
