@@ -12,7 +12,7 @@ public class SteeringBehaviour : MonoBehaviour
     protected MovementBehavior OwnerMovementBehaviour;
 
     //Returns the direction to the target from the owner
-    protected Vector3 DirectionToTarget
+    protected Vector3 DirectionToTarget 
     {
         get => (_target.position - transform.position).normalized;
     }
@@ -21,10 +21,5 @@ public class SteeringBehaviour : MonoBehaviour
     private void Awake()
     {
         OwnerMovementBehaviour = GetComponent<MovementBehavior>();
-    }
-
-    public void SetTarget(Transform target) 
-    {
-        _target = target;
     }
 }
