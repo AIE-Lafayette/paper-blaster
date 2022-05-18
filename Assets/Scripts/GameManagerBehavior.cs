@@ -5,14 +5,19 @@ using UnityEngine;
 public class GameManagerBehavior : MonoBehaviour
 {
     //Score and difficulty
-    private int _score;
-    private int _difficulty;
-    private int _difficultyThreshold;
-    private int _difficultyThresholdMax = 5;
+    public static int Score;
+    public static int CurrentScore;
+    private int _page;
+    public static int CurrentPaperAmount;
+    private bool _pageCheck;
+    private int _stickerThreshold;
 
-    //Spawning Asteroids variables
-    [SerializeField] private GameObject _asteroid;
-    [SerializeField] private List<GameObject> _asteroids;
+    //Spawning variables
+    private int _stickerSpawnSpeed;
+    private int _paperSpawnAmount;
+    private RoutineBehaviour.TimedAction _spawnStickerAction;
+    [SerializeField] private GameObject _paperBall;
+    [SerializeField] private GameObject[] _stickers;
     private float _rectCornerX = 22.25f;
     private float _rectCornerZ = 12.5f;
 
@@ -32,8 +37,14 @@ public class GameManagerBehavior : MonoBehaviour
             _difficultyThresholdMax++;
             _difficulty++;
         }
-        //Check for asteroids
-        AsteroidCheck();
+        if (CurrentScore > _stickerThreshold) 
+        {
+            if (!_spawnStickerAction.IsActive)
+            {
+                int stickerIndex = Random.Range(1, _stickers.Length);
+                _spawnStickerAction = RoutineBehaviour.Instance.StartNewTimedAction(args => SpawnObject(1, _stickers[stickerIndex]), TimedActionCountType.SCALEDTIME, _stickerSpawnSpeed);
+            }
+        }
     }
 
     public void AddScore(int amount) 
@@ -107,3 +118,24 @@ public class GameManagerBehavior : MonoBehaviour
         _asteroids.Add(element);
     }
 }
+
+    public static int Score;
+    public static int CurrentScore;
+    private int _page;
+    public static int CurrentPaperAmount;
+    private bool _pageCheck;
+    private int _stickerThreshold;
+
+    //Spawning variables
+    private int _stickerSpawnSpeed;
+    private int _paperSpawnAmount;
+    private RoutineBehaviour.TimedAction _spawnStickerAction;
+    [SerializeField] private GameObject _paperBall;
+    [SerializeField] private GameObject _sticker;
+        if (CurrentScore > _stickerThreshold) 
+        {
+            if (!_spawnStickerAction.IsActive)
+            {
+                _spawnStickerAction = RoutineBehaviour.Instance.StartNewTimedAction(args => SpawnObject(1, _sticker), TimedActionCountType.SCALEDTIME, _stickerSpawnSpeed);
+            }
+        }
