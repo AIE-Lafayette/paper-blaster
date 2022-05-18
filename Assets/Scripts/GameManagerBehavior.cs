@@ -5,68 +5,73 @@ using UnityEngine;
 public class GameManagerBehavior : MonoBehaviour
 {
     //Score and difficulty
-    private int _score;
-    private int _difficulty;
-    private int _difficultyThreshold;
-    private int _difficultyThresholdMax = 5;
+    public static int Score;
+    public static int CurrentScore;
+    private int _page;
+    public static int CurrentPaperAmount;
+    private bool _pageCheck;
+    private int _stickerThreshold;
 
-    //Spawning Asteroids variables
-    [SerializeField] private GameObject _asteroid;
-    [SerializeField] private List<GameObject> _asteroids;
+    //Spawning variables
+    private int _stickerSpawnSpeed;
+    private int _paperSpawnAmount;
+    private RoutineBehaviour.TimedAction _spawnStickerAction;
+    [SerializeField] private GameObject _paperBall;
+    [SerializeField] private GameObject[] _stickers;
     private float _rectCornerX = 22.25f;
     private float _rectCornerZ = 12.5f;
 
     void Start()
     {
-        //For testing only
-        SpawnAsteroids(5);
+        _page = 1;
+        Score = 0;
+        CurrentScore = 0;
+        _paperSpawnAmount = 3;
+        _stickerSpawnSpeed = 5;
+        _stickerThreshold = 5;
+        _spawnStickerAction = new RoutineBehaviour.TimedAction();
+        PageSetup();
     }
 
     void Update()
     {
-        //If the difficulty threshold is more than the max difficulty threshold
-        if (_difficultyThreshold > _difficultyThresholdMax) 
+        GameLoop();
+    }
+
+    void GameLoop() 
+    {
+        if (CurrentPaperAmount == 0 && !_pageCheck) 
         {
-            //Increase difficulty
-            _difficultyThreshold = 0;
-            _difficultyThresholdMax++;
-            _difficulty++;
+            Debug.Log("Board Cleared");
+            _pageCheck = true;
+            _page++;
+            _paperSpawnAmount = 3 + _page;
+            _stickerSpawnSpeed = 5 + Mathf.RoundToInt(_page / 2);
+            RoutineBehaviour.Instance.StartNewTimedAction(args => { PageSetup(); _pageCheck = false; }, TimedActionCountType.SCALEDTIME, 3f);
         }
-        //Check for asteroids
-        AsteroidCheck();
+        if (CurrentScore > _stickerThreshold) 
+        {
+            if (!_spawnStickerAction.IsActive)
+            {
+                int stickerIndex = Random.Range(1, _stickers.Length);
+                _spawnStickerAction = RoutineBehaviour.Instance.StartNewTimedAction(args => SpawnObject(1, _stickers[stickerIndex]), TimedActionCountType.SCALEDTIME, _stickerSpawnSpeed);
+            }
+        }
     }
 
-    public void AddScore(int amount) 
+    void PageSetup() 
     {
-        _score += amount;
-        _difficultyThreshold++;
+        SpawnObject(_paperSpawnAmount, _paperBall);
+        CurrentScore = 0;
     }
 
-    void SpawnAsteroids(int amount) 
+    void SpawnObject(int amount, GameObject spawn) 
     {
-        //Spawn the given amount of asteroids
+        //Spawn the given amount of objects
         for (int i = 0; i < amount; i++) 
         {
-            //Spawn an asteroid in a random position and add it to the list of asteroids
-            Vector2 pos = RandomPointOnPerimeter(0, 0, _rectCornerX, _rectCornerZ);
-            GameObject spawn = Instantiate(_asteroid, new Vector3(pos.x, 0.5f, pos.y), Quaternion.identity);
-            _asteroids.Add(spawn);
-            //spawn.GetComponent<PaperBallBehaviour>().GameManager = this;
-        }
-    }
-
-    void AsteroidCheck() 
-    {
-        //Check if destroyed asteroids to remove them from the list
-        for (int i = 0; i < _asteroids.Count; i++) 
-        {
-            if(_asteroids[i] == null)
-                _asteroids.RemoveAt(i);
-        }
-        //If there are no more asteroids
-        if (_asteroids.Count == 0)
-        {
-            Debug.Log("All asteroids cleared.");
+            Vector2 spawnPosition = RandomPointOnPerimeter(0, 0, _rectCornerX, _rectCornerZ);
+            Instantiate(spawn, new Vector3(spawnPosition.x, 0.5f, spawnPosition.y), Quaternion.identity);
         }
     }
 
@@ -100,10 +105,5 @@ public class GameManagerBehavior : MonoBehaviour
             point.y = Random.Range(0, y2);
         }
         return point;
-    }
-
-    public void AddToList(GameObject element) 
-    {
-        _asteroids.Add(element);
     }
 }
