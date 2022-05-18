@@ -13,7 +13,7 @@ public class GameManagerBehavior : MonoBehaviour
     private int _stickerThreshold;
 
     //Spawning variables
-    private int _stickerSpawnAmount;
+    private int _stickerSpawnSpeed;
     private int _paperSpawnAmount;
     private RoutineBehaviour.TimedAction _spawnStickerAction;
     [SerializeField] private GameObject _paperBall;
@@ -27,7 +27,7 @@ public class GameManagerBehavior : MonoBehaviour
         Score = 0;
         CurrentScore = 0;
         _paperSpawnAmount = 3;
-        _stickerSpawnAmount = 0;
+        _stickerSpawnSpeed = 5;
         _stickerThreshold = 5;
         _spawnStickerAction = new RoutineBehaviour.TimedAction();
         PageSetup();
@@ -46,15 +46,15 @@ public class GameManagerBehavior : MonoBehaviour
             _pageCheck = true;
             _page++;
             _paperSpawnAmount = 3 + _page;
-            _stickerSpawnAmount = 5 + Mathf.RoundToInt(_page / 2);
+            _stickerSpawnSpeed = 5 + Mathf.RoundToInt(_page / 2);
             RoutineBehaviour.Instance.StartNewTimedAction(args => { PageSetup(); _pageCheck = false; }, TimedActionCountType.SCALEDTIME, 3f);
         }
         if (CurrentScore > _stickerThreshold) 
         {
             if (!_spawnStickerAction.IsActive)
             {
-                int stickerIndex = Random.Range(0, _stickers.Length);
-                _spawnStickerAction = RoutineBehaviour.Instance.StartNewTimedAction(args => SpawnObject(1, _stickers[stickerIndex]), TimedActionCountType.SCALEDTIME, _stickerSpawnAmount);
+                int stickerIndex = Random.Range(1, _stickers.Length);
+                _spawnStickerAction = RoutineBehaviour.Instance.StartNewTimedAction(args => SpawnObject(1, _stickers[stickerIndex]), TimedActionCountType.SCALEDTIME, _stickerSpawnSpeed);
             }
         }
     }
