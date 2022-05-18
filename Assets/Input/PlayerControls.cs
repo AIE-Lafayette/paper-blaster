@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/PlayerControls.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Input/PlayerControls.inputactions'
 
 using System;
 using System.Collections;
@@ -24,7 +24,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""id"": ""ff2fe741-27f4-4bd8-9269-fec399b3cd08"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press,Press(behavior=1)""
                 },
                 {
                     ""name"": ""Shoot"",

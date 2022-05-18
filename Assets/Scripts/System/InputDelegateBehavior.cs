@@ -31,9 +31,19 @@ public class InputDelegateBehavior : MonoBehaviour
     void Start()
     {
         _playerControls.Ship.Movement.started += (InputAction.CallbackContext context) =>
-             _playerMovement.ActivateThruster();
+            { _playerMovement.ActivateThruster(); _playerMovement.ThrusterOn = true; };
+
+        _playerControls.Ship.Movement.canceled += (InputAction.CallbackContext context) =>
+        { _playerMovement.ThrusterOn = false; };
 
         _playerControls.Ship.Shoot.started += (InputAction.CallbackContext context) =>
             _playerShooting.Shoot();
     }
+
+    private void Update()
+    {
+        if (_playerMovement.ThrusterOn)
+            _playerMovement.ActivateThruster();
+    }
+
 }
