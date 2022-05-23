@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerShootingBehavior : MonoBehaviour
 {
@@ -10,11 +11,12 @@ public class PlayerShootingBehavior : MonoBehaviour
     private bool _readyToAttack;
 
     private string _currentPowerup;
+    private string _currentPowerupHeld;
 
-    public string CurrentPowerup
+    public string CurrentPowerupHeld
     {
-        get { return _currentPowerup; }
-        set { _currentPowerup = value; }
+        get { return _currentPowerupHeld ; }
+        set { _currentPowerupHeld = value; }
     }
 
     public float AttackSpeed
@@ -26,6 +28,13 @@ public class PlayerShootingBehavior : MonoBehaviour
     void Start()
     {
         _readyToAttack = true;
+    }
+
+    public void onActivate()
+    {
+        _currentPowerup = _currentPowerupHeld;
+
+        RoutineBehaviour.Instance.StartNewTimedAction(args => _currentPowerup = "Normal", TimedActionCountType.SCALEDTIME, 15);
     }
 
     public void Shoot() 

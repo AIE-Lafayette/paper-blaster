@@ -6,6 +6,7 @@ public class PowerupBehavior : MonoBehaviour
 {
     [SerializeField]
     private PlayerShootingBehavior _player;
+    private string _currentPowerupHeld;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,17 +19,11 @@ public class PowerupBehavior : MonoBehaviour
         transform.Rotate(Vector3.up * 70f * Time.deltaTime);
     }
 
-    void onPickup()
-    {
-        RoutineBehaviour.Instance.StartNewTimedAction(args => _player.CurrentPowerup = "Normal", TimedActionCountType.SCALEDTIME, 15);
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            _player.CurrentPowerup = tag;
-            onPickup();
+            _player.CurrentPowerupHeld = tag;
             Destroy(gameObject);
         }
     }
