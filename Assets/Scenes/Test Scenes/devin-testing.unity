@@ -257,6 +257,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1827054891, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
+      propertyPath: _radius
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 454173655668695798, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
+      propertyPath: _seekRange
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2949097350667779383, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
       propertyPath: _target
       value: 
@@ -267,7 +275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4045857693576271442, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.67
+      value: 3.29
       objectReference: {fileID: 0}
     - target: {fileID: 4045857693576271442, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
       propertyPath: m_LocalPosition.y
@@ -275,7 +283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4045857693576271442, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.62
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4045857693576271442, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
       propertyPath: m_LocalRotation.w
@@ -308,6 +316,10 @@ PrefabInstance:
     - target: {fileID: 7784282804930428154, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
       propertyPath: m_Name
       value: Sticker
+      objectReference: {fileID: 0}
+    - target: {fileID: 8020240914197901398, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
+      propertyPath: _maxSpeed
+      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
