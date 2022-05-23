@@ -9,6 +9,12 @@ public class PlayerShootingBehavior : MonoBehaviour
     [SerializeField] private float _attackSpeed;
     private bool _readyToAttack;
 
+    public float AttackSpeed
+    {
+        get { return _attackSpeed; }
+        set { _attackSpeed = value; }
+    }
+
     void Start()
     {
         _readyToAttack = true;

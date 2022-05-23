@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -257,17 +257,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1827054891, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
+      propertyPath: _radius
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 454173655668695798, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
+      propertyPath: _seekRange
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2949097350667779383, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
+      propertyPath: _target
+      value: 
+      objectReference: {fileID: 1828237008}
     - target: {fileID: 4045857693576271442, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4045857693576271442, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4045857693576271442, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.67
+      value: 3.29
       objectReference: {fileID: 0}
     - target: {fileID: 4045857693576271442, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
       propertyPath: m_LocalPosition.y
@@ -275,7 +283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4045857693576271442, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.62
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4045857693576271442, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
       propertyPath: m_LocalRotation.w
@@ -309,8 +317,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sticker
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2949097350667779383, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
+    - target: {fileID: 8020240914197901398, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
+      propertyPath: _maxSpeed
+      value: 1.25
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
 --- !u!1001 &1332047236
 PrefabInstance:
@@ -594,26 +605,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1827054890 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7784282804930428154, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
-  m_PrefabInstance: {fileID: 544683162}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1827054891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1827054890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6afc9e860b727244aaba0e47f8170541, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _target: {fileID: 1828237008}
-  _radius: 40
-  _distance: 10
 --- !u!4 &1828237008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4546267567136395399, guid: 9ef57fcc80b70ea418a588bd25479bc9, type: 3}

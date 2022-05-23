@@ -77,7 +77,7 @@ public class GameManagerBehavior : MonoBehaviour
 
             if(spawn.tag == "Sticker"){
                 SeekingBehaviour steer = newSpawn.GetComponent<SeekingBehaviour>();
-                steer.SetTarget(_playerTransform);
+                steer.Target = _playerTransform;
             }
         }
     }
