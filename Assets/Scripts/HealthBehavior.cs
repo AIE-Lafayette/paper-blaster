@@ -12,6 +12,11 @@ public class HealthBehavior : MonoBehaviour
         set { _currentHealth = value; }
     }
 
+    public bool Alive
+    {
+        get => CurrentHealth > 0;
+    }
+
     public void TakeDamage(int damageAmount)
     {
         _currentHealth -= damageAmount;
