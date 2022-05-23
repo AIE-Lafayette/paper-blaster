@@ -22,6 +22,7 @@ public class GameManagerBehavior : MonoBehaviour
     private float _rectCornerZ = 12.5f;
     [SerializeField] private Transform _playerTransform;
 
+
     void Start()
     {
         _page = 1;
@@ -71,8 +72,13 @@ public class GameManagerBehavior : MonoBehaviour
         for (int i = 0; i < amount; i++) 
         {
             Vector2 spawnPosition = RandomPointOnPerimeter(0, 0, _rectCornerX, _rectCornerZ);
-            SteeringBehaviour steer = Instantiate(spawn, new Vector3(spawnPosition.x, 0.5f, spawnPosition.y), Quaternion.identity).GetComponent<SteeringBehaviour>();
-            steer.SetTarget(_playerTransform);
+
+            GameObject newSpawn = Instantiate(spawn, new Vector3(spawnPosition.x, 0.5f, spawnPosition.y), Quaternion.identity);
+
+            if(spawn.tag == "Sticker"){
+                SeekingBehaviour steer = newSpawn.GetComponent<SeekingBehaviour>();
+                steer.Target = _playerTransform;
+            }
         }
     }
 

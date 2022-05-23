@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PaperBall
   - PlayerBullet
+  - Sticker
   layers:
   - Default
   - TransparentFX

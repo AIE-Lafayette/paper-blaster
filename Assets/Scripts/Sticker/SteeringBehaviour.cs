@@ -6,7 +6,13 @@ public class SteeringBehaviour : MonoBehaviour
 {
     //The transform of the behaviour's target
     [SerializeField]
-    protected Transform _target;
+    private Transform _target;
+
+    public Transform Target
+    {
+        get => _target;
+        set => _target = value;
+    }
 
     //The owner's movementBehaviour component
     protected MovementBehavior OwnerMovementBehaviour;
@@ -17,14 +23,15 @@ public class SteeringBehaviour : MonoBehaviour
         get => (_target.position - transform.position).normalized;
     }
 
+    //Returns the distance from the owner to its target
+    protected float DistanceFromTarget
+    {
+        get => (_target.position - transform.position).magnitude;
+    }
+
     //Called when this component is initialized
     private void Awake()
     {
         OwnerMovementBehaviour = GetComponent<MovementBehavior>();
-    }
-
-    public void SetTarget(Transform target) 
-    {
-        _target = target;
     }
 }
