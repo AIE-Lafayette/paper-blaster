@@ -3,20 +3,20 @@ guid: ea0852e66ab04ee48a441f7e6092fc1a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6004325702831918112
-    second: TripleShotShip_0
+      213: 3302714500660645448
+    second: MainShip_Triple_0
   - first:
-      213: 907036621506553300
-    second: TripleShotShip_1
+      213: -3707765986420268083
+    second: MainShip_Triple_1
   - first:
-      213: 7576990499152737263
-    second: TripleShotShip_2
+      213: -8592631881477384611
+    second: MainShip_Triple_2
   - first:
-      213: -7898086089775803370
-    second: TripleShotShip_3
+      213: -6588648169423186539
+    second: MainShip_Triple_3
   - first:
-      213: 7714403621878678902
-    second: TripleShotShip_4
+      213: 2487402148310270446
+    second: MainShip_Triple_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -154,7 +154,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: TripleShotShip_0
+      name: MainShip_Triple_0
       rect:
         serializedVersion: 2
         x: 0
@@ -168,14 +168,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02c4b091a66a35350800000000000000
-      internalID: 6004325702831918112
+      spriteID: 84ec86ef65995dd20800000000000000
+      internalID: 3302714500660645448
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TripleShotShip_1
+      name: MainShip_Triple_1
       rect:
         serializedVersion: 2
         x: 1031
@@ -189,14 +189,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d52b276001769c00800000000000000
-      internalID: 907036621506553300
+      spriteID: dc3e42dda7e5b8cc0800000000000000
+      internalID: -3707765986420268083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TripleShotShip_2
+      name: MainShip_Triple_2
       rect:
         serializedVersion: 2
         x: 2062
@@ -210,14 +210,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe33280e6b0e62960800000000000000
-      internalID: 7576990499152737263
+      spriteID: d5618da54d6d0c880800000000000000
+      internalID: -8592631881477384611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TripleShotShip_3
+      name: MainShip_Triple_3
       rect:
         serializedVersion: 2
         x: 3093
@@ -231,14 +231,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61495751c8c546290800000000000000
-      internalID: -7898086089775803370
+      spriteID: 595d087e56b6094a0800000000000000
+      internalID: -6588648169423186539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TripleShotShip_4
+      name: MainShip_Triple_4
       rect:
         serializedVersion: 2
         x: 4124
@@ -252,8 +252,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 675c010b8311f0b60800000000000000
-      internalID: 7714403621878678902
+      spriteID: ee1c3973317058220800000000000000
+      internalID: 2487402148310270446
       vertices: []
       indices: 
       edges: []
@@ -261,7 +261,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 4195d296663e0f342a2d851e13b924d6
+    spriteID: 01a9022e3937b544c8a76a0d73f0d5a0
     internalID: 0
     vertices: []
     indices: 
