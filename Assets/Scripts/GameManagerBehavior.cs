@@ -22,6 +22,11 @@ public class GameManagerBehavior : MonoBehaviour
     private float _rectCornerZ = 12.5f;
     [SerializeField] private Transform _playerTransform;
 
+    public static void IncreaseScore(int value)
+    {
+        GameManagerBehavior.Score++;
+        GameManagerBehavior.CurrentScore++;
+    }
 
     void Start()
     {

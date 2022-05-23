@@ -703,5 +703,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Paper Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 8047033125077598009, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1296fb75098ef344bbc5402588494872, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
