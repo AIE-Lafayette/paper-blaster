@@ -15,7 +15,12 @@ public class PowerupBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up * 50f * Time.deltaTime);
+        transform.Rotate(Vector3.up * 70f * Time.deltaTime);
+    }
+
+    void onPickup()
+    {
+        RoutineBehaviour.Instance.StartNewTimedAction(args => _player.CurrentPowerup = "Normal", TimedActionCountType.SCALEDTIME, 15);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,6 +28,7 @@ public class PowerupBehavior : MonoBehaviour
         if (other.tag == "Player")
         {
             _player.CurrentPowerup = tag;
+            onPickup();
             Destroy(gameObject);
         }
     }
