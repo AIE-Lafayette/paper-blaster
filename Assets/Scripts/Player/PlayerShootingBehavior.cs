@@ -10,7 +10,7 @@ public class PlayerShootingBehavior : MonoBehaviour
     [SerializeField] private float _attackSpeed;
     private bool _readyToAttack;
 
-    private string _currentPowerup;
+    private string _currentPowerup = "Normal";
     private string _currentPowerupHeld;
 
     public string CurrentPowerupHeld
@@ -55,7 +55,21 @@ public class PlayerShootingBehavior : MonoBehaviour
                 bullet3.AddForce(bullet3.transform.forward * 1000);
                 RoutineBehaviour.Instance.StartNewTimedAction(args => _readyToAttack = true, TimedActionCountType.SCALEDTIME, _attackSpeed);
             }
-            else
+            if (_currentPowerup == "LaserPowerup")
+            {
+                _readyToAttack = true;
+                Rigidbody bullet = Instantiate(_projectile, _bulletPoint.position, _bulletPoint.rotation).GetComponent<Rigidbody>();
+                bullet.transform.localScale = new Vector3(bullet.transform.localScale.x, bullet.transform.localScale.y, bullet.transform.localScale.z * 10);
+                bullet.AddForce(bullet.transform.forward * 1500);
+            }
+            if (_currentPowerup == "RocketPowerup")
+            {
+                _readyToAttack = true;
+                Rigidbody bullet = Instantiate(_projectile, _bulletPoint.position, _bulletPoint.rotation).GetComponent<Rigidbody>();
+                bullet.transform.localScale = new Vector3(bullet.transform.localScale.x + 2, bullet.transform.localScale.y + 2, bullet.transform.localScale.z + 2);
+                bullet.AddForce(bullet.transform.forward * 750);
+            }
+            if (_currentPowerup == "Normal")
             {
                 _readyToAttack = false;
                 Rigidbody bullet = Instantiate(_projectile, _bulletPoint.position, _bulletPoint.rotation).GetComponent<Rigidbody>();
