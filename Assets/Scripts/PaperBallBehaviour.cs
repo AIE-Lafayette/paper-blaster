@@ -15,6 +15,15 @@ public class PaperBallBehaviour : MonoBehaviour
     //The size of this paper ball
     private PaperBallSize Size { get => _size; set => _size = value; }
 
+    //The owner's health behaviour
+    private HealthBehaviour _healthBehaviour;
+
+    private void Awake()
+    {
+        _healthBehaviour = GetComponent<HealthBehaviour>();
+        GameManagerBehavior.CurrentPaperAmount++;
+    }
+
     //Called when the paper ball is added to a scene
     private void Start()
     {
@@ -25,11 +34,9 @@ public class PaperBallBehaviour : MonoBehaviour
         MovementBehavior movementBehavior = GetComponent<MovementBehavior>();
         movementBehavior.MoveDirection = new Vector3(Random.Range(-500.0f, 500.0f), 0, Random.Range(-500.0f, 500.0f)).normalized;
         movementBehavior.Move();
-    }
 
-    private void Awake()
-    {
-        GameManagerBehavior.CurrentPaperAmount++;
+        _healthBehaviour.CurrentHealth = 1;
+        _healthBehaviour.OnDeath = Break;
     }
 
     //Updates the paper ball's scale based on 
@@ -68,36 +75,22 @@ public class PaperBallBehaviour : MonoBehaviour
                        //If the paper ball collides with a player, break the ball and damage the player.
             case "Player": 
             {
-                Break();
-                GameManagerBehavior.CurrentPaperAmount--;
-                GameManagerBehavior.Score++;
-                GameManagerBehavior.CurrentScore++;
-                Destroy(gameObject);
                 other.GetComponent<PlayerBehavior>().OnHit();
-                break;
-            }
-            //If the paper ball collides with a player's bullet, break the paper ball and award the player with points.
-            case "PlayerBullet":
-            {
-                //If the ball wasn't able to break any further, Award the player with extra points
-                if (!Break())
-                {
-                    //Award the player with points here
-                }
-                other.GetComponent<DeathBehavior>().Death();
-                GameManagerBehavior.CurrentPaperAmount--;
-                GameManagerBehavior.Score++;
-                GameManagerBehavior.CurrentScore++;
-                Destroy(gameObject);
+                _healthBehaviour.TakeDamage(1);
                 break;
             }
         }
     }
 
-    private bool Break() 
+    private void Break(object value) 
     {
         //If the paper ball can't be broken, return
-        if (Size == PaperBallSize.Small) return false;
+        if (Size == PaperBallSize.Small)
+        {
+            GameManagerBehavior.IncreaseScore(1);
+            Destroy(gameObject);
+            return;
+        }
 
         //Creates two smaller paper balls
         for (int i = 0; i < 2; i++)
@@ -111,7 +104,7 @@ public class PaperBallBehaviour : MonoBehaviour
             newPBBehaviour.Start();
         }
 
-        return true;
+        Destroy(gameObject);
     }
 
     public void Initiate(Vector3 position, PaperBallSize size, Vector3 velocity, float moveSpeed)
@@ -121,14 +114,5 @@ public class PaperBallBehaviour : MonoBehaviour
         Size = size;
         movementBehavior.MoveSpeed = moveSpeed;
         movementBehavior.Rigidbody.velocity = velocity;
-    }
-
-    void Update() 
-    {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    Break();
-        //    Destroy(gameObject);
-        //}
     }
 }

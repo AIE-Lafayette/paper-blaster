@@ -18,13 +18,13 @@ public class SteeringBehaviour : MonoBehaviour
     protected MovementBehavior OwnerMovementBehaviour;
 
     //Returns the direction to the target from the owner
-    protected Vector3 DirectionToTarget 
+    public Vector3 DirectionToTarget 
     {
         get => (_target.position - transform.position).normalized;
     }
 
     //Returns the distance from the owner to its target
-    protected float DistanceFromTarget
+    public float DistanceFromTarget
     {
         get => (_target.position - transform.position).magnitude;
     }

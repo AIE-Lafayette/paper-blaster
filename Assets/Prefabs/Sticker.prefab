@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 732730796}
   - component: {fileID: 1827054891}
   - component: {fileID: 454173655668695798}
+  - component: {fileID: 6826442442617923358}
   m_Layer: 0
   m_Name: Sticker
   m_TagString: Sticker
@@ -65,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 94672e5b2ea43094cbd0596c5264bc69, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,7 +99,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8020240914197901398
 MonoBehaviour:
@@ -112,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3e57623f35f93458540de1cb6ff4b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 1
+  _maxSpeed: 1.25
   _moveSpeed: 500
 --- !u!114 &2949097350667779383
 MonoBehaviour:
@@ -156,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _radius: 40
+  _radius: 151000
   _distance: 10
 --- !u!114 &454173655668695798
 MonoBehaviour:
@@ -168,5 +169,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0199274f7eb0fac409441e5e106a1d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _seekRange: 7
+--- !u!114 &6826442442617923358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7784282804930428154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2ad8e0b8763a93419649bd3c6b8bf9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
