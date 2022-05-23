@@ -12,13 +12,6 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField]private MeshRenderer _renderer;
     [SerializeField]private BoxCollider _collider;
     private bool _iframesActive;
-    private string _currentPowerup;
-
-    public string CurrentPowerup
-    {
-        get { return _currentPowerup; }
-        set { _currentPowerup = value; }
-    }
 
     // Start is called before the first frame update
     void Awake()
