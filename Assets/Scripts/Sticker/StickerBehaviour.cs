@@ -17,7 +17,7 @@ public class StickerBehaviour : MonoBehaviour
     //A reference to the sticker's behaviours
     private WanderingBehaviour _wanderingBehaviour;
     private SeekingBehaviour _seekingBehaviour;
-    private HealthBehavior _healthBehaviour;
+    private HealthBehaviour _healthBehaviour;
     
     //The seeking range for the sticker. It will only seek if the target is within this range.
     [SerializeField] 
@@ -28,7 +28,7 @@ public class StickerBehaviour : MonoBehaviour
     {
         _wanderingBehaviour = GetComponent<WanderingBehaviour>();
         _seekingBehaviour = GetComponent<SeekingBehaviour>();
-        _healthBehaviour = GetComponent<HealthBehavior>();
+        _healthBehaviour = GetComponent<HealthBehaviour>();
     }
 
     //Called when the component is added to the scene
@@ -36,6 +36,8 @@ public class StickerBehaviour : MonoBehaviour
     {
         _currentState = StickerState.Wandering;
         _healthBehaviour.CurrentHealth = 3;
+        _healthBehaviour.OnDeath = Destroy;
+        _healthBehaviour.OnDeath += DeathEvent;
     }
 
     //Called when the sticker is in its wandering state
@@ -99,26 +101,16 @@ public class StickerBehaviour : MonoBehaviour
     //Called on collision with another collider
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "PlayerBullet")
+        if (other.tag == "Player")
         {
-            GameManagerBehavior.Score++;
-            GameManagerBehavior.CurrentScore++;
-            other.GetComponent<DeathBehavior>().Death();
-
-            _healthBehaviour.TakeDamage(1);
-        }
-        else if (other.tag == "Player")
-        {
-            GameManagerBehavior.Score++;
-            GameManagerBehavior.CurrentScore++;
             other.GetComponent<PlayerBehavior>().OnHit();
             _healthBehaviour.TakeDamage(1);
         }
-        
-        if (!_healthBehaviour.Alive)
-        {
-            Destroy(gameObject);
-        }
+    }
+
+    private void DeathEvent(Object value)
+    {
+        GameManagerBehavior.IncreaseScore(2);
     }
 }
 
