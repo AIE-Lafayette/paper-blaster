@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    private HealthBehavior _health;
+    private HealthBehaviour _health;
     private Rigidbody _player;
     public static int PlayerHealth = 3;
     private RoutineBehaviour.TimedAction _iframesTimer;
@@ -16,7 +16,7 @@ public class PlayerBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        _health = GetComponent<HealthBehavior>();
+        _health = GetComponent<HealthBehaviour>();
         _player = GetComponent<Rigidbody>();
 
         _health.CurrentHealth = 3;

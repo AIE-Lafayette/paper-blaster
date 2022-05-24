@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeathBehavior : MonoBehaviour
+public class DeathTimerBehaviour : MonoBehaviour
 {
     [SerializeField] private float _timer;
     [SerializeField] private bool _particleOnDeath;
@@ -11,10 +11,10 @@ public class DeathBehavior : MonoBehaviour
 
     private void Awake()
     {
-        _deathTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => Death(), TimedActionCountType.SCALEDTIME, _timer);
+        _deathTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => Kill(), TimedActionCountType.SCALEDTIME, _timer);
     }
 
-    public void Death() 
+    public void Kill() 
     {
         if (_particleOnDeath)
             Instantiate(_particleEffect, transform.position, Quaternion.identity);
