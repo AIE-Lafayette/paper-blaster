@@ -5,25 +5,18 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    private HealthBehavior _health;
+    private HealthBehaviour _health;
     private Rigidbody _player;
     public static int PlayerHealth = 3;
     private RoutineBehaviour.TimedAction _iframesTimer;
     [SerializeField]private MeshRenderer _renderer;
     [SerializeField]private BoxCollider _collider;
     private bool _iframesActive;
-    private string _currentPowerup;
-
-    public string CurrentPowerup
-    {
-        get { return _currentPowerup; }
-        set { _currentPowerup = value; }
-    }
 
     // Start is called before the first frame update
     void Awake()
     {
-        _health = GetComponent<HealthBehavior>();
+        _health = GetComponent<HealthBehaviour>();
         _player = GetComponent<Rigidbody>();
 
         _health.CurrentHealth = 3;
