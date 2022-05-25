@@ -59,8 +59,8 @@ public class PlayerShootingBehavior : MonoBehaviour
             {
                 _readyToAttack = true;
                 Rigidbody bullet = Instantiate(_projectile, _bulletPoint.position, _bulletPoint.rotation).GetComponent<Rigidbody>();
-                bullet.transform.localScale = new Vector3(bullet.transform.localScale.x, bullet.transform.localScale.y, bullet.transform.localScale.z * 10);
-                bullet.AddForce(bullet.transform.forward * 1500);
+                bullet.transform.localScale = new Vector3(bullet.transform.localScale.x * .5f, bullet.transform.localScale.y, bullet.transform.localScale.z * 4);
+                bullet.AddForce(bullet.transform.forward * 2000);
             }
             if (_currentPowerup == "RocketPowerup")
             {
