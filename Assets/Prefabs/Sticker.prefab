@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _radius: 151000
+  _radius: 15
   _distance: 10
 --- !u!114 &454173655668695798
 MonoBehaviour:

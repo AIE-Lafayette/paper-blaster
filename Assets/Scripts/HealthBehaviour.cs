@@ -7,6 +7,7 @@ public delegate void DeathEventHandler(Object value);
 
 public class HealthBehaviour : MonoBehaviour
 {
+    //The owner's current health
     private int _currentHealth;
 
     //Takes in the owner's game object as the arg
