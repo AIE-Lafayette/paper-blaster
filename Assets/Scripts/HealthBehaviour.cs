@@ -33,14 +33,17 @@ public class HealthBehaviour : MonoBehaviour
     {
         if (!Alive)
         {
-            OnDeath.Invoke(gameObject);
+           return;
         }
 
         _currentHealth -= damageAmount;
+    }
 
+    //Called every frame
+    private void Update()
+    {
         if (!Alive)
         {
-            _currentHealth = 0;
             OnDeath.Invoke(gameObject);
         }
     }
