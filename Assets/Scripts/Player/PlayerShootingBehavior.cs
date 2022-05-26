@@ -85,9 +85,10 @@ public class PlayerShootingBehavior : MonoBehaviour
 
     private void ShootLaser()
     {
-        _readyToAttack = true;
+        _readyToAttack = false;
         Rigidbody bullet = Instantiate(_projectile, _bulletPoint.position, _bulletPoint.rotation).GetComponent<Rigidbody>();
         bullet.transform.localScale = new Vector3(bullet.transform.localScale.x * .5f, bullet.transform.localScale.y, bullet.transform.localScale.z * 4);
         bullet.AddForce(bullet.transform.forward * 2000);
+        RoutineBehaviour.Instance.StartNewTimedAction(args => _readyToAttack = true, TimedActionCountType.SCALEDTIME, _attackSpeed * .2f);
     }
 }
