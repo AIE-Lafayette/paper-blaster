@@ -9,6 +9,9 @@ public class PlayerShootingBehavior : MonoBehaviour
     [SerializeField] private Transform _bulletPoint;
     [SerializeField] private float _attackSpeed;
     private bool _readyToAttack;
+    public AudioSource[] Sounds;
+    private AudioSource _normalShot;
+    private AudioSource _laserShot;
 
     private string _currentPowerup = "Normal";
     private string _currentPowerupHeld;
@@ -28,6 +31,9 @@ public class PlayerShootingBehavior : MonoBehaviour
     void Start()
     {
         _readyToAttack = true;
+        Sounds = GetComponents<AudioSource>();
+        _normalShot = Sounds[0];
+        _laserShot = Sounds[1];
     }
 
     public void onActivate()
@@ -63,6 +69,7 @@ public class PlayerShootingBehavior : MonoBehaviour
                 Rigidbody bullet = Instantiate(_projectile, _bulletPoint.position, _bulletPoint.rotation).GetComponent<Rigidbody>();
                 bullet.AddForce(bullet.transform.forward * 1000);
                 RoutineBehaviour.Instance.StartNewTimedAction(args => _readyToAttack = true, TimedActionCountType.SCALEDTIME, _attackSpeed);
+                _normalShot.Play();
             }
             
         }
@@ -86,6 +93,7 @@ public class PlayerShootingBehavior : MonoBehaviour
     private void ShootLaser()
     {
         _readyToAttack = false;
+        _laserShot.Play();
         Rigidbody bullet = Instantiate(_projectile, _bulletPoint.position, _bulletPoint.rotation).GetComponent<Rigidbody>();
         bullet.transform.localScale = new Vector3(bullet.transform.localScale.x * .5f, bullet.transform.localScale.y, bullet.transform.localScale.z * 4);
         bullet.AddForce(bullet.transform.forward * 2000);
