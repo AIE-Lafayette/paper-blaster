@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _paperBall: {fileID: 4746855676856087294, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
   _sticker: {fileID: 0}
+  _playerTransform: {fileID: 822679119}
 --- !u!4 &740255455
 Transform:
   m_ObjectHideFlags: 0
@@ -168,6 +169,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &822679119 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4546267567136395399, guid: 9ef57fcc80b70ea418a588bd25479bc9, type: 3}
+  m_PrefabInstance: {fileID: 1187194428}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1174020464
 GameObject:
   m_ObjectHideFlags: 0
