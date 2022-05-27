@@ -38,6 +38,7 @@ public class InputDelegateBehavior : MonoBehaviour
 
         _playerControls.Ship.Shoot.started += (InputAction.CallbackContext context) =>
             _playerShooting.Shoot();
+        
     }
 
     private void Update()
