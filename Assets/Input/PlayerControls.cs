@@ -41,6 +41,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""896b6676-4e7d-4b7a-b171-24234b08464c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -76,6 +84,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""ActivatePowerup"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a84a3221-048a-4a3f-b867-c195ec9c5769"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -87,6 +106,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Ship_Movement = m_Ship.FindAction("Movement", throwIfNotFound: true);
         m_Ship_Shoot = m_Ship.FindAction("Shoot", throwIfNotFound: true);
         m_Ship_ActivatePowerup = m_Ship.FindAction("ActivatePowerup", throwIfNotFound: true);
+        m_Ship_Pause = m_Ship.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -139,6 +159,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_Ship_Movement;
     private readonly InputAction m_Ship_Shoot;
     private readonly InputAction m_Ship_ActivatePowerup;
+    private readonly InputAction m_Ship_Pause;
     public struct ShipActions
     {
         private @PlayerControls m_Wrapper;
@@ -146,6 +167,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_Ship_Movement;
         public InputAction @Shoot => m_Wrapper.m_Ship_Shoot;
         public InputAction @ActivatePowerup => m_Wrapper.m_Ship_ActivatePowerup;
+        public InputAction @Pause => m_Wrapper.m_Ship_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Ship; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -164,6 +186,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @ActivatePowerup.started -= m_Wrapper.m_ShipActionsCallbackInterface.OnActivatePowerup;
                 @ActivatePowerup.performed -= m_Wrapper.m_ShipActionsCallbackInterface.OnActivatePowerup;
                 @ActivatePowerup.canceled -= m_Wrapper.m_ShipActionsCallbackInterface.OnActivatePowerup;
+                @Pause.started -= m_Wrapper.m_ShipActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_ShipActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_ShipActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_ShipActionsCallbackInterface = instance;
             if (instance != null)
@@ -177,6 +202,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @ActivatePowerup.started += instance.OnActivatePowerup;
                 @ActivatePowerup.performed += instance.OnActivatePowerup;
                 @ActivatePowerup.canceled += instance.OnActivatePowerup;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -186,5 +214,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnActivatePowerup(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
