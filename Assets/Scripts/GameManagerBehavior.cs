@@ -14,7 +14,8 @@ public class GameManagerBehavior : MonoBehaviour
     private bool _pageCheck;
     private int _stickerThreshold;
 
-    [SerializeField] private static GameObject canvas;
+    [SerializeField] private GameObject pauseCanvas;
+    private static bool pauseCheck;
 
     //Spawning variables
     private int _stickerSpawnSpeed;
@@ -34,7 +35,8 @@ public class GameManagerBehavior : MonoBehaviour
 
     void Start()
     {
-        canvas.SetActive(false);
+        pauseCanvas.SetActive(false);
+        pauseCheck = false;
         _page = 1;
         Score = 0;
         CurrentScore = 0;
@@ -48,6 +50,7 @@ public class GameManagerBehavior : MonoBehaviour
     void Update()
     {
         GameLoop();
+        pauseCanvas.SetActive(pauseCheck);
     }
 
     void GameLoop() 
@@ -128,12 +131,12 @@ public class GameManagerBehavior : MonoBehaviour
     public static void PauseGame() 
     {
         Time.timeScale = 0;
-        canvas.SetActive(true);
+        pauseCheck = true;
     }
 
     public void UnpauseGame() 
     {
         Time.timeScale = 1;
-        canvas.SetActive(false);
+        pauseCheck = false;
     }
 }
