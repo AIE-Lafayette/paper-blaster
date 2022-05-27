@@ -257,10 +257,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1827054891, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
-      propertyPath: _radius
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 2949097350667779383, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
       propertyPath: _target
       value: 
@@ -703,9 +699,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Paper Ball
       objectReference: {fileID: 0}
-    - target: {fileID: 8047033125077598009, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1296fb75098ef344bbc5402588494872, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
