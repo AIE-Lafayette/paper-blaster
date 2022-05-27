@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManagerBehavior : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class GameManagerBehavior : MonoBehaviour
     public static int CurrentStickerAmount;
     private bool _pageCheck;
     private int _stickerThreshold;
+
+    [SerializeField] private GameObject pauseCanvas;
+    private static bool pauseCheck;
 
     //Spawning variables
     private int _stickerSpawnSpeed;
@@ -31,6 +35,8 @@ public class GameManagerBehavior : MonoBehaviour
 
     void Start()
     {
+        pauseCanvas.SetActive(false);
+        pauseCheck = false;
         _page = 1;
         Score = 0;
         CurrentScore = 0;
@@ -44,6 +50,7 @@ public class GameManagerBehavior : MonoBehaviour
     void Update()
     {
         GameLoop();
+        pauseCanvas.SetActive(pauseCheck);
     }
 
     void GameLoop() 
@@ -57,7 +64,7 @@ public class GameManagerBehavior : MonoBehaviour
             _stickerSpawnSpeed = 5 + Mathf.RoundToInt(_page / 2);
             RoutineBehaviour.Instance.StartNewTimedAction(args => { PageSetup(); _pageCheck = false; }, TimedActionCountType.SCALEDTIME, 3f);
         }
-        if (CurrentScore > _stickerThreshold) 
+        if (CurrentScore > _stickerThreshold && CurrentPaperAmount > 0) 
         {
             if (!_spawnStickerAction.IsActive)
             {
@@ -119,5 +126,17 @@ public class GameManagerBehavior : MonoBehaviour
             point.y = Random.Range(0, y2);
         }
         return point;
+    }
+
+    public static void PauseGame() 
+    {
+        Time.timeScale = 0;
+        pauseCheck = true;
+    }
+
+    public void UnpauseGame() 
+    {
+        Time.timeScale = 1;
+        pauseCheck = false;
     }
 }

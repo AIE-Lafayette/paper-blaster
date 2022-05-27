@@ -5,16 +5,26 @@ using UnityEngine;
 public class WaddleBehaviour : MonoBehaviour
 {
     [SerializeField]
+    private float _startPos;
+
+    [SerializeField]
+    private Vector3 _offset;
+
+    [SerializeField]
     private float _startYRotation;
     [SerializeField]
     private float _endYRotation;
     [SerializeField]
     private float _speed = 1;
-    private float _lerpValue;
 
-    private void Start()
+    //The speed of the waddling effect
+    public float Speed
     {
+        get => _speed;  
+        set => _speed = value;
     }
+
+    private float _lerpValue;
 
     private void Update()
     {
