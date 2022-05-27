@@ -9,6 +9,7 @@ public class GameManagerBehavior : MonoBehaviour
     public static int CurrentScore;
     private int _page;
     public static int CurrentPaperAmount;
+    public static int CurrentStickerAmount;
     private bool _pageCheck;
     private int _stickerThreshold;
 
@@ -47,7 +48,7 @@ public class GameManagerBehavior : MonoBehaviour
 
     void GameLoop() 
     {
-        if (CurrentPaperAmount == 0 && !_pageCheck) 
+        if (CurrentPaperAmount == 0 && !_pageCheck && CurrentStickerAmount == 0) 
         {
             Debug.Log("Board Cleared");
             _pageCheck = true;
@@ -83,6 +84,7 @@ public class GameManagerBehavior : MonoBehaviour
             if(spawn.tag == "Sticker"){
                 SeekingBehaviour steer = newSpawn.GetComponent<SeekingBehaviour>();
                 steer.Target = _playerTransform;
+                CurrentStickerAmount++;
             }
         }
     }
