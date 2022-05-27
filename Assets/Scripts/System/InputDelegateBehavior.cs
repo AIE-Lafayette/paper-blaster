@@ -43,6 +43,9 @@ public class InputDelegateBehavior : MonoBehaviour
 
         _playerControls.Ship.ActivatePowerup.started += (InputAction.CallbackContext context) =>
             _playerShooting.onActivate();
+
+        _playerControls.Ship.Pause.started += (InputAction.CallbackContext context) =>
+            GameManagerBehavior.PauseGame();
     }
 
     private void Update()
