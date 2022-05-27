@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 454173655668695798}
   - component: {fileID: 6826442442617923358}
   - component: {fileID: 1031393967}
-  - component: {fileID: 2930474898254689590}
   m_Layer: 0
   m_Name: Sticker
   m_TagString: Sticker
@@ -173,6 +172,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0199274f7eb0fac409441e5e106a1d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _wanderingBehaviour: {fileID: 1827054891}
+  _seekingBehaviour: {fileID: 2949097350667779383}
+  _healthBehaviour: {fileID: 6826442442617923358}
+  _waddleBehaviour: {fileID: 1031393967}
+  _stickerMovementBehaviour: {fileID: 8020240914197901398}
   _seekRange: 7
 --- !u!114 &6826442442617923358
 MonoBehaviour:
@@ -198,21 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bd9ff79a4b4a68428aa3bae5b030284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startYRotation: -10
-  _endYRotation: 10
-  _speed: 12
---- !u!114 &2930474898254689590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7784282804930428154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bd9ff79a4b4a68428aa3bae5b030284, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _startPos: 0
+  _offset: {x: 0, y: 0, z: 0}
   _startYRotation: -10
   _endYRotation: 10
   _speed: 12

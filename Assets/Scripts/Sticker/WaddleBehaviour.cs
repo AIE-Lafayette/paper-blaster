@@ -16,6 +16,14 @@ public class WaddleBehaviour : MonoBehaviour
     private float _endYRotation;
     [SerializeField]
     private float _speed = 1;
+
+    //The speed of the waddling effect
+    public float Speed
+    {
+        get => _speed;  
+        set => _speed = value;
+    }
+
     private float _lerpValue;
 
     private void Update()
