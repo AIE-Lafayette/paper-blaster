@@ -57,7 +57,7 @@ public class GameManagerBehavior : MonoBehaviour
             _stickerSpawnSpeed = 5 + Mathf.RoundToInt(_page / 2);
             RoutineBehaviour.Instance.StartNewTimedAction(args => { PageSetup(); _pageCheck = false; }, TimedActionCountType.SCALEDTIME, 3f);
         }
-        if (CurrentScore > _stickerThreshold) 
+        if (CurrentScore > _stickerThreshold && CurrentPaperAmount > 0) 
         {
             if (!_spawnStickerAction.IsActive)
             {
@@ -119,5 +119,15 @@ public class GameManagerBehavior : MonoBehaviour
             point.y = Random.Range(0, y2);
         }
         return point;
+    }
+
+    public static void PauseGame() 
+    {
+        Time.timeScale = 0;
+    }
+
+    public void UnpauseGame() 
+    {
+        Time.timeScale = 1;
     }
 }

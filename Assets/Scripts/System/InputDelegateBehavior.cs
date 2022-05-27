@@ -8,6 +8,8 @@ public class InputDelegateBehavior : MonoBehaviour
     private PlayerControls _playerControls;
     private PlayerMovement _playerMovement;
     private PlayerShootingBehavior _playerShooting;
+    [SerializeField]
+    private PowerupBehavior _powerup;
 
     // Start is called before the first frame update
     void Awake()
@@ -38,6 +40,12 @@ public class InputDelegateBehavior : MonoBehaviour
 
         _playerControls.Ship.Shoot.started += (InputAction.CallbackContext context) =>
             _playerShooting.Shoot();
+
+        _playerControls.Ship.ActivatePowerup.started += (InputAction.CallbackContext context) =>
+            _playerShooting.onActivate();
+
+        _playerControls.Ship.Pause.started += (InputAction.CallbackContext context) =>
+            GameManagerBehavior.PauseGame();
     }
 
     private void Update()
