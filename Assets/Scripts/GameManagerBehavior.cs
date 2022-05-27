@@ -15,7 +15,7 @@ public class GameManagerBehavior : MonoBehaviour
     private int _stickerThreshold;
 
     [SerializeField] private GameObject pauseCanvas;
-    private static bool pauseCheck;
+    public static bool pauseCheck;
 
     //Spawning variables
     private int _stickerSpawnSpeed;
