@@ -120,4 +120,14 @@ public class GameManagerBehavior : MonoBehaviour
         }
         return point;
     }
+
+    public static void PauseGame() 
+    {
+        Time.timeScale = 0;
+    }
+
+    public void UnpauseGame() 
+    {
+        Time.timeScale = 1;
+    }
 }
