@@ -48,6 +48,7 @@ public class PlayerBehavior : MonoBehaviour
     private void OnDeath()
     {
         Destroy(gameObject);
+        Application.LoadLevel("game_over_scene");
     }
 
     public void OnHit()
