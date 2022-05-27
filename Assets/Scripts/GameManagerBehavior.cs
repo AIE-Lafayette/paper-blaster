@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManagerBehavior : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManagerBehavior : MonoBehaviour
     public static int CurrentStickerAmount;
     private bool _pageCheck;
     private int _stickerThreshold;
+
+    [SerializeField] private static GameObject canvas;
 
     //Spawning variables
     private int _stickerSpawnSpeed;
@@ -31,6 +34,7 @@ public class GameManagerBehavior : MonoBehaviour
 
     void Start()
     {
+        canvas.SetActive(false);
         _page = 1;
         Score = 0;
         CurrentScore = 0;
@@ -124,10 +128,12 @@ public class GameManagerBehavior : MonoBehaviour
     public static void PauseGame() 
     {
         Time.timeScale = 0;
+        canvas.SetActive(true);
     }
 
     public void UnpauseGame() 
     {
         Time.timeScale = 1;
+        canvas.SetActive(false);
     }
 }
