@@ -33,6 +33,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ActivatePowerup"",
+                    ""type"": ""Button"",
+                    ""id"": ""177751e6-f372-42eb-bd42-16303075c044"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -57,6 +65,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Shoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7b1856a5-fbc7-415d-84f2-bad8a22d4e25"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ActivatePowerup"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -67,6 +86,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Ship = asset.FindActionMap("Ship", throwIfNotFound: true);
         m_Ship_Movement = m_Ship.FindAction("Movement", throwIfNotFound: true);
         m_Ship_Shoot = m_Ship.FindAction("Shoot", throwIfNotFound: true);
+        m_Ship_ActivatePowerup = m_Ship.FindAction("ActivatePowerup", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -118,12 +138,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private IShipActions m_ShipActionsCallbackInterface;
     private readonly InputAction m_Ship_Movement;
     private readonly InputAction m_Ship_Shoot;
+    private readonly InputAction m_Ship_ActivatePowerup;
     public struct ShipActions
     {
         private @PlayerControls m_Wrapper;
         public ShipActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Ship_Movement;
         public InputAction @Shoot => m_Wrapper.m_Ship_Shoot;
+        public InputAction @ActivatePowerup => m_Wrapper.m_Ship_ActivatePowerup;
         public InputActionMap Get() { return m_Wrapper.m_Ship; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -139,6 +161,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Shoot.started -= m_Wrapper.m_ShipActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_ShipActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_ShipActionsCallbackInterface.OnShoot;
+                @ActivatePowerup.started -= m_Wrapper.m_ShipActionsCallbackInterface.OnActivatePowerup;
+                @ActivatePowerup.performed -= m_Wrapper.m_ShipActionsCallbackInterface.OnActivatePowerup;
+                @ActivatePowerup.canceled -= m_Wrapper.m_ShipActionsCallbackInterface.OnActivatePowerup;
             }
             m_Wrapper.m_ShipActionsCallbackInterface = instance;
             if (instance != null)
@@ -149,6 +174,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
+                @ActivatePowerup.started += instance.OnActivatePowerup;
+                @ActivatePowerup.performed += instance.OnActivatePowerup;
+                @ActivatePowerup.canceled += instance.OnActivatePowerup;
             }
         }
     }
@@ -157,5 +185,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
+        void OnActivatePowerup(InputAction.CallbackContext context);
     }
 }

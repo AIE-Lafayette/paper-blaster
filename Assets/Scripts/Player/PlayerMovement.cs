@@ -10,6 +10,9 @@ public class PlayerMovement : MovementBehavior
     private Vector3 _movePosition;
     private Rigidbody _rb;
     private bool _thrusterOn;
+    private Quaternion _targetRotation;
+    private float _rotationTime;
+    private Quaternion _previousRotation;
 
     public bool ThrusterOn
     {
@@ -59,7 +62,15 @@ public class PlayerMovement : MovementBehavior
         //Set the direction to look and rotate to that direction
         Vector3 direction = (_movePosition - transform.position).normalized;
         Quaternion rot = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 6.5f);
+        if (rot != _targetRotation)
+        {
+            _targetRotation = rot;
+            _previousRotation = transform.rotation;
+            _rotationTime = 0;
+        }
+
+
+        transform.rotation = Quaternion.Lerp(_previousRotation, _targetRotation, _rotationTime += Time.deltaTime * 6.5f);
 
         //Set the new rotation without the x or z to only rotate on the y axis
         Quaternion newRot = transform.rotation;

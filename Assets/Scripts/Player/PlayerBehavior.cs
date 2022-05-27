@@ -9,7 +9,7 @@ public class PlayerBehavior : MonoBehaviour
     private Rigidbody _player;
     public static int PlayerHealth = 3;
     private RoutineBehaviour.TimedAction _iframesTimer;
-    [SerializeField]private MeshRenderer _renderer;
+    [SerializeField]private Renderer _renderer;
     [SerializeField]private BoxCollider _collider;
     private bool _iframesActive;
 
@@ -30,7 +30,7 @@ public class PlayerBehavior : MonoBehaviour
         if (_health.CurrentHealth <= 0)
             OnDeath();
         if (!_iframesTimer.IsActive)
-            _iframesTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, 0.5f);
+            _iframesTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, 0.15f);
     }
 
     void UpdateVisual() 
@@ -63,8 +63,8 @@ public class PlayerBehavior : MonoBehaviour
 
             //Timer of i-frames
             _iframesActive = true;
-            RoutineBehaviour.Instance.StartNewTimedAction(args => IframeReset(), TimedActionCountType.SCALEDTIME, 3);
-            _iframesTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, 0.5f);
+            RoutineBehaviour.Instance.StartNewTimedAction(args => IframeReset(), TimedActionCountType.SCALEDTIME, 1.6f);
+            _iframesTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, .15f);
         }
     }
 
