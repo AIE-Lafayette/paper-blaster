@@ -26,6 +26,9 @@ public class GameManagerBehavior : MonoBehaviour
     private float _rectCornerX = 22.25f;
     private float _rectCornerZ = 12.5f;
     [SerializeField] private Transform _playerTransform;
+    private static AudioSource _audio;
+    [SerializeField]
+    private AudioSource _audioRef;
 
     public static void IncreaseScore(int value)
     {
@@ -45,6 +48,7 @@ public class GameManagerBehavior : MonoBehaviour
         _stickerThreshold = 5;
         _spawnStickerAction = new RoutineBehaviour.TimedAction();
         PageSetup();
+        _audio = _audioRef;
     }
 
     void Update()
@@ -132,11 +136,13 @@ public class GameManagerBehavior : MonoBehaviour
     {
         Time.timeScale = 0;
         pauseCheck = true;
+        _audio.Pause();
     }
 
     public void UnpauseGame() 
     {
         Time.timeScale = 1;
         pauseCheck = false;
+        _audio.UnPause();
     }
 }
