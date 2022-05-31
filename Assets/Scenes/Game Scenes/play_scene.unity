@@ -231,6 +231,7 @@ MonoBehaviour:
   _paperBall: {fileID: 4746855676856087294, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
   _sticker: {fileID: 7784282804930428154, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
   _playerTransform: {fileID: 822679119}
+  _audioRef: {fileID: 740255456}
 --- !u!4 &740255455
 Transform:
   m_ObjectHideFlags: 0
