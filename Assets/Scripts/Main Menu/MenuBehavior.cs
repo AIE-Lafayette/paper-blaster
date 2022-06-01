@@ -20,6 +20,7 @@ public class MenuBehavior : MonoBehaviour
 
     public void PlayGame()
     {
+        Time.timeScale = 1;
         _bookAnimator.SetTrigger("Open");
         _canvas.SetActive(false);
         RoutineBehaviour.Instance.StartNewTimedAction(args => SceneManager.LoadScene("play_scene"), TimedActionCountType.SCALEDTIME, 2);
