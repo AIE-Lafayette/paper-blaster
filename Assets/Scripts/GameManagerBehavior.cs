@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManagerBehavior : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class GameManagerBehavior : MonoBehaviour
     private bool _pageCheck;
     private int _stickerThreshold;
 
+    [SerializeField] private GameObject pauseCanvas;
+    public static bool pauseCheck;
+
     //Spawning variables
     private int _stickerSpawnSpeed;
     private int _paperSpawnAmount;
@@ -22,6 +26,9 @@ public class GameManagerBehavior : MonoBehaviour
     private float _rectCornerX = 22.25f;
     private float _rectCornerZ = 12.5f;
     [SerializeField] private Transform _playerTransform;
+    private static AudioSource _audio;
+    [SerializeField]
+    private AudioSource _audioRef;
 
     public static void IncreaseScore(int value)
     {
@@ -31,6 +38,8 @@ public class GameManagerBehavior : MonoBehaviour
 
     void Start()
     {
+        pauseCanvas.SetActive(false);
+        pauseCheck = false;
         _page = 1;
         Score = 0;
         CurrentScore = 0;
@@ -39,11 +48,13 @@ public class GameManagerBehavior : MonoBehaviour
         _stickerThreshold = 5;
         _spawnStickerAction = new RoutineBehaviour.TimedAction();
         PageSetup();
+        _audio = _audioRef;
     }
 
     void Update()
     {
         GameLoop();
+        pauseCanvas.SetActive(pauseCheck);
     }
 
     void GameLoop() 
@@ -124,10 +135,14 @@ public class GameManagerBehavior : MonoBehaviour
     public static void PauseGame() 
     {
         Time.timeScale = 0;
+        pauseCheck = true;
+        _audio.Pause();
     }
 
     public void UnpauseGame() 
     {
         Time.timeScale = 1;
+        pauseCheck = false;
+        _audio.UnPause();
     }
 }
