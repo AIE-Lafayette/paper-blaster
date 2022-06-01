@@ -46,7 +46,7 @@ public class PaperBallBehaviour : MonoBehaviour
         {
             case PaperBallSize.Small:
             {
-                transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+                transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
                 break;
             }
             case PaperBallSize.Medium:

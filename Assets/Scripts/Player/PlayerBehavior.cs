@@ -8,7 +8,7 @@ public class PlayerBehavior : MonoBehaviour
 {
     private HealthBehaviour _health;
     private Rigidbody _player;
-    public static int PlayerHealth = 3;
+    public static int PlayerHealth = 4;
     private RoutineBehaviour.TimedAction _iframesTimer;
     [SerializeField]private Renderer _renderer;
     [SerializeField]private BoxCollider _collider;
