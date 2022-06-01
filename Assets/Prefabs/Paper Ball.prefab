@@ -31,8 +31,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4746855676856087294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.0000056919, y: 0, z: -0.000012238}
+  m_LocalScale: {x: 25.968, y: 25.968, z: 25.968}
   m_Children:
   - {fileID: 5226998085544914127}
   m_Father: {fileID: 0}
@@ -143,6 +143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxSpeed: 0.9
   _moveSpeed: 10
+  _xBuffer: 0
+  _ZBuffer: 0
 --- !u!114 &4010570464498155420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,16 +169,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 582c668acd0702c46bcfa8dbc6b6206c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 23.084
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 582c668acd0702c46bcfa8dbc6b6206c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 23.084
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 582c668acd0702c46bcfa8dbc6b6206c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 23.084
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 582c668acd0702c46bcfa8dbc6b6206c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.00000093936916
+      value: 0.00000095253
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 582c668acd0702c46bcfa8dbc6b6206c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.000000065814
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 582c668acd0702c46bcfa8dbc6b6206c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0000020263344
+      value: 0.0000020543
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 582c668acd0702c46bcfa8dbc6b6206c, type: 3}
       propertyPath: m_LocalRotation.w
