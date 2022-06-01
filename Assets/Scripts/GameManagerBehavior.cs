@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManagerBehavior : MonoBehaviour
@@ -57,9 +58,9 @@ public class GameManagerBehavior : MonoBehaviour
         pauseCanvas.SetActive(pauseCheck);
     }
 
-    void GameLoop() 
+    void GameLoop()
     {
-        if (CurrentPaperAmount == 0 && !_pageCheck && CurrentStickerAmount == 0) 
+        if (CurrentPaperAmount == 0 && !_pageCheck && CurrentStickerAmount == 0)
         {
             Debug.Log("Board Cleared");
             _pageCheck = true;
@@ -68,31 +69,31 @@ public class GameManagerBehavior : MonoBehaviour
             _stickerSpawnSpeed = 5 + Mathf.RoundToInt(_page / 2);
             RoutineBehaviour.Instance.StartNewTimedAction(args => { PageSetup(); _pageCheck = false; }, TimedActionCountType.SCALEDTIME, 3f);
         }
-        if (CurrentScore > _stickerThreshold && CurrentPaperAmount > 0) 
+        if (CurrentScore > _stickerThreshold && CurrentPaperAmount > 0)
         {
             if (!_spawnStickerAction.IsActive)
             {
-                //_spawnStickerAction = RoutineBehaviour.Instance.StartNewTimedAction(args => SpawnObject(1, _sticker), TimedActionCountType.SCALEDTIME, _stickerSpawnSpeed);
+                _spawnStickerAction = RoutineBehaviour.Instance.StartNewTimedAction(args => SpawnObject(1, _sticker), TimedActionCountType.SCALEDTIME, _stickerSpawnSpeed);
             }
         }
     }
 
-    void PageSetup() 
+    void PageSetup()
     {
         SpawnObject(_paperSpawnAmount, _paperBall);
         CurrentScore = 0;
     }
 
-    void SpawnObject(int amount, GameObject spawn) 
+    void SpawnObject(int amount, GameObject spawn)
     {
         //Spawn the given amount of objects
-        for (int i = 0; i < amount; i++) 
+        for (int i = 0; i < amount; i++)
         {
             Vector2 spawnPosition = RandomPointOnPerimeter(0, 0, _rectCornerX, _rectCornerZ);
 
             GameObject newSpawn = Instantiate(spawn, new Vector3(spawnPosition.x, 0.5f, spawnPosition.y), Quaternion.identity);
 
-            if(spawn.tag == "Sticker"){
+            if (spawn.tag == "Sticker") {
                 SeekingBehaviour steer = newSpawn.GetComponent<SeekingBehaviour>();
                 steer.Target = _playerTransform;
                 CurrentStickerAmount++;
@@ -100,7 +101,7 @@ public class GameManagerBehavior : MonoBehaviour
         }
     }
 
-    Vector2 RandomPointOnPerimeter(float x1, float y1, float x2, float y2) 
+    Vector2 RandomPointOnPerimeter(float x1, float y1, float x2, float y2)
     {
         //Pick a random side of the rectangle
         Vector2 point = new Vector2();
@@ -132,14 +133,14 @@ public class GameManagerBehavior : MonoBehaviour
         return point;
     }
 
-    public static void PauseGame() 
+    public static void PauseGame()
     {
         Time.timeScale = 0;
         pauseCheck = true;
         _audio.Pause();
     }
 
-    public void UnpauseGame() 
+    public void UnpauseGame()
     {
         Time.timeScale = 1;
         pauseCheck = false;
