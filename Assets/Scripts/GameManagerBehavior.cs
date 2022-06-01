@@ -72,7 +72,7 @@ public class GameManagerBehavior : MonoBehaviour
         {
             if (!_spawnStickerAction.IsActive)
             {
-                _spawnStickerAction = RoutineBehaviour.Instance.StartNewTimedAction(args => SpawnObject(1, _sticker), TimedActionCountType.SCALEDTIME, _stickerSpawnSpeed);
+                //_spawnStickerAction = RoutineBehaviour.Instance.StartNewTimedAction(args => SpawnObject(1, _sticker), TimedActionCountType.SCALEDTIME, _stickerSpawnSpeed);
             }
         }
     }
