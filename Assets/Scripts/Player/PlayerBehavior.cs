@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
     private HealthBehaviour _health;
     private Rigidbody _player;
-    public static int PlayerHealth = 3;
+    public static int PlayerHealth = 4;
     private RoutineBehaviour.TimedAction _iframesTimer;
     [SerializeField]private Renderer _renderer;
     [SerializeField]private BoxCollider _collider;
@@ -48,7 +49,7 @@ public class PlayerBehavior : MonoBehaviour
     private void OnDeath()
     {
         Destroy(gameObject);
-        Application.LoadLevel("game_over_scene");
+        SceneManager.LoadScene("game_over_scene");
     }
 
     public void OnHit()
