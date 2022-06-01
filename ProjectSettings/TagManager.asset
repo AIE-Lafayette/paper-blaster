@@ -7,6 +7,9 @@ TagManager:
   - PaperBall
   - PlayerBullet
   - Sticker
+  - TripleShotPowerup
+  - LaserPowerup
+  - RocketPowerup
   layers:
   - Default
   - TransparentFX

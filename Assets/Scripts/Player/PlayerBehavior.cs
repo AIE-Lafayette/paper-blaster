@@ -2,14 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
     private HealthBehaviour _health;
     private Rigidbody _player;
-    public static int PlayerHealth = 3;
+    public static int PlayerHealth = 4;
     private RoutineBehaviour.TimedAction _iframesTimer;
-    [SerializeField]private MeshRenderer _renderer;
+    [SerializeField]private Renderer _renderer;
     [SerializeField]private BoxCollider _collider;
     private bool _iframesActive;
 
@@ -30,7 +31,7 @@ public class PlayerBehavior : MonoBehaviour
         if (_health.CurrentHealth <= 0)
             OnDeath();
         if (!_iframesTimer.IsActive)
-            _iframesTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, 0.5f);
+            _iframesTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, 0.15f);
     }
 
     void UpdateVisual() 
@@ -48,7 +49,7 @@ public class PlayerBehavior : MonoBehaviour
     private void OnDeath()
     {
         Destroy(gameObject);
-        Application.LoadLevel("game_over_scene");
+        SceneManager.LoadScene("game_over_scene");
     }
 
     public void OnHit()
@@ -63,8 +64,8 @@ public class PlayerBehavior : MonoBehaviour
 
             //Timer of i-frames
             _iframesActive = true;
-            RoutineBehaviour.Instance.StartNewTimedAction(args => IframeReset(), TimedActionCountType.SCALEDTIME, 3);
-            _iframesTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, 0.5f);
+            RoutineBehaviour.Instance.StartNewTimedAction(args => IframeReset(), TimedActionCountType.SCALEDTIME, 1.6f);
+            _iframesTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, .15f);
         }
     }
 
