@@ -34,6 +34,13 @@ public class StickerBehaviour : MonoBehaviour
     [SerializeField] 
     private float _seekRange;
 
+    //Called when an instance of this component is created
+    private void Awake()
+    {
+        //Sets the sticker's aggressive texture as inactive
+        _aggressiveSticker.SetActive(false);
+    }
+
     //Called when the component is added to the scene
     private void Start()
     {
@@ -99,6 +106,9 @@ public class StickerBehaviour : MonoBehaviour
         {
             //Set the state to the seeking state
             _currentState = StickerState.Aggressive;
+            //Change the sticker's texture
+            _neutralSticker.SetActive(false);
+            _aggressiveSticker.SetActive(true);
         }
         //Otherwise...
         else 
