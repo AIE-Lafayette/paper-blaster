@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StickerBehaviour : MonoBehaviour
@@ -15,29 +13,38 @@ public class StickerBehaviour : MonoBehaviour
     private StickerState _currentState;
 
     //A reference to the sticker's behaviours
+    [SerializeField]
     private WanderingBehaviour _wanderingBehaviour;
+    [SerializeField]
     private SeekingBehaviour _seekingBehaviour;
-    private HealthBehaviour _healthBehaviour;
+    [SerializeField]
+    private HealthBehaviour _healthBehaviour;   
+    [SerializeField]
+    private WaddleBehaviour _waddleBehaviour;
+    [SerializeField]
+    private StickerMovementBehaviour _stickerMovementBehaviour;
     
     //The seeking range for the sticker. It will only seek if the target is within this range.
     [SerializeField] 
     private float _seekRange;
 
-    //Called when an instance of the sticker is created
-    private void Awake()
-    {
-        _wanderingBehaviour = GetComponent<WanderingBehaviour>();
-        _seekingBehaviour = GetComponent<SeekingBehaviour>();
-        _healthBehaviour = GetComponent<HealthBehaviour>();
-    }
-
     //Called when the component is added to the scene
     private void Start()
     {
+        //Increases the current sticker counter
+        GameManagerBehavior.CurrentStickerAmount++;
+
+        //Sets the sticker's current state
         _currentState = StickerState.Wandering;
         _healthBehaviour.CurrentHealth = 3;
+
+        //Assigns the sticker's OnDeath event
         _healthBehaviour.OnDeath = Destroy;
         _healthBehaviour.OnDeath += DeathEvent;
+        _healthBehaviour.OnDeath += ( gameObject ) => 
+        {
+            GameManagerBehavior.CurrentStickerAmount--;
+        };
     }
 
     //Called when the sticker is in its wandering state
@@ -46,7 +53,8 @@ public class StickerBehaviour : MonoBehaviour
         _seekingBehaviour.enabled = false;
         _wanderingBehaviour.enabled = true;  
 
-        //Something to handle changing stickers' textures to angry   
+        _waddleBehaviour.Speed = 4;
+        _stickerMovementBehaviour.MaxSpeed = 1.0f;
     }
 
     //Called when the sticker is in its seeking state
@@ -54,6 +62,9 @@ public class StickerBehaviour : MonoBehaviour
     {
         _seekingBehaviour.enabled = true;
         _wanderingBehaviour.enabled = false;
+
+        _waddleBehaviour.Speed = 12;
+        _stickerMovementBehaviour.MaxSpeed = 1.5f;
     }
 
     //Acts on the sticker's current state

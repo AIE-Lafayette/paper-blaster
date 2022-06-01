@@ -45,7 +45,7 @@ public class PlayerShootingBehavior : MonoBehaviour
 
     public void Shoot() 
     {
-        if (_readyToAttack) 
+        if (_readyToAttack && !GameManagerBehavior.pauseCheck) 
         {
             if (_currentPowerup == "TripleShotPowerup")
             {

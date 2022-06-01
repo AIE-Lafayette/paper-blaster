@@ -13,6 +13,8 @@ public class PlayerMovement : MovementBehavior
     private Quaternion _targetRotation;
     private float _rotationTime;
     private Quaternion _previousRotation;
+    [SerializeField]
+    private Renderer _flameRenderer;
 
     public bool ThrusterOn
     {
@@ -31,6 +33,7 @@ public class PlayerMovement : MovementBehavior
         MoveSpeed = 2;
         _rb.drag = .75f;
         _camera = Camera.main;
+        _flameRenderer.enabled = false;
     }
 
     /// <summary>
@@ -41,7 +44,13 @@ public class PlayerMovement : MovementBehavior
         LookAtCursor();
 
         if (_thrusterOn)
+        {
             ActivateThruster();
+            _flameRenderer.enabled = true;
+        }
+        else
+            _flameRenderer.enabled = false;
+           
     }
 
     /// <summary>
