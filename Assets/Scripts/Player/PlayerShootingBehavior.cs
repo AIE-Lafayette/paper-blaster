@@ -14,7 +14,7 @@ public class PlayerShootingBehavior : MonoBehaviour
     private AudioSource _laserShot;
 
     private string _currentPowerup = "Normal";
-    private string _currentPowerupHeld;
+    private string _currentPowerupHeld = "Normal";
 
     public string CurrentPowerupHeld
     {
@@ -38,6 +38,8 @@ public class PlayerShootingBehavior : MonoBehaviour
 
     public void onActivate()
     {
+        if (_currentPowerupHeld == "Normal")
+            return;
         _currentPowerup = _currentPowerupHeld;
 
         RoutineBehaviour.Instance.StartNewTimedAction(args => _currentPowerup = "Normal", TimedActionCountType.SCALEDTIME, 15);
