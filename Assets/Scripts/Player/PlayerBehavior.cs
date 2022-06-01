@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -48,7 +49,7 @@ public class PlayerBehavior : MonoBehaviour
     private void OnDeath()
     {
         Destroy(gameObject);
-        Application.LoadLevel("game_over_scene");
+        SceneManager.LoadScene("game_over_scene");
     }
 
     public void OnHit()
