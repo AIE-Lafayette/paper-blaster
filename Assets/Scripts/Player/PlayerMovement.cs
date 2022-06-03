@@ -50,13 +50,13 @@ public class PlayerMovement : MovementBehavior
         {
             ActivateThruster();
             _flameRenderer.enabled = true;
-            _boosterSound.volume = .17f;
+            _boosterSound.volume = .03f;
             _boosterSound.UnPause();
         }
         else
         {
             _flameRenderer.enabled = false;
-            _boosterSound.volume -= .05f;
+            _boosterSound.volume -= .009f;
             if (_boosterSound.volume == 0)
                 _boosterSound.Pause();
         }
