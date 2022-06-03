@@ -94,8 +94,8 @@ public class MovementBehavior : MonoBehaviour
         _bottomBorder = _cam.ScreenToWorldPoint(new Vector3(0.0f, 0.0f, _distanceY)).z;
 
         //This is the basic buffer size for all objects, but can be changed in their specific classes
-        XBuffer = -1.3f;
-        ZBuffer = -.8f;
+        XBuffer = -1.1f;
+        ZBuffer = -.4f;
     }
 
     /// <summary>
@@ -114,19 +114,19 @@ public class MovementBehavior : MonoBehaviour
         if (transform.position.x > _rightBorder + XBuffer)
         {
             //spawn on the left side with the same y and z axis
-            transform.position = new Vector3(_leftBorder - XBuffer, transform.position.y, transform.position.z);
+            transform.position = new Vector3((_leftBorder - XBuffer) + .01f, transform.position.y, transform.position.z);
         }
         //If the object is too far to the bottom
         if (transform.position.z < _bottomBorder - ZBuffer)
         {
             //spawn on the top side with the same x and y axis
-            transform.position = new Vector3(transform.position.x, transform.position.y, _topBorder + ZBuffer);
+            transform.position = new Vector3(transform.position.x, transform.position.y, (_topBorder + ZBuffer) - .01f);
         }
         //If the object is too far to the top
         if (transform.position.z > _topBorder + ZBuffer)
         {
             //spawn the object on the top side with the same x and y axis
-            transform.position = new Vector3(transform.position.x, transform.position.y, _bottomBorder - ZBuffer);
+            transform.position = new Vector3(transform.position.x, transform.position.y, (_bottomBorder - ZBuffer) + .01f);
         }
 
                        //If the object is moving above the max speed
