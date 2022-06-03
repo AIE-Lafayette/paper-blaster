@@ -39,6 +39,7 @@ public class StickerBehaviour : MonoBehaviour
     {
         //Sets the sticker's aggressive texture as inactive
         _aggressiveSticker.SetActive(false);
+        GameManagerBehavior.CurrentStickerAmount++;
     }
 
     //Called when the component is added to the scene
