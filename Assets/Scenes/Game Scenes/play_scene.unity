@@ -849,6 +849,10 @@ PrefabInstance:
       propertyPath: _attackSpeed
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 1292292901, guid: 9ef57fcc80b70ea418a588bd25479bc9, type: 3}
+      propertyPath: _rocketProjectile
+      value: 
+      objectReference: {fileID: 2196460622533308877, guid: fe32c120c0b806744a6699ca2b193de9, type: 3}
     - target: {fileID: 528062043583288845, guid: 9ef57fcc80b70ea418a588bd25479bc9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1450,7 +1454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 372914923314226500, guid: 712699cb673f9534aa28623d098d0ef8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.751
       objectReference: {fileID: 0}
     - target: {fileID: 372914923314226500, guid: 712699cb673f9534aa28623d098d0ef8, type: 3}
       propertyPath: m_LocalPosition.z
