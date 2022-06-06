@@ -25,6 +25,7 @@ public class StickerBehaviour : MonoBehaviour
     private StickerMovementBehaviour _stickerMovementBehaviour;
 
     //References to the textures of this sticker
+    [SerializeField]
     private GameObject _neutralSticker;
     [SerializeField]
     private GameObject _aggressiveSticker;

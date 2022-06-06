@@ -243,7 +243,7 @@ Transform:
   m_GameObject: {fileID: 7784282804930428154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 6114943974130044052}
   - {fileID: 3504933157733936292}
@@ -371,7 +371,7 @@ MonoBehaviour:
   _stickerMovementBehaviour: {fileID: 8020240914197901398}
   _neutralSticker: {fileID: 6307345450753167891}
   _aggressiveSticker: {fileID: 3905392766386562269}
-  _seekRange: 7
+  _seekRange: 6
 --- !u!114 &6826442442617923358
 MonoBehaviour:
   m_ObjectHideFlags: 0
