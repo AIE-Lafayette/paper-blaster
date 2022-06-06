@@ -7,10 +7,10 @@ public delegate void DeathEventHandler(Object value);
 
 public class HealthBehaviour : MonoBehaviour
 {
-    //The owner's current health
+    // The owner's current health
     private int _currentHealth;
 
-    //Takes in the owner's game object as the arg
+    // Takes in the owner's game object as the arg
     private DeathEventHandler _onDeath;
 
     public DeathEventHandler OnDeath
@@ -40,7 +40,7 @@ public class HealthBehaviour : MonoBehaviour
         _currentHealth -= damageAmount;
     }
 
-    //Called every frame
+    // Called every frame
     private void Update()
     {
         if (!Alive)
