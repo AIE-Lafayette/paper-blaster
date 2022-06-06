@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerShootingBehavior : MonoBehaviour
 {
-    [SerializeField] private GameObject _projectile;
+    [SerializeField] private BulletBehaviour _projectile;
     [SerializeField] private Transform _bulletPoint;
     [SerializeField] private float _attackSpeed;
     private bool _readyToAttack;
@@ -14,9 +14,9 @@ public class PlayerShootingBehavior : MonoBehaviour
     private AudioSource _laserShot;
 
     private string _currentPowerup = "Normal";
-    private string _currentPowerupHeld;
+    private static string _currentPowerupHeld = "Normal";
 
-    public string CurrentPowerupHeld
+    public static string CurrentPowerupHeld
     {
         get { return _currentPowerupHeld ; }
         set { _currentPowerupHeld = value; }
@@ -38,6 +38,8 @@ public class PlayerShootingBehavior : MonoBehaviour
 
     public void onActivate()
     {
+            if (_currentPowerupHeld == "Normal")
+            return;
         _currentPowerup = _currentPowerupHeld;
 
         RoutineBehaviour.Instance.StartNewTimedAction(args => _currentPowerup = "Normal", TimedActionCountType.SCALEDTIME, 15);
@@ -58,10 +60,12 @@ public class PlayerShootingBehavior : MonoBehaviour
             if (_currentPowerup == "RocketPowerup")
             {
                 _readyToAttack = true;
-                Rigidbody bullet = Instantiate(_projectile, _bulletPoint.position, _bulletPoint.rotation).GetComponent<Rigidbody>();
+                GameObject bullet = Instantiate(_projectile.gameObject, _bulletPoint.position, _bulletPoint.rotation);
                 bullet.transform.localScale = new Vector3(bullet.transform.localScale.x + 2, bullet.transform.localScale.y + 2, bullet.transform.localScale.z + 2);
-                bullet.gameObject.AddComponent<HealthBehaviour>().CurrentHealth = 5;
-                bullet.AddForce(bullet.transform.forward * 750);
+                BulletBehaviour bulletBehavior = bullet.GetComponent<BulletBehaviour>();
+                bulletBehavior.Health.CurrentHealth = 5;
+                bulletBehavior.Rigidbody.AddForce(bullet.transform.forward * 750);
+                
             }
             if (_currentPowerup == "Normal")
             {

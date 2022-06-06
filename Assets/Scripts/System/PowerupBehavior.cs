@@ -14,7 +14,7 @@ public class PowerupBehavior : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<PlayerShootingBehavior>().CurrentPowerupHeld = tag;
+            PlayerShootingBehavior.CurrentPowerupHeld = tag;
             Destroy(gameObject);
         }
     }

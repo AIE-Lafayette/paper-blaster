@@ -15,6 +15,8 @@ public class PlayerMovement : MovementBehavior
     private Quaternion _previousRotation;
     [SerializeField]
     private Renderer _flameRenderer;
+    [SerializeField]
+    private AudioSource _boosterSound;
 
     public bool ThrusterOn
     {
@@ -34,6 +36,7 @@ public class PlayerMovement : MovementBehavior
         _rb.drag = .75f;
         _camera = Camera.main;
         _flameRenderer.enabled = false;
+        _boosterSound.Play();
     }
 
     /// <summary>
@@ -47,10 +50,16 @@ public class PlayerMovement : MovementBehavior
         {
             ActivateThruster();
             _flameRenderer.enabled = true;
+            _boosterSound.volume = .03f;
+            _boosterSound.UnPause();
         }
         else
+        {
             _flameRenderer.enabled = false;
-           
+            _boosterSound.volume -= .009f;
+            if (_boosterSound.volume == 0)
+                _boosterSound.Pause();
+        }
     }
 
     /// <summary>

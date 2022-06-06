@@ -5,27 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class MenuBehavior : MonoBehaviour
 {
+    //A link to the book's animator
     [SerializeField] private Animator _bookAnimator;
+    //The UI canvas
     [SerializeField] private GameObject _canvas;
 
-    void Start()
+    public void Play()
     {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
-    public void PlayGame()
-    {
+        Time.timeScale = 1;
         _bookAnimator.SetTrigger("Open");
         _canvas.SetActive(false);
-        RoutineBehaviour.Instance.StartNewTimedAction(args => SceneManager.LoadScene("play_scene"), TimedActionCountType.SCALEDTIME, 2);
+        RoutineBehaviour.Instance.StartNewTimedAction(args => SceneManager.LoadScene("play_scene"), 
+        TimedActionCountType.SCALEDTIME, 2);
     }
 
-    public void QuitGame()
+    public void Quit()
     {
         Application.Quit();
     }

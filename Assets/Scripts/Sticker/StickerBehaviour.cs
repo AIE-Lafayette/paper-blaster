@@ -5,8 +5,8 @@ public class StickerBehaviour : MonoBehaviour
     //The states the Stickers will use in their state machine
     private enum StickerState
     {
-        Wandering,
-        Seeking
+        Neutral,
+        Aggressive
     }
 
     //The state that the sticker is currently processing
@@ -23,10 +23,24 @@ public class StickerBehaviour : MonoBehaviour
     private WaddleBehaviour _waddleBehaviour;
     [SerializeField]
     private StickerMovementBehaviour _stickerMovementBehaviour;
+
+    //References to the prefabs that this sticker will use
+    [SerializeField]
+    private GameObject _neutralSticker;
+    [SerializeField]
+    private GameObject _aggressiveSticker;
     
     //The seeking range for the sticker. It will only seek if the target is within this range.
     [SerializeField] 
     private float _seekRange;
+
+    //Called when an instance of this component is created
+    private void Awake()
+    {
+        //Sets the sticker's aggressive texture as inactive
+        _aggressiveSticker.SetActive(false);
+        GameManagerBehavior.CurrentStickerAmount++;
+    }
 
     //Called when the component is added to the scene
     private void Start()
@@ -35,15 +49,15 @@ public class StickerBehaviour : MonoBehaviour
         GameManagerBehavior.CurrentStickerAmount++;
 
         //Sets the sticker's current state
-        _currentState = StickerState.Wandering;
+        _currentState = StickerState.Neutral;
         _healthBehaviour.CurrentHealth = 3;
 
         //Assigns the sticker's OnDeath event
         _healthBehaviour.OnDeath = Destroy;
-        _healthBehaviour.OnDeath += DeathEvent;
         _healthBehaviour.OnDeath += ( gameObject ) => 
         {
             GameManagerBehavior.CurrentStickerAmount--;
+            GameManagerBehavior.IncreaseScore(2);
         };
     }
 
@@ -72,12 +86,12 @@ public class StickerBehaviour : MonoBehaviour
     {
         switch (_currentState)
         {
-            case StickerState.Wandering:
+            case StickerState.Neutral:
             {
                 Wander();
                 break;
             }
-            case StickerState.Seeking:
+            case StickerState.Aggressive:
             {
                 Seek();
                 break;
@@ -89,16 +103,19 @@ public class StickerBehaviour : MonoBehaviour
     private void UpdateState()
     {
         //If the target is in range and the sticker isn't currently seeking...
-        if (_seekingBehaviour.DistanceFromTarget <= _seekRange || _currentState == StickerState.Seeking)
+        if (_seekingBehaviour.DistanceFromTarget <= _seekRange || _currentState == StickerState.Aggressive)
         {
             //Set the state to the seeking state
-            _currentState = StickerState.Seeking;
+            _currentState = StickerState.Aggressive;
+            //Change the sticker's texture
+            _neutralSticker.SetActive(false);
+            _aggressiveSticker.SetActive(true);
         }
         //Otherwise...
         else 
         {   
             //Set the state to the wandering state
-            _currentState = StickerState.Wandering;
+            _currentState = StickerState.Neutral;
         }
     }
 
@@ -117,11 +134,6 @@ public class StickerBehaviour : MonoBehaviour
             other.GetComponent<PlayerBehavior>().OnHit();
             _healthBehaviour.TakeDamage(1);
         }
-    }
-
-    private void DeathEvent(Object value)
-    {
-        GameManagerBehavior.IncreaseScore(2);
     }
 }
 
