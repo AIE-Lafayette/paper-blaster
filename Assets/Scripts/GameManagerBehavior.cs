@@ -41,9 +41,9 @@ public class GameManagerBehavior : MonoBehaviour
         _page = 1;
         Score = 0;
         CurrentScore = 0;
-        _paperSpawnAmount = 3;
+        _paperSpawnAmount = 6;
         _stickerSpawnSpeed = 5;
-        _stickerThreshold = 5;
+        _stickerThreshold = 6;
         _spawnStickerAction = new RoutineBehaviour.TimedAction();
         PageSetup();
         _audio = _audioRef;
@@ -57,7 +57,7 @@ public class GameManagerBehavior : MonoBehaviour
 
     void GameLoop()
     {
-        if (CurrentPaperAmount == 0 && !_pageCheck && CurrentStickerAmount == 0)
+         if (CurrentPaperAmount == 0 && !_pageCheck && CurrentStickerAmount == 0)
         {
             Debug.Log("Board Cleared");
             _pageCheck = true;

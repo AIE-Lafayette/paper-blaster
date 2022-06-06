@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class StickerMovementBehaviour : MovementBehavior
 {
+    //Called when the component is added to the scene
+    private void Start()
+    {
+         MoveDirection = new Vector3(Random.Range(-500.0f, 500.0f), 0, Random.Range(-500.0f, 500.0f)).normalized;
+    }
+
     override public void Move()
     {
         Rigidbody.AddForce(MoveDirection * MoveSpeed * Time.deltaTime);
