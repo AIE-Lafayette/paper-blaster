@@ -7,6 +7,14 @@ public class PaperBallBehaviour : MonoBehaviour
     [SerializeField]
     //A reference to paper balls
     private GameObject _paperBall;
+    
+    [SerializeField]
+    //A reference to the A paper ball model
+    private GameObject _paperBallAModel;
+
+    [SerializeField]
+    //A reference to the B paper ball model
+    private GameObject _paperBallBModel;
 
     //The size variations of paper balls
     public enum PaperBallSize { Small, Medium, Large }
@@ -15,28 +23,51 @@ public class PaperBallBehaviour : MonoBehaviour
     //The size of this paper ball
     private PaperBallSize Size { get => _size; set => _size = value; }
 
+    //Random direction used for paper ball movement/rotation
+    private Vector3 _randomDirection;
+
     //The owner's health behaviour
     private HealthBehaviour _healthBehaviour;
 
     private void Awake()
     {
         _healthBehaviour = GetComponent<HealthBehaviour>();
-        GameManagerBehavior.CurrentPaperAmount++;
+
+        int num = Random.Range(0, 2);
+        
+        if (num == 0)
+        {
+            _paperBallBModel.SetActive(false);
+            _paperBallAModel.SetActive(true);
+        }
+        else
+        {
+            _paperBallAModel.SetActive(false);
+            _paperBallBModel.SetActive(true);
+        }
     }
 
     //Called when the paper ball is added to a scene
     private void Start()
     {
+        GameManagerBehavior.CurrentPaperAmount++;
         //Updates the paper ball's size
         UpdateScale();
 
         //Gives the paper ball a random direction
         MovementBehavior movementBehavior = GetComponent<MovementBehavior>();
-        movementBehavior.MoveDirection = new Vector3(Random.Range(-500.0f, 500.0f), 0, Random.Range(-500.0f, 500.0f)).normalized;
+        _randomDirection = new Vector3(Random.Range(-500.0f, 500.0f), 0, Random.Range(-500.0f, 500.0f)).normalized;
+        movementBehavior.MoveDirection = _randomDirection;
         movementBehavior.Move();
 
         _healthBehaviour.CurrentHealth = 1;
         _healthBehaviour.OnDeath = Break;
+    }
+
+    //Called every frame with a fixed update
+    private void FixedUpdate()
+    {
+        transform.Rotate(_randomDirection); 
     }
 
     //Updates the paper ball's scale based on 
@@ -84,6 +115,8 @@ public class PaperBallBehaviour : MonoBehaviour
 
     private void Break(object value) 
     {
+        GameManagerBehavior.CurrentPaperAmount--;
+
         //If the paper ball can't be broken, return
         if (Size == PaperBallSize.Small)
         {
@@ -100,8 +133,7 @@ public class PaperBallBehaviour : MonoBehaviour
 
             PaperBallBehaviour newPBBehaviour = paperBall.GetComponent<PaperBallBehaviour>();
             newPBBehaviour.Initiate(transform.position, Size - 1,
-             movementBehavior.Rigidbody.velocity, movementBehavior.MoveSpeed);
-            newPBBehaviour.Start();
+            movementBehavior.Rigidbody.velocity, movementBehavior.MoveSpeed);
         }
 
         Destroy(gameObject);

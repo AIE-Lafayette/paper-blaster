@@ -24,7 +24,7 @@ public class StickerBehaviour : MonoBehaviour
     [SerializeField]
     private StickerMovementBehaviour _stickerMovementBehaviour;
 
-    //References to the prefabs that this sticker will use
+    //References to the textures of this sticker
     [SerializeField]
     private GameObject _neutralSticker;
     [SerializeField]
@@ -39,7 +39,7 @@ public class StickerBehaviour : MonoBehaviour
     {
         //Sets the sticker's aggressive texture as inactive
         _aggressiveSticker.SetActive(false);
-        GameManagerBehavior.CurrentStickerAmount++;
+        _neutralSticker.SetActive(true);
     }
 
     //Called when the component is added to the scene

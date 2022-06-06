@@ -7,8 +7,10 @@ public class SpawnerBehavior : MonoBehaviour
     private float _rectCornerX = 22.25f;
     private float _rectCornerZ = 12.5f;
     [SerializeField] private GameObject _paperBall;
-    [SerializeField] private GameObject _sticker;
     [SerializeField] private Transform _playerTransform;
+
+    [SerializeField]
+    private List<GameObject> _stickerPrefabs;
 
     public void SpawnPaper(int amount)
     {
@@ -28,11 +30,23 @@ public class SpawnerBehavior : MonoBehaviour
         {
             Vector2 spawnPosition = RandomPointOnPerimeter(0, 0, _rectCornerX, _rectCornerZ);
 
-            GameObject newSpawn = Instantiate(_sticker, new Vector3(spawnPosition.x, 0.5f, spawnPosition.y), Quaternion.identity);
+            GameObject sticker = GetRandomSticker();
 
+            GameObject newSpawn = Instantiate(sticker, new Vector3(spawnPosition.x, 0.5f, spawnPosition.y), Quaternion.identity);
             SeekingBehaviour steer = newSpawn.GetComponent<SeekingBehaviour>();
             steer.Target = _playerTransform;
         }
+    }
+
+    // Grabs a random sticker prefab from the sticker prefabs list
+    public GameObject GetRandomSticker()
+    {
+        // If the sticker prefabs list is empty, return 
+        if (_stickerPrefabs.Count == 0) return null;
+
+        // Returns the sticker prefab at the index of the random number
+        int randomNumber = Random.Range(0, _stickerPrefabs.Count - 1);
+        return _stickerPrefabs[randomNumber];
     }
 
     public void SpawnObject(int amount, GameObject spawn)
