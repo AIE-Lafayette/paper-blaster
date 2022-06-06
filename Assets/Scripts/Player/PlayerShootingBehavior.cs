@@ -13,6 +13,7 @@ public class PlayerShootingBehavior : MonoBehaviour
     public AudioSource[] Sounds;
     private AudioSource _normalShot;
     private AudioSource _laserShot;
+    private AudioSource _rocketShot;
 
     private string _currentPowerup = "Normal";
     private static string _currentPowerupHeld = "Normal";
@@ -35,6 +36,7 @@ public class PlayerShootingBehavior : MonoBehaviour
         Sounds = GetComponents<AudioSource>();
         _normalShot = Sounds[0];
         _laserShot = Sounds[1];
+        _rocketShot = Sounds[3];
     }
 
     public void onActivate()
@@ -66,6 +68,7 @@ public class PlayerShootingBehavior : MonoBehaviour
                 RocketBehavior bulletBehavior = bullet.GetComponent<RocketBehavior>();
                 bulletBehavior.Rigidbody.AddForce(bullet.transform.forward * 700);
                 RoutineBehaviour.Instance.StartNewTimedAction(args => _readyToAttack = true, TimedActionCountType.SCALEDTIME, _attackSpeed * 2.1f);
+                _rocketShot.Play();
             }
             if (_currentPowerup == "Normal")
             {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(DeathTimerBehaviour))]
 public class BulletBehaviour : MonoBehaviour
 {
     private DeathTimerBehaviour _deathTimerBehaviour;
@@ -31,9 +32,6 @@ public class BulletBehaviour : MonoBehaviour
         _deathTimerBehaviour = GetComponent<DeathTimerBehaviour>();
         _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponent<SphereCollider>();
-        _health = GetComponent<HealthBehaviour>();
-        _health.OnDeath = delegate (Object args) { _deathTimerBehaviour.Kill(); };
-        Health.CurrentHealth = 1;
     }
 
     virtual public void OnTriggerEnter(Collider other)
@@ -43,13 +41,13 @@ public class BulletBehaviour : MonoBehaviour
             case "PaperBall":
             {
                 other.GetComponent<HealthBehaviour>().TakeDamage(1);
-                Health.TakeDamage(1);
+                _deathTimerBehaviour.Kill();
                 break;
             }
             case "Sticker":
             {
                 other.attachedRigidbody.GetComponent<HealthBehaviour>().TakeDamage(1);
-                Health.TakeDamage(1);
+                _deathTimerBehaviour.Kill();
                 break;
             }
             case "Player":

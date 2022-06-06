@@ -8,11 +8,11 @@ public class RocketBehavior : BulletBehaviour
 
     public override void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
             return;
         foreach (Collider collider in Physics.OverlapSphere(transform.position, 1.5f))
         {
-            if (collider.tag == "PaperBall" || collider.tag == "Sticker")
+            if (collider.CompareTag("PaperBall") || collider.CompareTag("Sticker"))
                 collider.GetComponent<HealthBehaviour>().TakeDamage(1);
         }
 
