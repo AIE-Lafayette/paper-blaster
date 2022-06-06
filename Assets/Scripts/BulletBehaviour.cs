@@ -50,12 +50,6 @@ public class BulletBehaviour : MonoBehaviour
             {
                 break;
             }
-            case "Sticker":
-            {
-                other.attachedRigidbody.GetComponent<HealthBehaviour>().TakeDamage(1);
-                _deathTimerBehaviour.Kill();
-                break;
-            }
         }
         
     }
