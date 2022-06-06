@@ -16,9 +16,14 @@ public class BulletBehaviour : MonoBehaviour
         switch (other.tag)
         {
             case "PaperBall":
-            case "Sticker":
             {
                 other.GetComponent<HealthBehaviour>().TakeDamage(1);
+                _deathTimerBehaviour.Kill();
+                break;
+            }
+            case "Sticker":
+            {
+                other.attachedRigidbody.GetComponent<HealthBehaviour>().TakeDamage(1);
                 _deathTimerBehaviour.Kill();
                 break;
             }

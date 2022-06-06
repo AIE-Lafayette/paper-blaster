@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -617,8 +617,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _paperBall: {fileID: 4746855676856087294, guid: 66f7eb3bbfb980647ad65a5ca954c28d, type: 3}
-  _sticker: {fileID: 7784282804930428154, guid: c839cc3597493dc40adf591cd1c19122, type: 3}
   _playerTransform: {fileID: 822679119}
+  _stickerPrefabs:
+  - {fileID: 7784282804930428154, guid: 85b42a5d3fbcc7e4daa44e844eef3d55, type: 3}
+  - {fileID: 7784282804930428154, guid: 0325083a28f0eda44b8ade44096163ed, type: 3}
+  - {fileID: 7784282804930428154, guid: ee7fb90605d2d9945a3c1bcde746f61f, type: 3}
+  - {fileID: 7784282804930428154, guid: 4ddca8b9bb5af96419ae46926aee44f2, type: 3}
+  - {fileID: 7784282804930428154, guid: c2059b874d7ea274786486ed84a6a833, type: 3}
+  - {fileID: 7784282804930428154, guid: 5a16b10422e756b46b54f100dfacd351, type: 3}
+  - {fileID: 7784282804930428154, guid: 01486fbd3bb98a04298b28362f994817, type: 3}
+  - {fileID: 7784282804930428154, guid: 99b523b8aa3b6f84bbc165bb6277f0fe, type: 3}
 --- !u!4 &822679119 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4546267567136395399, guid: 9ef57fcc80b70ea418a588bd25479bc9, type: 3}

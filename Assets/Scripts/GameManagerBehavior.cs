@@ -57,7 +57,7 @@ public class GameManagerBehavior : MonoBehaviour
 
     void GameLoop()
     {
-        if (CurrentPaperAmount == 0 && !_pageCheck && CurrentStickerAmount == 0)
+         if (CurrentPaperAmount == 0 && !_pageCheck && CurrentStickerAmount == 0)
         {
             Debug.Log("Board Cleared");
             _pageCheck = true;

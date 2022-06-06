@@ -21,12 +21,12 @@ public class PaperBallBehaviour : MonoBehaviour
     private void Awake()
     {
         _healthBehaviour = GetComponent<HealthBehaviour>();
-        GameManagerBehavior.CurrentPaperAmount++;
     }
 
     //Called when the paper ball is added to a scene
     private void Start()
     {
+        GameManagerBehavior.CurrentPaperAmount++;
         //Updates the paper ball's size
         UpdateScale();
 
@@ -84,6 +84,8 @@ public class PaperBallBehaviour : MonoBehaviour
 
     private void Break(object value) 
     {
+        GameManagerBehavior.CurrentPaperAmount--;
+
         //If the paper ball can't be broken, return
         if (Size == PaperBallSize.Small)
         {
@@ -100,8 +102,7 @@ public class PaperBallBehaviour : MonoBehaviour
 
             PaperBallBehaviour newPBBehaviour = paperBall.GetComponent<PaperBallBehaviour>();
             newPBBehaviour.Initiate(transform.position, Size - 1,
-             movementBehavior.Rigidbody.velocity, movementBehavior.MoveSpeed);
-            newPBBehaviour.Start();
+            movementBehavior.Rigidbody.velocity, movementBehavior.MoveSpeed);
         }
 
         Destroy(gameObject);
