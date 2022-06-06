@@ -6,7 +6,7 @@ public class BulletBehaviour : MonoBehaviour
 {
     private DeathTimerBehaviour _deathTimerBehaviour;
     private Rigidbody _rigidbody;
-    private Collider _collider;
+    private SphereCollider _collider;
     private HealthBehaviour _health;
 
     public Rigidbody Rigidbody
@@ -20,17 +20,23 @@ public class BulletBehaviour : MonoBehaviour
         set { _health = value; }
     }
 
+    public SphereCollider Collider
+    {
+        get { return _collider; }
+        set { _collider = value; }
+    }
+
     private void Awake()
     {
         _deathTimerBehaviour = GetComponent<DeathTimerBehaviour>();
         _rigidbody = GetComponent<Rigidbody>();
-        _collider = GetComponent<Collider>();
+        _collider = GetComponent<SphereCollider>();
         _health = GetComponent<HealthBehaviour>();
         _health.OnDeath = delegate (Object args) { _deathTimerBehaviour.Kill(); };
         Health.CurrentHealth = 1;
     }
 
-    private void OnTriggerEnter(Collider other)
+    virtual public void OnTriggerEnter(Collider other)
     {
         switch (other.tag)
         {
@@ -51,7 +57,5 @@ public class BulletBehaviour : MonoBehaviour
                 break;
             }
         }
-        
     }
-
 }
