@@ -368,7 +368,7 @@ MonoBehaviour:
   _healthBehaviour: {fileID: 6826442442617923358}
   _waddleBehaviour: {fileID: 1031393967}
   _stickerMovementBehaviour: {fileID: 8020240914197901398}
-  _neutralSticker: {fileID: 7784282804930428154}
+  _neutralSticker: {fileID: 5402792396116684046}
   _aggressiveSticker: {fileID: 3867041208773924393}
   _seekRange: 6
 --- !u!114 &6826442442617923358
