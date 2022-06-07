@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6791292395444471311}
   m_Layer: 0
   m_Name: GrilledHomie_mad_sticker
-  m_TagString: Untagged
+  m_TagString: AggressiveSticker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5441537689802724264}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4045857693576271442}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!212 &6791292395444471311
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -50,7 +50,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 53a48d741eaa69d4eb68272acb11dad1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,6 +82,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6831719678328203730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 970560536708002999}
+  - component: {fileID: 1004016302666767308}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Sticker
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &970560536708002999
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6831719678328203730}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4045857693576271442}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!64 &1004016302666767308
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6831719678328203730}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4816047054000110012, guid: 0fd9ebc904d63a643be13486eebca5cc, type: 3}
 --- !u!1 &7784282804930428154
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +144,6 @@ GameObject:
   - component: {fileID: 454173655668695798}
   - component: {fileID: 6826442442617923358}
   - component: {fileID: 1031393967}
-  - component: {fileID: 6077686235388306153}
   m_Layer: 0
   m_Name: Sticker_GrilledHomie
   m_TagString: Sticker
@@ -116,10 +160,11 @@ Transform:
   m_GameObject: {fileID: 7784282804930428154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 1485066459496233066}
   - {fileID: 591117857364665083}
+  - {fileID: 970560536708002999}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -243,7 +288,7 @@ MonoBehaviour:
   _stickerMovementBehaviour: {fileID: 8020240914197901398}
   _neutralSticker: {fileID: 7958959459899519795}
   _aggressiveSticker: {fileID: 5441537689802724264}
-  _seekRange: 7
+  _seekRange: 6
 --- !u!114 &6826442442617923358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,20 +318,6 @@ MonoBehaviour:
   _startYRotation: -10
   _endYRotation: 10
   _speed: 12
---- !u!64 &6077686235388306153
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7784282804930428154}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4816047054000110012, guid: 0fd9ebc904d63a643be13486eebca5cc, type: 3}
 --- !u!1 &7958959459899519795
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,7 +330,7 @@ GameObject:
   - component: {fileID: 5991945928728447087}
   m_Layer: 0
   m_Name: GrilledHomie_sticker
-  m_TagString: Untagged
+  m_TagString: NeutralSticker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,13 +342,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7958959459899519795}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4045857693576271442}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!212 &5991945928728447087
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -337,7 +368,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 53a48d741eaa69d4eb68272acb11dad1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
