@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 454173655668695798}
   - component: {fileID: 6826442442617923358}
   - component: {fileID: 1031393967}
+  - component: {fileID: 6891734209653715517}
   m_Layer: 0
   m_Name: Sticker_Diamond
   m_TagString: Sticker
@@ -400,3 +401,19 @@ MonoBehaviour:
   _startYRotation: -10
   _endYRotation: 10
   _speed: 12
+--- !u!114 &6891734209653715517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7784282804930428154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5e3c4537ffba749964b182b015e015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _neutralSticker: {fileID: 4665426802870811822}
+  _aggressiveSticker: {fileID: 2375548638578499317}
+  _holographicSticker: {fileID: 2100000, guid: 95dd079b339cb104c838d365c2d6a10b, type: 2}
+  _powerUpChance: 20

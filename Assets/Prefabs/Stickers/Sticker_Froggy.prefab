@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 6826442442617923358}
   - component: {fileID: 1031393967}
   - component: {fileID: 5999130320055682089}
+  - component: {fileID: 7471674131990956718}
   m_Layer: 0
   m_Name: Sticker_Froggy
   m_TagString: Sticker
@@ -415,3 +416,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 442551368944329082, guid: 9ea03327258ff2843a96f5d1f646cfe7, type: 3}
+--- !u!114 &7471674131990956718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7784282804930428154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5e3c4537ffba749964b182b015e015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _neutralSticker: {fileID: 3905392766386562269}
+  _aggressiveSticker: {fileID: 3905392766386562269}
+  _holographicSticker: {fileID: 2100000, guid: 95dd079b339cb104c838d365c2d6a10b, type: 2}
+  _powerUpChance: 20
