@@ -23,13 +23,16 @@ public class PlayerBehavior : MonoBehaviour
         _health.CurrentHealth = 3;
         //_renderer = GetComponent<MeshRenderer>();
         _iframesTimer = new RoutineBehaviour.TimedAction();
+        _health.OnDeath += (gameObject) =>
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene("game_over_scene");
+        };
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_health.CurrentHealth <= 0)
-            OnDeath();
         if (!_iframesTimer.IsActive)
             _iframesTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, 0.15f);
     }
@@ -48,8 +51,7 @@ public class PlayerBehavior : MonoBehaviour
     /// </summary>
     private void OnDeath()
     {
-        Destroy(gameObject);
-        SceneManager.LoadScene("game_over_scene");
+        
     }
 
     public void OnHit()
