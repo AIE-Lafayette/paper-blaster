@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class PowerUpStickerBehaviour : MonoBehaviour
 {   
+    // Contains the power up prefabs
+    [SerializeField]
+    private List<GameObject> _powerUps;
+
+    // The chance for stickers to become power-ups;
+    [SerializeField]
+    private float _powerUpChance = 10.0f;
+
     // A reference to the sticker's health behaviour
     [SerializeField]
     private HealthBehaviour _healthBehaviour;
@@ -18,18 +26,6 @@ public class PowerUpStickerBehaviour : MonoBehaviour
     private Material _holographicSticker;
 
     // The chance of each sticker to hold a power-up
-    [SerializeField]
-    private float _powerUpChance;
-
-    // A reference to each of the power up prefabs
-    [SerializeField]
-    private GameObject _tripleShotPowerUp;
-
-    [SerializeField]
-    private GameObject _rocketPowerUp;
-
-    [SerializeField]
-    private GameObject _laserPowerUp;
 
     // Called when the sticker is instantiated
     private void Awake()
@@ -49,9 +45,21 @@ public class PowerUpStickerBehaviour : MonoBehaviour
         };
     }
 
-    //Gives the sticker a random powerup to drop on death;
+    // Gives the sticker a random powerup to drop on death;
     private void DropRandomPowerUp()
     {
+        // Gets a random number from 1 to 3;
+        int randomNumber = Random.Range(1, _powerUps.Count);
+        GameObject powerUp = _powerUps[randomNumber];
 
+        // If the power-up is null, give an error message
+        if (powerUp == null)
+        {
+            Debug.Log("A power-up sticker is missing its power-up!");
+            return;
+        }
+
+        // Otherwise, create an instance of the powerup at the sticker's position
+        Instantiate(powerUp, transform.position, Quaternion.identity);
     }
 }
