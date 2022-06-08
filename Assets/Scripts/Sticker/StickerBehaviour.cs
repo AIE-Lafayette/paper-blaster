@@ -33,6 +33,7 @@ public class StickerBehaviour : MonoBehaviour
     //The seeking range for the sticker. It will only seek if the target is within this range.
     [SerializeField] 
     private float _seekRange;
+    // The chance of the stickers to hold power-ups
 
     //Called when an instance of this component is created
     private void Awake()
@@ -59,12 +60,6 @@ public class StickerBehaviour : MonoBehaviour
             GameManagerBehavior.CurrentStickerAmount--;
             GameManagerBehavior.IncreaseScore(2);
         };
-    }
-
-    // Has a small chance of making the sticker have a power-up
-    private void GivePowerUp()
-    {
-
     }
 
     //Called when the sticker is in its wandering state
