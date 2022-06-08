@@ -61,6 +61,12 @@ public class StickerBehaviour : MonoBehaviour
         };
     }
 
+    // Has a small chance of making the sticker have a power-up
+    private void GivePowerUp()
+    {
+
+    }
+
     //Called when the sticker is in its wandering state
     private void Wander()
     {
