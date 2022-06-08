@@ -10,6 +10,7 @@ public class WanderingBehaviour : SteeringBehaviour
     //The distance of said circle from the game object
     [SerializeField]
     private float _distance;
+
     
     //Called every frame
     private void Update()
@@ -19,7 +20,7 @@ public class WanderingBehaviour : SteeringBehaviour
         Vector3 randomPosition = new Vector3(Mathf.Cos(randomNumber), 0, Mathf.Sin(randomNumber));
 
         //Getting a random point on a circle forward to the game object
-        Vector3 circlePosition = transform.position + (transform.forward * _distance);
+        Vector3 circlePosition = transform.position + ( OwnerMovementBehaviour.MoveDirection * _distance);
         Vector3 randomPoint = randomPosition.normalized * _radius;
         randomPoint += circlePosition;
 
