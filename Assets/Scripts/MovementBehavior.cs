@@ -4,7 +4,6 @@ public class MovementBehavior : MonoBehaviour
 {
     //The variables needed for the respawn border
     private Camera _cam;
-    private float _buffer;
     private float _leftBorder;
     private float _rightBorder;
     private float _bottomBorder;
@@ -18,6 +17,10 @@ public class MovementBehavior : MonoBehaviour
     private float _maxSpeed;
     [SerializeField]
     private float _moveSpeed;
+    [SerializeField]
+    private float _xBuffer;
+    [SerializeField]
+    private float _ZBuffer;
 
     /// <summary>
     /// The direction this object will move
@@ -32,10 +35,20 @@ public class MovementBehavior : MonoBehaviour
     /// The buffer outside of the camera border so the object can go off-screen then respawn 
     /// off screen on the other side of the screen
     /// </summary>
-    public float Buffer
+    public float XBuffer
     {
-        get { return _buffer; }
-        set { _buffer = value; }
+        get { return _xBuffer; }
+        set { _xBuffer = value; }
+    }
+
+    /// <summary>
+    /// The buffer outside of the camera border so the object can go off-screen then respawn 
+    /// off screen on the other side of the screen
+    /// </summary>
+    public float ZBuffer
+    {
+        get { return _ZBuffer; }
+        set { _ZBuffer = value; }
     }
 
     /// <summary>
@@ -81,7 +94,8 @@ public class MovementBehavior : MonoBehaviour
         _bottomBorder = _cam.ScreenToWorldPoint(new Vector3(0.0f, 0.0f, _distanceY)).z;
 
         //This is the basic buffer size for all objects, but can be changed in their specific classes
-        Buffer = 0.5f;
+        XBuffer = -1.1f;
+        ZBuffer = -.4f;
     }
 
     /// <summary>
@@ -91,28 +105,28 @@ public class MovementBehavior : MonoBehaviour
     virtual protected void Update()
     {
         //If the object is too far to the left
-        if (transform.position.x < _leftBorder - Buffer)
+        if (transform.position.x < _leftBorder - XBuffer)
         {
             //spawn on the right side with the same y and z axis
-            transform.position = new Vector3(_rightBorder + Buffer, transform.position.y, transform.position.z);
+            transform.position = new Vector3((_rightBorder + XBuffer) - .01f, transform.position.y, transform.position.z);
         }
         //If the object is too far to the right
-        if (transform.position.x > _rightBorder + Buffer)
+        if (transform.position.x > _rightBorder + XBuffer)
         {
             //spawn on the left side with the same y and z axis
-            transform.position = new Vector3(_leftBorder - Buffer, transform.position.y, transform.position.z);
+            transform.position = new Vector3((_leftBorder - XBuffer) + .01f, transform.position.y, transform.position.z);
         }
         //If the object is too far to the bottom
-        if (transform.position.z < _bottomBorder - Buffer)
+        if (transform.position.z < _bottomBorder - ZBuffer)
         {
             //spawn on the top side with the same x and y axis
-            transform.position = new Vector3(transform.position.x, transform.position.y, _topBorder + Buffer);
+            transform.position = new Vector3(transform.position.x, transform.position.y, (_topBorder + ZBuffer) - .01f);
         }
         //If the object is too far to the top
-        if (transform.position.z > _topBorder + Buffer)
+        if (transform.position.z > _topBorder + ZBuffer)
         {
             //spawn the object on the top side with the same x and y axis
-            transform.position = new Vector3(transform.position.x, transform.position.y, _bottomBorder - Buffer);
+            transform.position = new Vector3(transform.position.x, transform.position.y, (_bottomBorder - ZBuffer) + .01f);
         }
 
                        //If the object is moving above the max speed

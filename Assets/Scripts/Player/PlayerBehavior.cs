@@ -2,35 +2,38 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    private HealthBehavior _health;
+    private HealthBehaviour _health;
     private Rigidbody _player;
-    public static int PlayerHealth = 3;
+    public static int PlayerHealth = 4;
     private RoutineBehaviour.TimedAction _iframesTimer;
-    [SerializeField]private MeshRenderer _renderer;
+    [SerializeField]private Renderer _renderer;
     [SerializeField]private BoxCollider _collider;
     private bool _iframesActive;
 
     // Start is called before the first frame update
     void Awake()
     {
-        _health = GetComponent<HealthBehavior>();
+        _health = GetComponent<HealthBehaviour>();
         _player = GetComponent<Rigidbody>();
 
         _health.CurrentHealth = 3;
         //_renderer = GetComponent<MeshRenderer>();
         _iframesTimer = new RoutineBehaviour.TimedAction();
+        _health.OnDeath = (gameObject) => {
+            SceneManager.LoadScene("game_over_scene");
+            Destroy(gameObject);
+        };
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_health.CurrentHealth <= 0)
-            OnDeath();
         if (!_iframesTimer.IsActive)
-            _iframesTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, 0.5f);
+            _iframesTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, 0.15f);
     }
 
     void UpdateVisual() 
@@ -40,14 +43,6 @@ public class PlayerBehavior : MonoBehaviour
             _renderer.enabled = !_renderer.enabled;
             //_collider.enabled = !_collider.enabled;
         }
-    }
-
-    /// <summary>
-    /// Called when the player runs out of lives
-    /// </summary>
-    private void OnDeath()
-    {
-        Destroy(gameObject);
     }
 
     public void OnHit()
@@ -62,8 +57,8 @@ public class PlayerBehavior : MonoBehaviour
 
             //Timer of i-frames
             _iframesActive = true;
-            RoutineBehaviour.Instance.StartNewTimedAction(args => IframeReset(), TimedActionCountType.SCALEDTIME, 3);
-            _iframesTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, 0.5f);
+            RoutineBehaviour.Instance.StartNewTimedAction(args => IframeReset(), TimedActionCountType.SCALEDTIME, 1.6f);
+            _iframesTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, .15f);
         }
     }
 

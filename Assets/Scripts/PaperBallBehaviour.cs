@@ -7,6 +7,14 @@ public class PaperBallBehaviour : MonoBehaviour
     [SerializeField]
     //A reference to paper balls
     private GameObject _paperBall;
+    
+    [SerializeField]
+    //A reference to the A paper ball model
+    private GameObject _paperBallAModel;
+
+    [SerializeField]
+    //A reference to the B paper ball model
+    private GameObject _paperBallBModel;
 
     //The size variations of paper balls
     public enum PaperBallSize { Small, Medium, Large }
@@ -15,21 +23,51 @@ public class PaperBallBehaviour : MonoBehaviour
     //The size of this paper ball
     private PaperBallSize Size { get => _size; set => _size = value; }
 
+    //Random direction used for paper ball movement/rotation
+    private Vector3 _randomDirection;
+
+    //The owner's health behaviour
+    private HealthBehaviour _healthBehaviour;
+
+    private void Awake()
+    {
+        _healthBehaviour = GetComponent<HealthBehaviour>();
+
+        int num = Random.Range(0, 2);
+        
+        if (num == 0)
+        {
+            _paperBallBModel.SetActive(false);
+            _paperBallAModel.SetActive(true);
+        }
+        else
+        {
+            _paperBallAModel.SetActive(false);
+            _paperBallBModel.SetActive(true);
+        }
+    }
+
     //Called when the paper ball is added to a scene
     private void Start()
     {
+        GameManagerBehavior.CurrentPaperAmount++;
         //Updates the paper ball's size
         UpdateScale();
 
         //Gives the paper ball a random direction
         MovementBehavior movementBehavior = GetComponent<MovementBehavior>();
-        movementBehavior.MoveDirection = new Vector3(Random.Range(-500.0f, 500.0f), 0, Random.Range(-500.0f, 500.0f)).normalized;
+        _randomDirection = new Vector3(Random.Range(-500.0f, 500.0f), 0, Random.Range(-500.0f, 500.0f)).normalized;
+        movementBehavior.MoveDirection = _randomDirection;
         movementBehavior.Move();
+
+        _healthBehaviour.CurrentHealth = 1;
+        _healthBehaviour.OnDeath = Break;
     }
 
-    private void Awake()
+    //Called every frame with a fixed update
+    private void FixedUpdate()
     {
-        GameManagerBehavior.CurrentPaperAmount++;
+        transform.Rotate(_randomDirection); 
     }
 
     //Updates the paper ball's scale based on 
@@ -39,7 +77,7 @@ public class PaperBallBehaviour : MonoBehaviour
         {
             case PaperBallSize.Small:
             {
-                transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+                transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
                 break;
             }
             case PaperBallSize.Medium:
@@ -68,36 +106,24 @@ public class PaperBallBehaviour : MonoBehaviour
                        //If the paper ball collides with a player, break the ball and damage the player.
             case "Player": 
             {
-                Break();
-                GameManagerBehavior.CurrentPaperAmount--;
-                GameManagerBehavior.Score++;
-                GameManagerBehavior.CurrentScore++;
-                Destroy(gameObject);
                 other.GetComponent<PlayerBehavior>().OnHit();
-                break;
-            }
-            //If the paper ball collides with a player's bullet, break the paper ball and award the player with points.
-            case "PlayerBullet":
-            {
-                //If the ball wasn't able to break any further, Award the player with extra points
-                if (!Break())
-                {
-                    //Award the player with points here
-                }
-                other.GetComponent<DeathBehavior>().Death();
-                GameManagerBehavior.CurrentPaperAmount--;
-                GameManagerBehavior.Score++;
-                GameManagerBehavior.CurrentScore++;
-                Destroy(gameObject);
+                _healthBehaviour.TakeDamage(1);
                 break;
             }
         }
     }
 
-    private bool Break() 
+    private void Break(object value) 
     {
+        GameManagerBehavior.CurrentPaperAmount--;
+
         //If the paper ball can't be broken, return
-        if (Size == PaperBallSize.Small) return false;
+        if (Size == PaperBallSize.Small)
+        {
+            GameManagerBehavior.IncreaseScore(1);
+            Destroy(gameObject);
+            return;
+        }
 
         //Creates two smaller paper balls
         for (int i = 0; i < 2; i++)
@@ -107,11 +133,10 @@ public class PaperBallBehaviour : MonoBehaviour
 
             PaperBallBehaviour newPBBehaviour = paperBall.GetComponent<PaperBallBehaviour>();
             newPBBehaviour.Initiate(transform.position, Size - 1,
-             movementBehavior.Rigidbody.velocity, movementBehavior.MoveSpeed + 10);
-            newPBBehaviour.Start();
+            movementBehavior.Rigidbody.velocity, movementBehavior.MoveSpeed);
         }
 
-        return true;
+        Destroy(gameObject);
     }
 
     public void Initiate(Vector3 position, PaperBallSize size, Vector3 velocity, float moveSpeed)
@@ -121,14 +146,5 @@ public class PaperBallBehaviour : MonoBehaviour
         Size = size;
         movementBehavior.MoveSpeed = moveSpeed;
         movementBehavior.Rigidbody.velocity = velocity;
-    }
-
-    void Update() 
-    {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    Break();
-        //    Destroy(gameObject);
-        //}
     }
 }
