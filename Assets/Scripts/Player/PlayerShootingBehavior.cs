@@ -6,12 +6,14 @@ using UnityEngine.InputSystem;
 public class PlayerShootingBehavior : MonoBehaviour
 {
     [SerializeField] private BulletBehaviour _projectile;
+    [SerializeField] private RocketBehavior _rocketProjectile;
     [SerializeField] private Transform _bulletPoint;
     [SerializeField] private float _attackSpeed;
     private bool _readyToAttack;
     public AudioSource[] Sounds;
     private AudioSource _normalShot;
     private AudioSource _laserShot;
+    private AudioSource _rocketShot;
 
     private string _currentPowerup = "Normal";
     private static string _currentPowerupHeld = "Normal";
@@ -34,11 +36,12 @@ public class PlayerShootingBehavior : MonoBehaviour
         Sounds = GetComponents<AudioSource>();
         _normalShot = Sounds[0];
         _laserShot = Sounds[1];
+        _rocketShot = Sounds[3];
     }
 
     public void onActivate()
     {
-            if (_currentPowerupHeld == "Normal")
+        if (_currentPowerupHeld == "Normal")
             return;
         _currentPowerup = _currentPowerupHeld;
 
@@ -59,13 +62,13 @@ public class PlayerShootingBehavior : MonoBehaviour
             }
             if (_currentPowerup == "RocketPowerup")
             {
-                _readyToAttack = true;
-                GameObject bullet = Instantiate(_projectile.gameObject, _bulletPoint.position, _bulletPoint.rotation);
+                _readyToAttack = false;
+                GameObject bullet = Instantiate(_rocketProjectile.gameObject, _bulletPoint.position, _bulletPoint.rotation);
                 bullet.transform.localScale = new Vector3(bullet.transform.localScale.x + 2, bullet.transform.localScale.y + 2, bullet.transform.localScale.z + 2);
-                BulletBehaviour bulletBehavior = bullet.GetComponent<BulletBehaviour>();
-                bulletBehavior.Health.CurrentHealth = 5;
-                bulletBehavior.Rigidbody.AddForce(bullet.transform.forward * 750);
-                
+                RocketBehavior bulletBehavior = bullet.GetComponent<RocketBehavior>();
+                bulletBehavior.Rigidbody.AddForce(bullet.transform.forward * 700);
+                RoutineBehaviour.Instance.StartNewTimedAction(args => _readyToAttack = true, TimedActionCountType.SCALEDTIME, _attackSpeed * 2.1f);
+                _rocketShot.Play();
             }
             if (_currentPowerup == "Normal")
             {
@@ -75,7 +78,6 @@ public class PlayerShootingBehavior : MonoBehaviour
                 RoutineBehaviour.Instance.StartNewTimedAction(args => _readyToAttack = true, TimedActionCountType.SCALEDTIME, _attackSpeed);
                 _normalShot.Play();
             }
-            
         }
     }
 
