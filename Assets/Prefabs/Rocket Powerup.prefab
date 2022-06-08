@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 372914923314226500}
   - component: {fileID: 5476663684870229916}
-  - component: {fileID: 5367316257035967393}
   - component: {fileID: 1341250540545858316}
+  - component: {fileID: 7404653533462145295}
   m_Layer: 0
-  m_Name: Powerup
-  m_TagString: TripleShotPowerup
+  m_Name: Rocket Powerup
+  m_TagString: RocketPowerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,18 +50,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5367316257035967393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1737877563032947639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee91dfd8e61e40d4a8551a356eb4a72c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &1341250540545858316
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -75,6 +63,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7404653533462145295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737877563032947639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee91dfd8e61e40d4a8551a356eb4a72c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6252693309720370922
 GameObject:
   m_ObjectHideFlags: 0

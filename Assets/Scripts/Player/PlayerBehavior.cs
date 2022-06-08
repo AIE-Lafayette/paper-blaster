@@ -13,6 +13,8 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField]private Renderer _renderer;
     [SerializeField]private BoxCollider _collider;
     private bool _iframesActive;
+    [SerializeField]
+    private AudioSource _takeDamageSound;
 
     // Start is called before the first frame update
     void Awake()
@@ -52,6 +54,7 @@ public class PlayerBehavior : MonoBehaviour
             //Takes damage and resets player to the middle
             _health.TakeDamage(1);
             PlayerHealth = _health.CurrentHealth;
+            _takeDamageSound.Play();
             _player.position = new Vector3(11.25f, 0.5f, 6.25f);
             _player.velocity = Vector3.zero;
 
