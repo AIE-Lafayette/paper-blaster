@@ -6,7 +6,8 @@ public class StickerBehaviour : MonoBehaviour
     private enum StickerState
     {
         Neutral,
-        Aggressive
+        Aggressive,
+        Dead
     }
 
     //The state that the sticker is currently processing
@@ -80,6 +81,12 @@ public class StickerBehaviour : MonoBehaviour
 
         _waddleBehaviour.Speed = 12;
         _stickerMovementBehaviour.MaxSpeed = 1.5f;
+    }
+
+    // Called when the sticker is killed by the player
+    private void Dead()
+    {
+        
     }
 
     //Acts on the sticker's current state

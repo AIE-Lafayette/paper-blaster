@@ -337,8 +337,8 @@ MonoBehaviour:
   - {fileID: 2736199828596740605, guid: 6b6dbb7a846396e4aa03dc74a462e271, type: 3}
   _powerUpChance: 20
   _healthBehaviour: {fileID: 6826442442617923358}
-  _neutralSticker: {fileID: 7958959459899519795}
-  _aggressiveSticker: {fileID: 5441537689802724264}
+  _neutralSticker: {fileID: 5991945928728447087}
+  _aggressiveSticker: {fileID: 6791292395444471311}
   _holographicSticker: {fileID: 2100000, guid: 95dd079b339cb104c838d365c2d6a10b, type: 2}
 --- !u!1 &7958959459899519795
 GameObject:

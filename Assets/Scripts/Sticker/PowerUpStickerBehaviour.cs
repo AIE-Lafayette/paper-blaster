@@ -18,28 +18,27 @@ public class PowerUpStickerBehaviour : MonoBehaviour
 
     // A reference to the sticker's sprites
     [SerializeField]
-    private GameObject _neutralSticker;
+    private SpriteRenderer _neutralSticker;
     [SerializeField]
-    private GameObject _aggressiveSticker;
+    private SpriteRenderer _aggressiveSticker;
 
     [SerializeField]
     private Material _holographicSticker;
 
-    // The chance of each sticker to hold a power-up
-
-    // Called when the sticker is instantiated
-    private void Awake()
+    // Called when the sticker is added to the scene
+    private void Start()
     {
+        Debug.Log("Start");
         // The stickers have a ten percent chance of spawning 
         int randomNumber = Random.Range(0, 101);
         if (randomNumber > _powerUpChance) return;
 
-        // Changes the sticker's material if it holds a power-up
-        _neutralSticker.GetComponent<SpriteRenderer>().material = _holographicSticker;
-        _aggressiveSticker.GetComponent<SpriteRenderer>().material = _holographicSticker;
+        // Changes the sticker's material
+        _neutralSticker.material = _holographicSticker;
+        _aggressiveSticker.material = _holographicSticker;
 
         // The sticker whill drop a random power-up on death
-        _healthBehaviour.OnDeath += (gameObject) => 
+        _healthBehaviour.OnDeath += (gameObject) =>
         {
             DropRandomPowerUp();
         };
@@ -48,6 +47,7 @@ public class PowerUpStickerBehaviour : MonoBehaviour
     // Gives the sticker a random powerup to drop on death;
     private void DropRandomPowerUp()
     {
+        Debug.Log("DropRandomPowerUp");
         // Gets a random number from 1 to 3;
         int randomNumber = Random.Range(1, _powerUps.Count);
         GameObject powerUp = _powerUps[randomNumber];
