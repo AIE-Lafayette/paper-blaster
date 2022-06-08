@@ -1697,7 +1697,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "2139ed333d8543ad810ba80ff577a063",
     "m_Id": 0,
-    "m_DisplayName": "StarHolo_Amount",
+    "m_DisplayName": "Star_Amnt",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1981,7 +1981,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.0,
+    "m_Value": 0.5,
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
@@ -2139,7 +2139,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "2d92edbb7d1d4042b7af84732fa8608f",
     "m_Id": 0,
-    "m_DisplayName": "BaseHolo_Amount",
+    "m_DisplayName": "Base_Amnt",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -2573,7 +2573,7 @@
     "m_Guid": {
         "m_GuidSerialized": "4b7fd5f5-da83-499c-847a-bd725e82defb"
     },
-    "m_Name": "BaseHolo_Amount",
+    "m_Name": "Base_Amnt",
     "m_DefaultReferenceName": "Vector1_3c65d0f8b4684a03b04df25b0cd37d73",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -2581,7 +2581,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 1.0,
+    "m_Value": 0.0,
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
@@ -2824,7 +2824,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 1.5,
+    "m_Value": 0.0,
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
@@ -6065,7 +6065,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.20000000298023225,
+    "m_Value": 0.11999999731779099,
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
@@ -6769,7 +6769,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 30.0,
+    "m_Value": 20.0,
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
@@ -6792,10 +6792,10 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 0.0,
+    "m_Value": -0.949999988079071,
     "m_FloatType": 1,
     "m_RangeValues": {
-        "x": -1.0,
+        "x": -0.949999988079071,
         "y": 1.0
     }
 }
@@ -6831,7 +6831,7 @@
     "m_Guid": {
         "m_GuidSerialized": "706c9c3f-a39b-4886-8012-14631fac2acd"
     },
-    "m_Name": "StarHolo_Amount",
+    "m_Name": "Star_Amnt",
     "m_DefaultReferenceName": "Vector1_fdd7be627d714f3e8d23a0ede894f2c8",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
@@ -6839,7 +6839,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": 1.0,
+    "m_Value": 0.0,
     "m_FloatType": 1,
     "m_RangeValues": {
         "x": 0.0,
