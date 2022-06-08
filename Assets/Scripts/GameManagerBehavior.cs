@@ -53,6 +53,8 @@ public class GameManagerBehavior : MonoBehaviour
     {
         GameLoop();
         pauseCanvas.SetActive(pauseCheck);
+        //Debug.Log("Paper: " + CurrentPaperAmount);
+        //Debug.Log("Sticker: " + CurrentStickerAmount);
     }
 
     void GameLoop()

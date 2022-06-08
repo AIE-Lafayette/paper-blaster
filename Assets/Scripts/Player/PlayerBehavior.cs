@@ -23,10 +23,9 @@ public class PlayerBehavior : MonoBehaviour
         _health.CurrentHealth = 3;
         //_renderer = GetComponent<MeshRenderer>();
         _iframesTimer = new RoutineBehaviour.TimedAction();
-        _health.OnDeath += (gameObject) =>
-        {
-            Destroy(gameObject);
+        _health.OnDeath = (gameObject) => {
             SceneManager.LoadScene("game_over_scene");
+            Destroy(gameObject);
         };
     }
 
@@ -44,14 +43,6 @@ public class PlayerBehavior : MonoBehaviour
             _renderer.enabled = !_renderer.enabled;
             //_collider.enabled = !_collider.enabled;
         }
-    }
-
-    /// <summary>
-    /// Called when the player runs out of lives
-    /// </summary>
-    private void OnDeath()
-    {
-        
     }
 
     public void OnHit()

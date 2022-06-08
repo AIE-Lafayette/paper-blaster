@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HoloGraphic_mat 13
+  m_Name: Cerberpup_mat
   m_Shader: {fileID: -6465566751694194690, guid: 14f24571db251bb4199646ba9244d3a7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 2
