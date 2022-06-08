@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerUpStickerBehaviour : MonoBehaviour
-{
+{   
+    // A reference to the sticker's health behaviour
+    [SerializeField]
+    private HealthBehaviour _healthBehaviour;
+
     // A reference to the sticker's sprites
     [SerializeField]
     private GameObject _neutralSticker;
@@ -17,6 +21,16 @@ public class PowerUpStickerBehaviour : MonoBehaviour
     [SerializeField]
     private float _powerUpChance;
 
+    // A reference to each of the power up prefabs
+    [SerializeField]
+    private GameObject _tripleShotPowerUp;
+
+    [SerializeField]
+    private GameObject _rocketPowerUp;
+
+    [SerializeField]
+    private GameObject _laserPowerUp;
+
     // Called when the sticker is instantiated
     private void Awake()
     {
@@ -27,5 +41,17 @@ public class PowerUpStickerBehaviour : MonoBehaviour
         // Changes the sticker's material if it holds a power-up
         _neutralSticker.GetComponent<SpriteRenderer>().material = _holographicSticker;
         _aggressiveSticker.GetComponent<SpriteRenderer>().material = _holographicSticker;
+
+        // The sticker whill drop a random power-up on death
+        _healthBehaviour.OnDeath += (gameObject) => 
+        {
+            DropRandomPowerUp();
+        };
+    }
+
+    //Gives the sticker a random powerup to drop on death;
+    private void DropRandomPowerUp()
+    {
+
     }
 }

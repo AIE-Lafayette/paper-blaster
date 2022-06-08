@@ -413,7 +413,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f5e3c4537ffba749964b182b015e015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthBehaviour: {fileID: 6826442442617923358}
   _neutralSticker: {fileID: 5402792396116684046}
   _aggressiveSticker: {fileID: 3867041208773924393}
   _holographicSticker: {fileID: 2100000, guid: 95dd079b339cb104c838d365c2d6a10b, type: 2}
   _powerUpChance: 20
+  _tripleShotPowerUp: {fileID: 0}
+  _rocketPowerUp: {fileID: 0}
+  _laserPowerUp: {fileID: 0}
