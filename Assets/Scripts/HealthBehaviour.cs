@@ -45,7 +45,7 @@ public class HealthBehaviour : MonoBehaviour
     {
         if (!Alive)
         {
-            OnDeath.Invoke(gameObject);
+             OnDeath.Invoke(gameObject);
         }
     }
 }
