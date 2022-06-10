@@ -8,14 +8,16 @@ public class GUIBehavior : MonoBehaviour
     [SerializeField] private HealthBehaviour _playerHealth;
     [SerializeField] private GameManagerBehavior _gameManager;
 
-    [SerializeField] private Image Health01;
-    [SerializeField] private Image Health02;
-    [SerializeField] private Image Health03;
-    [SerializeField] private Image Power01;
-    [SerializeField] private Image Power02;
-    [SerializeField] private Image Power03;
-    [SerializeField] private Text PageText;
-    [SerializeField] private Text ScoreText;
+    [SerializeField] private Image _health01;
+    [SerializeField] private Image _health02;
+    [SerializeField] private Image _health03;
+    [SerializeField] private Image _power01;
+    [SerializeField] private Image _power02;
+    [SerializeField] private Image _power03;
+    [SerializeField] private Text _pageText;
+    [SerializeField] private Text _scoreText;
+    [SerializeField] private Color _deactiveColor;
+    [SerializeField] private Color _activeColor;
 
     void Start()
     {
@@ -24,8 +26,8 @@ public class GUIBehavior : MonoBehaviour
 
     void Update()
     {
-        ScoreText.text = "Score: " + GameManagerBehavior.Score;
-        PageText.text = "Page: " + _gameManager.Page;
+        _scoreText.text = "Score: " + GameManagerBehavior.Score;
+        _pageText.text = "Page: " + _gameManager.Page;
         if (_playerHealth.CurrentHealth == 3)
             FullHP();
         if (_playerHealth.CurrentHealth == 2)
@@ -40,52 +42,64 @@ public class GUIBehavior : MonoBehaviour
             Rocket();
         if (PlayerShootingBehavior.CurrentPowerupHeld == "TripleShotPowerup")
             Triple();
+        if (PlayerShootingBehavior.PowerupActive)
+        {
+            _power01.color = _activeColor;
+            _power02.color = _activeColor;
+            _power03.color = _activeColor;
+        }
+        else 
+        {
+            _power01.color = _deactiveColor;
+            _power02.color = _deactiveColor;
+            _power03.color = _deactiveColor;
+        }
     }
 
     void FullHP() 
     {
-        Health01.enabled = true;
-        Health02.enabled = true;
-        Health03.enabled = true;
+        _health01.enabled = true;
+        _health02.enabled = true;
+        _health03.enabled = true;
     }
     void MediumHP()
     {
-        Health01.enabled = true;
-        Health02.enabled = true;
-        Health03.enabled = false;
+        _health01.enabled = true;
+        _health02.enabled = true;
+        _health03.enabled = false;
     }
     void LowHp()
     {
-        Health01.enabled = true;
-        Health02.enabled = false;
-        Health03.enabled = false;
+        _health01.enabled = true;
+        _health02.enabled = false;
+        _health03.enabled = false;
     }
 
     void Laser()
     {
-        Power01.enabled = true;
-        Power02.enabled = false;
-        Power03.enabled = false;
+        _power01.enabled = true;
+        _power02.enabled = false;
+        _power03.enabled = false;
     }
 
     void Rocket()
     {
-        Power01.enabled = false;
-        Power02.enabled = true;
-        Power03.enabled = false;
+        _power01.enabled = false;
+        _power02.enabled = true;
+        _power03.enabled = false;
     }
 
     void Triple()
     {
-        Power01.enabled = false;
-        Power02.enabled = false;
-        Power03.enabled = true;
+        _power01.enabled = false;
+        _power02.enabled = false;
+        _power03.enabled = true;
     }
 
     void Normal()
     {
-        Power01.enabled = false;
-        Power02.enabled = false;
-        Power03.enabled = false;
+        _power01.enabled = false;
+        _power02.enabled = false;
+        _power03.enabled = false;
     }
 }
