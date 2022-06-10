@@ -13,7 +13,7 @@ public class PowerupBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && !PlayerShootingBehavior.PowerupActive)
         {
             PlayerShootingBehavior.CurrentPowerupHeld = tag;
             Destroy(gameObject);
