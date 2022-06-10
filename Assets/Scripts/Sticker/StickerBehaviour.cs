@@ -16,6 +16,10 @@ public class StickerBehaviour : MonoBehaviour
     // Called after the sticker's dissolve animations ends
     private DeathEventHandler _afterDissolve;
 
+    // The speed that the stickers will disolve at
+    [SerializeField]
+    private float _dissolveSpeed;
+
     //A reference to the sticker's behaviours
     [SerializeField]
     private WanderingBehaviour _wanderingBehaviour;
@@ -33,11 +37,9 @@ public class StickerBehaviour : MonoBehaviour
     private GameObject _neutralSticker;
     [SerializeField]
     private GameObject _aggressiveSticker;
-    
-    //The seeking range for the sticker. It will only seek if the target is within this range.
-    [SerializeField] 
-    private float _seekRange;
 
+    private Material _aggressiveMaterial;
+    
     public DeathEventHandler AfterDissolve 
     {
         get => _afterDissolve;
@@ -57,6 +59,8 @@ public class StickerBehaviour : MonoBehaviour
     //Called when the component is added to the scene
     private void Start()
     {
+        _aggressiveMaterial = _aggressiveSticker.GetComponent<SpriteRenderer>().material;
+
         //Increases the current sticker counter
         GameManagerBehavior.CurrentStickerAmount++;
 
@@ -83,6 +87,10 @@ public class StickerBehaviour : MonoBehaviour
         _seekingBehaviour.enabled = false;
         _wanderingBehaviour.enabled = true;  
 
+        //Change the sticker's texture
+        _neutralSticker.SetActive(false);
+        _aggressiveSticker.SetActive(true);
+
         _waddleBehaviour.Speed = 4;
         _stickerMovementBehaviour.MaxSpeed = 1.0f;
     }
@@ -99,7 +107,12 @@ public class StickerBehaviour : MonoBehaviour
 
     private void Dissolve()
     {
-        
+        _neutralSticker.SetActive(false);
+        _aggressiveSticker.SetActive(true);
+
+        _aggressiveMaterial.SetFloat("Dissolve", 0.5f);
+
+        _afterDissolve.Invoke(gameObject);
     }
 
     // Acts on the sticker's current state
@@ -133,21 +146,12 @@ public class StickerBehaviour : MonoBehaviour
     //Changes the sticker's state
     private void UpdateState()
     {
-        //If the target is in range and the sticker isn't currently seeking...
-        if (_seekingBehaviour.DistanceFromTarget <= _seekRange || _currentState == StickerState.Aggressive)
+        if ((_currentState != StickerState.Neutral) || (!_seekingBehaviour.InRange))
         {
-            //Set the state to the seeking state
-            _currentState = StickerState.Aggressive;
-            //Change the sticker's texture
-            _neutralSticker.SetActive(false);
-            _aggressiveSticker.SetActive(true);
+            return;
         }
-        //Otherwise...
-        else 
-        {   
-            //Set the state to the wandering state
-            _currentState = StickerState.Neutral;
-        }
+
+        _currentState = StickerState.Aggressive;
     }
 
     //Called every frame;
