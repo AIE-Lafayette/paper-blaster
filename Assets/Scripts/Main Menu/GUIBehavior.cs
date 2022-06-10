@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class GUIBehavior : MonoBehaviour
 {
     [SerializeField] private HealthBehaviour _playerHealth;
-    [SerializeField] private PlayerShootingBehavior _playerShoot;
     [SerializeField] private GameManagerBehavior _gameManager;
 
     [SerializeField] private Image Health01;
     [SerializeField] private Image Health02;
     [SerializeField] private Image Health03;
     [SerializeField] private Image Power01;
+    [SerializeField] private Image Power02;
+    [SerializeField] private Image Power03;
     [SerializeField] private Text PageText;
     [SerializeField] private Text ScoreText;
 
@@ -31,6 +32,14 @@ public class GUIBehavior : MonoBehaviour
             MediumHP();
         if (_playerHealth.CurrentHealth == 1)
             LowHp();
+        if (PlayerShootingBehavior.CurrentPowerupHeld == "Normal")
+            Normal();
+        if (PlayerShootingBehavior.CurrentPowerupHeld == "LaserPowerup")
+            Laser();
+        if (PlayerShootingBehavior.CurrentPowerupHeld == "RocketPowerup")
+            Rocket();
+        if (PlayerShootingBehavior.CurrentPowerupHeld == "TripleShotPowerup")
+            Triple();
     }
 
     void FullHP() 
@@ -50,5 +59,33 @@ public class GUIBehavior : MonoBehaviour
         Health01.enabled = true;
         Health02.enabled = false;
         Health03.enabled = false;
+    }
+
+    void Laser()
+    {
+        Power01.enabled = true;
+        Power02.enabled = false;
+        Power03.enabled = false;
+    }
+
+    void Rocket()
+    {
+        Power01.enabled = false;
+        Power02.enabled = true;
+        Power03.enabled = false;
+    }
+
+    void Triple()
+    {
+        Power01.enabled = false;
+        Power02.enabled = false;
+        Power03.enabled = true;
+    }
+
+    void Normal()
+    {
+        Power01.enabled = false;
+        Power02.enabled = false;
+        Power03.enabled = false;
     }
 }
