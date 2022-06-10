@@ -17,6 +17,7 @@ public class PowerupBehavior : MonoBehaviour
         {
             PlayerShootingBehavior.CurrentPowerupHeld = tag;
             Destroy(gameObject);
+
         }
     }
 }
