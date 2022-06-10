@@ -45,7 +45,7 @@ public class SpawnerBehavior : MonoBehaviour
         if (_stickerPrefabs.Count == 0) return null;
 
         // Returns the sticker prefab at the index of the random number
-        int randomNumber = Random.Range(0, _stickerPrefabs.Count - 1);
+        int randomNumber = Random.Range(0, _stickerPrefabs.Count);
         return _stickerPrefabs[randomNumber];
     }
 
