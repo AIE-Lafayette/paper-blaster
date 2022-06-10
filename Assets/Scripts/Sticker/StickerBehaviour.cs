@@ -6,7 +6,8 @@ public class StickerBehaviour : MonoBehaviour
     private enum StickerState
     {
         Neutral,
-        Aggressive
+        Aggressive,
+        Dead
     }
 
     //The state that the sticker is currently processing
@@ -33,6 +34,7 @@ public class StickerBehaviour : MonoBehaviour
     //The seeking range for the sticker. It will only seek if the target is within this range.
     [SerializeField] 
     private float _seekRange;
+    // The chance of the stickers to hold power-ups
 
     //Called when an instance of this component is created
     private void Awake()
@@ -61,12 +63,6 @@ public class StickerBehaviour : MonoBehaviour
         };
     }
 
-    // Has a small chance of making the sticker have a power-up
-    private void GivePowerUp()
-    {
-
-    }
-
     //Called when the sticker is in its wandering state
     private void Wander()
     {
@@ -85,6 +81,12 @@ public class StickerBehaviour : MonoBehaviour
 
         _waddleBehaviour.Speed = 12;
         _stickerMovementBehaviour.MaxSpeed = 1.5f;
+    }
+
+    // Called when the sticker is killed by the player
+    private void Dead()
+    {
+        
     }
 
     //Acts on the sticker's current state
