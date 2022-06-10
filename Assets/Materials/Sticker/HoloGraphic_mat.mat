@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HoloGraphic_mat 13
+  m_Name: HoloGraphic_mat
   m_Shader: {fileID: -6465566751694194690, guid: 14f24571db251bb4199646ba9244d3a7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 2
@@ -52,7 +52,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_29ecadab75594e12aede2e440bfa8365: 0.8
+    - Vector1_29ecadab75594e12aede2e440bfa8365: 0.261
     - Vector1_3c65d0f8b4684a03b04df25b0cd37d73: 1
     - Vector1_41BBE1D: 0.12
     - Vector1_48f4332a18484290bea0597c1068718c: 0.8

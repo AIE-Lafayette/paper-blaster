@@ -13,6 +13,8 @@ public class PlayerBehavior : MonoBehaviour
     [SerializeField]private Renderer _renderer;
     [SerializeField]private BoxCollider _collider;
     private bool _iframesActive;
+    [SerializeField]
+    private AudioSource _takeDamageSound;
 
     // Start is called before the first frame update
     void Awake()
@@ -23,13 +25,15 @@ public class PlayerBehavior : MonoBehaviour
         _health.CurrentHealth = 3;
         //_renderer = GetComponent<MeshRenderer>();
         _iframesTimer = new RoutineBehaviour.TimedAction();
+        _health.OnDeath = (gameObject) => {
+            SceneManager.LoadScene("game_over_scene");
+            Destroy(gameObject);
+        };
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_health.CurrentHealth <= 0)
-            OnDeath();
         if (!_iframesTimer.IsActive)
             _iframesTimer = RoutineBehaviour.Instance.StartNewTimedAction(args => UpdateVisual(), TimedActionCountType.SCALEDTIME, 0.15f);
     }
@@ -43,15 +47,6 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Called when the player runs out of lives
-    /// </summary>
-    private void OnDeath()
-    {
-        Destroy(gameObject);
-        SceneManager.LoadScene("game_over_scene");
-    }
-
     public void OnHit()
     {
         if (!_iframesActive)
@@ -59,6 +54,7 @@ public class PlayerBehavior : MonoBehaviour
             //Takes damage and resets player to the middle
             _health.TakeDamage(1);
             PlayerHealth = _health.CurrentHealth;
+            _takeDamageSound.Play();
             _player.position = new Vector3(11.25f, 0.5f, 6.25f);
             _player.velocity = Vector3.zero;
 

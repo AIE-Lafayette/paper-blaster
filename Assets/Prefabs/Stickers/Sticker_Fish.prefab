@@ -95,7 +95,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 24d180bbe7ae26049b0e67228929a681, type: 2}
+  - {fileID: 2100000, guid: 91f2a553c77fe5640a72c881902e11e0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -177,7 +177,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 24d180bbe7ae26049b0e67228929a681, type: 2}
+  - {fileID: 2100000, guid: 91f2a553c77fe5640a72c881902e11e0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -226,6 +226,7 @@ GameObject:
   - component: {fileID: 454173655668695798}
   - component: {fileID: 6826442442617923358}
   - component: {fileID: 1031393967}
+  - component: {fileID: 3743586107873813184}
   m_Layer: 0
   m_Name: Sticker_Fish
   m_TagString: Sticker
@@ -400,3 +401,24 @@ MonoBehaviour:
   _startYRotation: -10
   _endYRotation: 10
   _speed: 12
+--- !u!114 &3743586107873813184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7784282804930428154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f5e3c4537ffba749964b182b015e015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _powerUps:
+  - {fileID: 2258335845121123990, guid: daa3b18258f493a46ab95f7204157bc1, type: 3}
+  - {fileID: 1737877563032947639, guid: 712699cb673f9534aa28623d098d0ef8, type: 3}
+  - {fileID: 2736199828596740605, guid: 6b6dbb7a846396e4aa03dc74a462e271, type: 3}
+  _powerUpChance: 20
+  _healthBehaviour: {fileID: 6826442442617923358}
+  _neutralSticker: {fileID: 1089261278849144492}
+  _aggressiveSticker: {fileID: 5666222392584246749}
+  _holographicSticker: {fileID: 2100000, guid: 95dd079b339cb104c838d365c2d6a10b, type: 2}

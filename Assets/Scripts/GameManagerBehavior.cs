@@ -14,6 +14,10 @@ public class GameManagerBehavior : MonoBehaviour
     public static int CurrentStickerAmount;
     private bool _pageCheck;
     private int _stickerThreshold;
+    public int Page 
+    {
+        get { return _page; }
+    }
 
     [SerializeField] private GameObject pauseCanvas;
     public static bool pauseCheck;
@@ -53,6 +57,8 @@ public class GameManagerBehavior : MonoBehaviour
     {
         GameLoop();
         pauseCanvas.SetActive(pauseCheck);
+        //Debug.Log("Paper: " + CurrentPaperAmount);
+        //Debug.Log("Sticker: " + CurrentStickerAmount);
     }
 
     void GameLoop()
@@ -61,10 +67,11 @@ public class GameManagerBehavior : MonoBehaviour
         {
             Debug.Log("Board Cleared");
             _pageCheck = true;
-            _page++;
+            Score += 50;
             _paperSpawnAmount = 3 + _page;
             _stickerSpawnSpeed = 5 + Mathf.RoundToInt(_page / 2);
             RoutineBehaviour.Instance.StartNewTimedAction(args => { PageSetup(); _pageCheck = false; }, TimedActionCountType.SCALEDTIME, 3f);
+            _page++;
         }
         if (CurrentScore > _stickerThreshold && CurrentPaperAmount > 0)
         {
