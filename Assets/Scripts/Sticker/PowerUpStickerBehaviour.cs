@@ -12,9 +12,9 @@ public class PowerUpStickerBehaviour : MonoBehaviour
     [SerializeField]
     private float _powerUpChance = 10.0f;
 
-    // A reference to the sticker's health behaviour
+    // A reference to the owner's sticker behaviour
     [SerializeField]
-    private HealthBehaviour _healthBehaviour;
+    private StickerBehaviour _stickerBehaviour;
 
     // A reference to the sticker's sprites
     [SerializeField]
@@ -38,7 +38,7 @@ public class PowerUpStickerBehaviour : MonoBehaviour
         _aggressiveSticker.material = _holographicSticker;
 
         // The sticker whill drop a random power-up on death
-        _healthBehaviour.OnDeath += (gameObject) =>
+        _stickerBehaviour.AfterDissolve += (gameObject) =>
         {
             DropRandomPowerUp();
         };

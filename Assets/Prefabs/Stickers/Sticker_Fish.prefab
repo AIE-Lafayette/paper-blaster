@@ -418,7 +418,7 @@ MonoBehaviour:
   - {fileID: 1737877563032947639, guid: 712699cb673f9534aa28623d098d0ef8, type: 3}
   - {fileID: 2736199828596740605, guid: 6b6dbb7a846396e4aa03dc74a462e271, type: 3}
   _powerUpChance: 20
-  _healthBehaviour: {fileID: 6826442442617923358}
+  _stickerBehaviour: {fileID: 454173655668695798}
   _neutralSticker: {fileID: 1089261278849144492}
   _aggressiveSticker: {fileID: 5666222392584246749}
   _holographicSticker: {fileID: 2100000, guid: 95dd079b339cb104c838d365c2d6a10b, type: 2}

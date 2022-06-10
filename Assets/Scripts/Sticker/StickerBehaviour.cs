@@ -13,6 +13,9 @@ public class StickerBehaviour : MonoBehaviour
     //The state that the sticker is currently processing
     private StickerState _currentState;
 
+    // Called after the sticker's dissolve animations ends
+    private DeathEventHandler _afterDissolve;
+
     //A reference to the sticker's behaviours
     [SerializeField]
     private WanderingBehaviour _wanderingBehaviour;
@@ -34,6 +37,13 @@ public class StickerBehaviour : MonoBehaviour
     //The seeking range for the sticker. It will only seek if the target is within this range.
     [SerializeField] 
     private float _seekRange;
+
+    public DeathEventHandler AfterDissolve 
+    {
+        get => _afterDissolve;
+        set => _afterDissolve = value;
+     }
+
     // The chance of the stickers to hold power-ups
 
     //Called when an instance of this component is created
@@ -53,10 +63,14 @@ public class StickerBehaviour : MonoBehaviour
         //Sets the sticker's current state
         _currentState = StickerState.Neutral;
         _healthBehaviour.CurrentHealth = 3;
+        _healthBehaviour.OnDeath = (gameObject) => 
+        {
+            Dissolve();
+        };
 
-        //Assigns the sticker's OnDeath event
-        _healthBehaviour.OnDeath = Destroy;
-        _healthBehaviour.OnDeath += ( gameObject ) => 
+        //Assigns what happens after the sticker disolves
+        _afterDissolve = Destroy;
+        _afterDissolve += ( gameObject ) => 
         {
             GameManagerBehavior.CurrentStickerAmount--;
             GameManagerBehavior.IncreaseScore(2);
@@ -83,10 +97,9 @@ public class StickerBehaviour : MonoBehaviour
         _stickerMovementBehaviour.MaxSpeed = 1.5f;
     }
 
-    // Called when the sticker is killed by the player
-    private void Dead()
+    private void Dissolve()
     {
-        
+
     }
 
     //Acts on the sticker's current state
