@@ -65,7 +65,7 @@ public class StickerBehaviour : MonoBehaviour
         _healthBehaviour.CurrentHealth = 3;
         _healthBehaviour.OnDeath = (gameObject) => 
         {
-            Dissolve();
+            _currentState = StickerState.Dead;
         };
 
         //Assigns what happens after the sticker disolves
@@ -99,10 +99,10 @@ public class StickerBehaviour : MonoBehaviour
 
     private void Dissolve()
     {
-
+        
     }
 
-    //Acts on the sticker's current state
+    // Acts on the sticker's current state
     private void ProcessState()
     {
         switch (_currentState)
@@ -115,6 +115,16 @@ public class StickerBehaviour : MonoBehaviour
             case StickerState.Aggressive:
             {
                 Seek();
+                break;
+            }
+            case StickerState.Dead:
+            {
+                Dissolve();
+                break;
+            }
+            default:
+            {
+                Debug.Log("A sticker is missing a state!");
                 break;
             }
         }
