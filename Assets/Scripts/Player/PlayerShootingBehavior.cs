@@ -17,6 +17,7 @@ public class PlayerShootingBehavior : MonoBehaviour
 
     private string _currentPowerup = "Normal";
     private static string _currentPowerupHeld = "Normal";
+    public static bool PowerupActive;
 
     public static string CurrentPowerupHeld
     {
@@ -44,8 +45,9 @@ public class PlayerShootingBehavior : MonoBehaviour
         if (_currentPowerupHeld == "Normal")
             return;
         _currentPowerup = _currentPowerupHeld;
+        PowerupActive = true;
 
-        RoutineBehaviour.Instance.StartNewTimedAction(args => _currentPowerup = "Normal", TimedActionCountType.SCALEDTIME, 15);
+        RoutineBehaviour.Instance.StartNewTimedAction(args => { _currentPowerup = "Normal"; CurrentPowerupHeld = "Normal"; PowerupActive = false; }, TimedActionCountType.SCALEDTIME, 15);
     }
 
     public void Shoot() 
