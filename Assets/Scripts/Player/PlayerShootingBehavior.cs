@@ -35,6 +35,7 @@ public class PlayerShootingBehavior : MonoBehaviour
     {
         _readyToAttack = true;
         Sounds = GetComponents<AudioSource>();
+        CurrentPowerupHeld = "Normal";
         _normalShot = Sounds[0];
         _laserShot = Sounds[1];
         _rocketShot = Sounds[3];
