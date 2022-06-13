@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
+  _seekRange: 5
 --- !u!54 &732730796
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -282,6 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0199274f7eb0fac409441e5e106a1d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dissolveSpeed: 0.01
   _wanderingBehaviour: {fileID: 1827054891}
   _seekingBehaviour: {fileID: 2949097350667779383}
   _healthBehaviour: {fileID: 6826442442617923358}
@@ -289,7 +291,6 @@ MonoBehaviour:
   _stickerMovementBehaviour: {fileID: 8020240914197901398}
   _neutralSticker: {fileID: 2616143937851246066}
   _aggressiveSticker: {fileID: 9072005311619583101}
-  _seekRange: 6
 --- !u!114 &6826442442617923358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,8 +315,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bd9ff79a4b4a68428aa3bae5b030284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startPos: 0
-  _offset: {x: 0, y: 0, z: 0}
   _startYRotation: -10
   _endYRotation: 10
   _speed: 12
@@ -336,7 +335,7 @@ MonoBehaviour:
   - {fileID: 1737877563032947639, guid: 712699cb673f9534aa28623d098d0ef8, type: 3}
   - {fileID: 2736199828596740605, guid: 6b6dbb7a846396e4aa03dc74a462e271, type: 3}
   _powerUpChance: 20
-  _healthBehaviour: {fileID: 6826442442617923358}
+  _stickerBehaviour: {fileID: 454173655668695798}
   _neutralSticker: {fileID: 4312072798256269312}
   _aggressiveSticker: {fileID: 4746385783367027162}
   _holographicSticker: {fileID: 2100000, guid: 95dd079b339cb104c838d365c2d6a10b, type: 2}

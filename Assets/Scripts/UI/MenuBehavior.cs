@@ -33,7 +33,11 @@ public class MenuBehavior : MonoBehaviour
     //Switch to main menu
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene("main_menu_scene");
+        _animating = true;
+        _bookAnimator.SetTrigger("Close");
+        _canvas.SetActive(false);
+        RoutineBehaviour.Instance.StartNewTimedAction(args => SceneManager.LoadScene("main_menu_scene"),
+        TimedActionCountType.SCALEDTIME, 1.25f);
     }
 
     //Updating the camera zoom

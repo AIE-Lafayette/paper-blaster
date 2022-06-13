@@ -12,9 +12,9 @@ public class PowerUpStickerBehaviour : MonoBehaviour
     [SerializeField]
     private float _powerUpChance = 10.0f;
 
-    // A reference to the sticker's health behaviour
+    // A reference to the owner's sticker behaviour
     [SerializeField]
-    private HealthBehaviour _healthBehaviour;
+    private StickerBehaviour _stickerBehaviour;
 
     // A reference to the sticker's sprites
     [SerializeField]
@@ -34,10 +34,12 @@ public class PowerUpStickerBehaviour : MonoBehaviour
 
         // Changes the sticker's material
         _neutralSticker.material = _holographicSticker;
-        _aggressiveSticker.material = _holographicSticker;
+        _aggressiveSticker.material = _holographicSticker;  
+
+        _stickerBehaviour.AggressiveMaterial = _aggressiveSticker.material;
 
         // The sticker whill drop a random power-up on death
-        _healthBehaviour.OnDeath += (gameObject) =>
+        _stickerBehaviour.AfterDissolve += (gameObject) =>
         {
             DropRandomPowerUp();
         };
@@ -46,8 +48,9 @@ public class PowerUpStickerBehaviour : MonoBehaviour
     // Gives the sticker a random powerup to drop on death;
     private void DropRandomPowerUp()
     {
-        // Gets a random number from 1 to 3;
-        int randomNumber = Random.Range(1, _powerUps.Count);
+        Debug.Log("DropRandomPowerUp");
+        // Gets a random number from 0 to 2;, and uses that number as an index to get a power-up
+        int randomNumber = Random.Range(0, _powerUps.Count);
         GameObject powerUp = _powerUps[randomNumber];
 
         // If the power-up is null, give an error message
