@@ -43,6 +43,7 @@ public class HealthBehaviour : MonoBehaviour
         get => CurrentHealth > 0;
     }
 
+    //Called by other scripts to damage the owner
     public void TakeDamage(int damageAmount)
     {
         if (!Alive)
