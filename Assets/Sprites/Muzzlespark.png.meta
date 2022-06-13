@@ -1,58 +1,37 @@
 fileFormatVersion: 2
-guid: 0844df6294530ca4599ea40cdc8e2e09
+guid: 605ac618012a3ad488a537055d55a69c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4635215762141885755
-    second: SimplifiedExplosion_0
+      213: 1165077344620492170
+    second: Muzzlespark_0
   - first:
-      213: 4923981667372492663
-    second: SimplifiedExplosion_1
+      213: -4542775133779665183
+    second: Muzzlespark_1
   - first:
-      213: 3457201499775206956
-    second: SimplifiedExplosion_2
+      213: -3983853804405156630
+    second: Muzzlespark_2
   - first:
-      213: -6796719987023499776
-    second: SimplifiedExplosion_3
+      213: 7871730089770423388
+    second: Muzzlespark_3
   - first:
-      213: 1175322562974716071
-    second: SimplifiedExplosion_4
+      213: -7246524642915488097
+    second: Muzzlespark_4
   - first:
-      213: 827210360055532691
-    second: SimplifiedExplosion_5
+      213: 2609556887235738520
+    second: Muzzlespark_5
   - first:
-      213: 242266175650851505
-    second: SimplifiedExplosion_6
+      213: -7488980765144553307
+    second: Muzzlespark_6
   - first:
-      213: 2428436178363865622
-    second: SimplifiedExplosion_7
+      213: -2283943601972796447
+    second: Muzzlespark_7
   - first:
-      213: -858356235018272701
-    second: SimplifiedExplosion_8
+      213: 2502372807142038349
+    second: Muzzlespark_8
   - first:
-      213: -3482293747699592877
-    second: SimplifiedExplosion_9
-  - first:
-      213: 4582567528245293706
-    second: SimplifiedExplosion_10
-  - first:
-      213: -6004719573570569526
-    second: SimplifiedExplosion_11
-  - first:
-      213: -3807132989022940078
-    second: SimplifiedExplosion_12
-  - first:
-      213: -7305035296472308823
-    second: SimplifiedExplosion_13
-  - first:
-      213: -4975399484206105706
-    second: SimplifiedExplosion_14
-  - first:
-      213: -2189876118770254514
-    second: SimplifiedExplosion_15
-  - first:
-      213: -9108542212047492572
-    second: SimplifiedExplosion_16
+      213: -655779725688617806
+    second: Muzzlespark_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -190,217 +169,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SimplifiedExplosion_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1050
-        width: 350
-        height: 350
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b3532cf5d28935040800000000000000
-      internalID: 4635215762141885755
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SimplifiedExplosion_1
-      rect:
-        serializedVersion: 2
-        x: 350
-        y: 1050
-        width: 350
-        height: 350
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 777e544fc3f755440800000000000000
-      internalID: 4923981667372492663
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SimplifiedExplosion_2
-      rect:
-        serializedVersion: 2
-        x: 700
-        y: 1050
-        width: 350
-        height: 350
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c268c0f62727aff20800000000000000
-      internalID: 3457201499775206956
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SimplifiedExplosion_3
-      rect:
-        serializedVersion: 2
-        x: 1050
-        y: 1050
-        width: 350
-        height: 350
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 00eaaafae233da1a0800000000000000
-      internalID: -6796719987023499776
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SimplifiedExplosion_4
-      rect:
-        serializedVersion: 2
-        x: 1400
-        y: 1050
-        width: 350
-        height: 350
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a01c96d4a59f4010800000000000000
-      internalID: 1175322562974716071
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SimplifiedExplosion_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 700
-        width: 350
-        height: 350
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 39c02a19077da7b00800000000000000
-      internalID: 827210360055532691
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SimplifiedExplosion_6
-      rect:
-        serializedVersion: 2
-        x: 350
-        y: 700
-        width: 350
-        height: 350
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1bae2cc9dc3bc5300800000000000000
-      internalID: 242266175650851505
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SimplifiedExplosion_7
-      rect:
-        serializedVersion: 2
-        x: 700
-        y: 700
-        width: 350
-        height: 350
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 61ad51b76d983b120800000000000000
-      internalID: 2428436178363865622
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SimplifiedExplosion_8
-      rect:
-        serializedVersion: 2
-        x: 1050
-        y: 700
-        width: 350
-        height: 350
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3408ef05d818614f0800000000000000
-      internalID: -858356235018272701
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SimplifiedExplosion_9
-      rect:
-        serializedVersion: 2
-        x: 1400
-        y: 700
-        width: 350
-        height: 350
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3515dc459486cafc0800000000000000
-      internalID: -3482293747699592877
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SimplifiedExplosion_10
+      name: Muzzlespark_0
       rect:
         serializedVersion: 2
         x: 0
@@ -414,14 +183,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a82fc4033ec889f30800000000000000
-      internalID: 4582567528245293706
+      spriteID: a85b5fd0caf2b2010800000000000000
+      internalID: 1165077344620492170
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SimplifiedExplosion_11
+      name: Muzzlespark_1
       rect:
         serializedVersion: 2
         x: 350
@@ -435,14 +204,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: acabd79bc53faaca0800000000000000
-      internalID: -6004719573570569526
+      spriteID: 1eed590a512d4f0c0800000000000000
+      internalID: -4542775133779665183
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SimplifiedExplosion_12
+      name: Muzzlespark_2
       rect:
         serializedVersion: 2
         x: 700
@@ -456,14 +225,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 254dd90b7b85a2bc0800000000000000
-      internalID: -3807132989022940078
+      spriteID: ae4975f721286b8c0800000000000000
+      internalID: -3983853804405156630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SimplifiedExplosion_13
+      name: Muzzlespark_3
       rect:
         serializedVersion: 2
         x: 1050
@@ -477,14 +246,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a3e3120a1d4f9a90800000000000000
-      internalID: -7305035296472308823
+      spriteID: c5415887fc00e3d60800000000000000
+      internalID: 7871730089770423388
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SimplifiedExplosion_14
+      name: Muzzlespark_4
       rect:
         serializedVersion: 2
         x: 1400
@@ -498,14 +267,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69bbb38a784d3fab0800000000000000
-      internalID: -4975399484206105706
+      spriteID: f9e68e22b3c2f6b90800000000000000
+      internalID: -7246524642915488097
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SimplifiedExplosion_15
+      name: Muzzlespark_5
       rect:
         serializedVersion: 2
         x: 0
@@ -519,14 +288,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4d769eb54ffb91e0800000000000000
-      internalID: -2189876118770254514
+      spriteID: 89b3cd4b922073420800000000000000
+      internalID: 2609556887235738520
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SimplifiedExplosion_16
+      name: Muzzlespark_6
       rect:
         serializedVersion: 2
         x: 350
@@ -540,8 +309,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42a22450e15f79180800000000000000
-      internalID: -9108542212047492572
+      spriteID: 5a863d32cabc11890800000000000000
+      internalID: -7488980765144553307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Muzzlespark_7
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 0
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e3a265156dcd40e0800000000000000
+      internalID: -2283943601972796447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Muzzlespark_8
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 0
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4b5c495fc63ab220800000000000000
+      internalID: 2502372807142038349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Muzzlespark_9
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 0
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b44d6f50d336e6f0800000000000000
+      internalID: -655779725688617806
       vertices: []
       indices: 
       edges: []
@@ -549,7 +381,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c893670c6409adf4c836aeed8451b0c0
+    spriteID: 1c455ba4ecefc914a98f03269a6de7ef
     internalID: 0
     vertices: []
     indices: 
