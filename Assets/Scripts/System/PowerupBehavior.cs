@@ -8,7 +8,7 @@ public class PowerupBehavior : MonoBehaviour
     void Update()
     {
         //transform.Rotate(Vector3.up * 70f * Time.deltaTime);
-        transform.Rotate(Vector3.right * 70f * Time.deltaTime);
+        transform.Rotate(Vector3.forward * 70f * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
