@@ -19,6 +19,7 @@ public class GameManagerBehavior : MonoBehaviour
         get { return _page; }
     }
 
+    //Pause menu
     [SerializeField] private GameObject pauseCanvas;
     public static bool pauseCheck;
 
@@ -28,16 +29,21 @@ public class GameManagerBehavior : MonoBehaviour
     private int _paperSpawnAmount;
     private RoutineBehaviour.TimedAction _spawnStickerAction;
     [SerializeField] private Transform _playerTransform;
+
+    //Audio
     private static AudioSource _audio;
     [SerializeField]
     private AudioSource _audioRef;
 
+    //Increase the score of the game by one
     public static void IncreaseScore(int value)
     {
-        GameManagerBehavior.Score++;
+        GameManagerBehavior.Score += 100;
         GameManagerBehavior.CurrentScore++;
     }
 
+
+    //Default variables on game start
     void Start()
     {
         pauseCanvas.SetActive(false);
@@ -48,6 +54,8 @@ public class GameManagerBehavior : MonoBehaviour
         _paperSpawnAmount = 6;
         _stickerSpawnSpeed = 5;
         _stickerThreshold = 6;
+        CurrentPaperAmount = 0;
+        CurrentStickerAmount = 0;
         _spawnStickerAction = new RoutineBehaviour.TimedAction();
         PageSetup();
         _audio = _audioRef;
@@ -57,25 +65,25 @@ public class GameManagerBehavior : MonoBehaviour
     {
         GameLoop();
         pauseCanvas.SetActive(pauseCheck);
-        //Debug.Log("Paper: " + CurrentPaperAmount);
-        //Debug.Log("Sticker: " + CurrentStickerAmount);
     }
 
     void GameLoop()
     {
+        // If the board is clear of all paper and stickers, increase difficulty and page count.
          if (CurrentPaperAmount == 0 && !_pageCheck && CurrentStickerAmount == 0 && _page != 1)
         {
-            Debug.Log("Board Cleared");
             _pageCheck = true;
-            Score += 50;
+            Score += 500;
             _paperSpawnAmount = 3 + _page;
             _stickerSpawnSpeed = 5 + Mathf.RoundToInt(_page / 2);
             RoutineBehaviour.Instance.StartNewTimedAction(args => { PageSetup(); _pageCheck = false; }, TimedActionCountType.SCALEDTIME, 3f);
             _page++;
         }
+
+        // If the sticker threshold has been met and if the sticker count isnt past the maximum stickers that can be in a scene, spawn stickers.
         if (CurrentScore > _stickerThreshold && CurrentPaperAmount > 0)
         {
-            if (!_spawnStickerAction.IsActive)
+            if (!_spawnStickerAction.IsActive && CurrentStickerAmount < _page)
             {
                 _spawnStickerAction = RoutineBehaviour.Instance.StartNewTimedAction(args => _spawner.SpawnSticker(1), TimedActionCountType.SCALEDTIME, _stickerSpawnSpeed);
             }
@@ -88,6 +96,7 @@ public class GameManagerBehavior : MonoBehaviour
         CurrentScore = 0;
     }
 
+    // Pause the game
     public static void PauseGame()
     {
         Time.timeScale = 0;
@@ -95,6 +104,8 @@ public class GameManagerBehavior : MonoBehaviour
         _audio.Pause();
     }
 
+
+    //Unpauses the game
     public void UnpauseGame()
     {
         Time.timeScale = 1;
