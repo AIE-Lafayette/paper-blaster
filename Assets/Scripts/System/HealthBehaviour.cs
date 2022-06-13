@@ -5,6 +5,8 @@ using UnityEngine;
 
 public delegate void DeathEventHandler(Object value);
 
+public delegate void HitEventHandler();
+
 public class HealthBehaviour : MonoBehaviour
 {
     // The owner's current health
@@ -13,10 +15,21 @@ public class HealthBehaviour : MonoBehaviour
     // Takes in the owner's game object as the arg
     private DeathEventHandler _onDeath;
 
+    // Changes to true once the onDeath event has been called
+    private bool _onDeathCalled;
+
+    private HitEventHandler _onHit;
+
     public DeathEventHandler OnDeath
     {
         get => _onDeath;
         set => _onDeath = value;
+    }
+
+    public HitEventHandler OnHit
+    {
+        get => _onHit;
+        set => _onHit = value;
     }
 
     public int CurrentHealth
@@ -44,9 +57,12 @@ public class HealthBehaviour : MonoBehaviour
     // Called every frame
     private void Update()
     {
-        if (!Alive)
+        if ((Alive) || (_onDeathCalled))
         {
-              OnDeath.Invoke(gameObject);
+            return;
         }
+
+        OnDeath.Invoke(gameObject);
+        _onDeathCalled = true;
     }
 }

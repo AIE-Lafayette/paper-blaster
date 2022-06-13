@@ -14,10 +14,12 @@ public class StickerMovementBehaviour : MovementBehavior
     {
         Rigidbody.AddForce(MoveDirection * MoveSpeed * Time.deltaTime);
 
-                    //If the object is moving above the max speed
+        //If the object is moving above the max speed
         if (Rigidbody.velocity.magnitude > MaxSpeed)
+        {
             //Set the velocity to be the max speed
             Rigidbody.velocity = Rigidbody.velocity.normalized * MaxSpeed;
+        }
     }
 
     //Called every frame
