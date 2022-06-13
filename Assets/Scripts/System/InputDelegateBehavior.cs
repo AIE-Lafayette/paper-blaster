@@ -8,6 +8,7 @@ public class InputDelegateBehavior : MonoBehaviour
     private PlayerControls _playerControls;
     private PlayerMovement _playerMovement;
     private PlayerShootingBehavior _playerShooting;
+    private bool _activateShooting;
     [SerializeField]
     private PowerupBehavior _powerup;
 
@@ -49,7 +50,10 @@ public class InputDelegateBehavior : MonoBehaviour
 
         //Shoot started shoots the projectile
         _playerControls.Ship.Shoot.started += (InputAction.CallbackContext context) =>
-            _playerShooting.Shoot();
+            { _playerShooting.Shoot(); _activateShooting = true; };
+
+        _playerControls.Ship.Shoot.canceled += (InputAction.CallbackContext context) =>
+        { _activateShooting = false; };
 
         //Activate powerup started calls the powerups on activate function
         _playerControls.Ship.ActivatePowerup.started += (InputAction.CallbackContext context) =>
@@ -68,6 +72,8 @@ public class InputDelegateBehavior : MonoBehaviour
     {
         if (_playerMovement.ThrusterOn)
             _playerMovement.ActivateThruster();
+        if (_activateShooting)
+            _playerShooting.Shoot();
     }
 
 }
