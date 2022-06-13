@@ -21,8 +21,9 @@ public class StickerBehaviour : MonoBehaviour
     private float _dissolveSpeed;
 
     // Holds a number between -1 and 1, represents how dissolved the sticker is
-    [SerializeField]
-    private Vector3 _dissolveValue;
+    private float _dissolveValue;
+    // How long the 
+    private float _dissolveTimer;
 
     //A reference to the sticker's behaviours
     [SerializeField]
@@ -72,7 +73,7 @@ public class StickerBehaviour : MonoBehaviour
     //Called when the component is added to the scene
     private void Start()
     {
-        _dissolveValue = new Vector3(-1, 0, 0);
+        _dissolveValue = -1;;
 
         //Increases the current sticker counter
         GameManagerBehavior.CurrentStickerAmount++;
@@ -125,8 +126,8 @@ public class StickerBehaviour : MonoBehaviour
         _neutralSticker.SetActive(false);
         _aggressiveSticker.SetActive(true); 
 
-        _dissolveValue += Vector3.LerpUnclamped(new Vector3(-1, 0, 0), new Vector3(1, 0, 0), Time.deltaTime * _dissolveSpeed);
-        _aggressiveMaterial.SetFloat("Vector1_4CAE2BD8", _dissolveValue.x);
+        //_dissolveValue = Vector3.LerpUnclamped(new Vector3(-1, 0, 0), new Vector3(1, 0, 0), 1);
+        _aggressiveMaterial.SetFloat("Vector1_4CAE2BD8", _dissolveValue);
 
         // if (_dissolveValue.x > 1)
         // {
