@@ -73,8 +73,8 @@ public class StickerBehaviour : MonoBehaviour
     //Called when the component is added to the scene
     private void Start()
     {
-        _dissolveValue = -1;
-        _dissolveTimer = -1;
+        _dissolveValue = 0;
+        _dissolveTimer = 0;
 
         //Increases the current sticker counter
         GameManagerBehavior.CurrentStickerAmount++;
@@ -124,18 +124,19 @@ public class StickerBehaviour : MonoBehaviour
     // Uses LERP to change the sticker's material's dissolve property
     private void Dissolve()
     {
+        if (_dissolveTimer >= 1)
+        {
+            _afterDissolve.Invoke(gameObject);
+            return;
+        }
+
         _neutralSticker.SetActive(false);
         _aggressiveSticker.SetActive(true); 
 
-        _dissolveValue = Mathf.Lerp(-1, 0.5f, _dissolveTimer);
+        _dissolveValue = Mathf.Lerp(0, 1, _dissolveTimer);
         _dissolveTimer += (Time.deltaTime + _dissolveSpeed);
 
         _aggressiveMaterial.SetFloat("Vector1_4CAE2BD8", _dissolveValue);
-
-        if (_dissolveValue > 1)
-        {
-            _afterDissolve.Invoke(gameObject);
-        }
     }
 
     // Acts on the sticker's current state
