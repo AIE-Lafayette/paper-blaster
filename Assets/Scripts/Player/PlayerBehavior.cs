@@ -32,6 +32,7 @@ public class PlayerBehavior : MonoBehaviour
         _iframesTimer = new RoutineBehaviour.TimedAction();
         //When the player dies the game over scene is loaded and the player is destroyed
         _health.OnDeath = (gameObject) => {
+            PlayerPrefs.SetInt("Score", GameManagerBehavior.Score);
             SceneManager.LoadScene("game_over_scene");
             Destroy(gameObject);
         };
