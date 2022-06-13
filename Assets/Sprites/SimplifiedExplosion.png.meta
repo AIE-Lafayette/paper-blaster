@@ -195,10 +195,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 1050
-        width: 367.4
+        width: 350
         height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -214,12 +214,12 @@ TextureImporter:
       name: SimplifiedExplosion_1
       rect:
         serializedVersion: 2
-        x: 339
+        x: 350
         y: 1050
-        width: 367
+        width: 350
         height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -235,12 +235,12 @@ TextureImporter:
       name: SimplifiedExplosion_2
       rect:
         serializedVersion: 2
-        x: 685
-        y: 1048
-        width: 367
+        x: 700
+        y: 1050
+        width: 350
         height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -256,12 +256,12 @@ TextureImporter:
       name: SimplifiedExplosion_3
       rect:
         serializedVersion: 2
-        x: 1036
+        x: 1050
         y: 1050
-        width: 367
+        width: 350
         height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -277,12 +277,12 @@ TextureImporter:
       name: SimplifiedExplosion_4
       rect:
         serializedVersion: 2
-        x: 1392
-        y: 1048
-        width: 367
+        x: 1400
+        y: 1050
+        width: 350
         height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -300,10 +300,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 700
-        width: 367.4
+        width: 350
         height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -319,12 +319,12 @@ TextureImporter:
       name: SimplifiedExplosion_6
       rect:
         serializedVersion: 2
-        x: 367
+        x: 350
         y: 700
-        width: 367.4
+        width: 350
         height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -340,12 +340,12 @@ TextureImporter:
       name: SimplifiedExplosion_7
       rect:
         serializedVersion: 2
-        x: 734
+        x: 700
         y: 700
-        width: 367.4
+        width: 350
         height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -361,12 +361,12 @@ TextureImporter:
       name: SimplifiedExplosion_8
       rect:
         serializedVersion: 2
-        x: 1101
+        x: 1050
         y: 700
-        width: 367.4
+        width: 350
         height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -382,12 +382,12 @@ TextureImporter:
       name: SimplifiedExplosion_9
       rect:
         serializedVersion: 2
-        x: 1468
+        x: 1400
         y: 700
-        width: 367.4
+        width: 350
         height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -405,10 +405,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 350
-        width: 367.4
+        width: 350
         height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -424,12 +424,12 @@ TextureImporter:
       name: SimplifiedExplosion_11
       rect:
         serializedVersion: 2
-        x: 367
+        x: 350
         y: 350
-        width: 367.4
+        width: 350
         height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -445,12 +445,12 @@ TextureImporter:
       name: SimplifiedExplosion_12
       rect:
         serializedVersion: 2
-        x: 734
+        x: 700
         y: 350
-        width: 367.4
+        width: 350
         height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -466,12 +466,12 @@ TextureImporter:
       name: SimplifiedExplosion_13
       rect:
         serializedVersion: 2
-        x: 1101
+        x: 1050
         y: 350
-        width: 367.4
+        width: 350
         height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -487,12 +487,12 @@ TextureImporter:
       name: SimplifiedExplosion_14
       rect:
         serializedVersion: 2
-        x: 1468
+        x: 1400
         y: 350
-        width: 367.4
+        width: 350
         height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -510,10 +510,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 367.4
+        width: 350
         height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -529,12 +529,12 @@ TextureImporter:
       name: SimplifiedExplosion_16
       rect:
         serializedVersion: 2
-        x: 367
+        x: 350
         y: 0
-        width: 367.4
+        width: 350
         height: 350
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
