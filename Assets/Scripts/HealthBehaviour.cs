@@ -15,6 +15,9 @@ public class HealthBehaviour : MonoBehaviour
     // Takes in the owner's game object as the arg
     private DeathEventHandler _onDeath;
 
+    // Changes to true once the onDeath event has been called
+    private bool _onDeathCalled;
+
     private HitEventHandler _onHit;
 
     public DeathEventHandler OnDeath
@@ -53,9 +56,12 @@ public class HealthBehaviour : MonoBehaviour
     // Called every frame
     private void Update()
     {
-        if (!Alive)
+        if ((Alive) || (_onDeathCalled))
         {
-            OnDeath.Invoke(gameObject);
+            return;
         }
+
+        OnDeath.Invoke(gameObject);
+        _onDeathCalled = true;
     }
 }

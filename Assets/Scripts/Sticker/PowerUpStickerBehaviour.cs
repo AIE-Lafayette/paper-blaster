@@ -48,8 +48,8 @@ public class PowerUpStickerBehaviour : MonoBehaviour
     private void DropRandomPowerUp()
     {
         Debug.Log("DropRandomPowerUp");
-        // Gets a random number from 1 to 3;
-        int randomNumber = Random.Range(1, _powerUps.Count);
+        // Gets a random number from 0 to 2;, and uses that number as an index to get a power-up
+        int randomNumber = Random.Range(0, _powerUps.Count);
         GameObject powerUp = _powerUps[randomNumber];
 
         // If the power-up is null, give an error message

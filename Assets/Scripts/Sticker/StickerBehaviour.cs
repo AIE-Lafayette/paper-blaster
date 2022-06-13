@@ -54,6 +54,7 @@ public class StickerBehaviour : MonoBehaviour
         //Sets the sticker's aggressive texture as inactive
         _aggressiveSticker.SetActive(false);
         _neutralSticker.SetActive(true);
+        _healthBehaviour.CurrentHealth = 3;
     }
 
     //Called when the component is added to the scene
@@ -66,7 +67,6 @@ public class StickerBehaviour : MonoBehaviour
 
         //Sets the sticker's current state
         _currentState = StickerState.Neutral;
-        _healthBehaviour.CurrentHealth = 3;
         _healthBehaviour.OnDeath = (gameObject) => 
         {
             _currentState = StickerState.Dead;
@@ -108,10 +108,10 @@ public class StickerBehaviour : MonoBehaviour
     private void Dissolve()
     {
         _neutralSticker.SetActive(false);
-        _aggressiveSticker.SetActive(true);
+        _aggressiveSticker.SetActive(true); 
 
-        _aggressiveMaterial.SetFloat("Dissolve", 0.5f);
-
+        _aggressiveMaterial.SetFloat("Dissolve", -0.5f);
+        
         _afterDissolve.Invoke(gameObject);
     }
 

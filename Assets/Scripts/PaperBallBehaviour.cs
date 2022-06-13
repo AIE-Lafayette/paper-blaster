@@ -32,6 +32,7 @@ public class PaperBallBehaviour : MonoBehaviour
     private void Awake()
     {
         _healthBehaviour = GetComponent<HealthBehaviour>();
+        _healthBehaviour.CurrentHealth = 1;
 
         int num = Random.Range(0, 2);
         
@@ -60,7 +61,6 @@ public class PaperBallBehaviour : MonoBehaviour
         movementBehavior.MoveDirection = _randomDirection;
         movementBehavior.Move();
 
-        _healthBehaviour.CurrentHealth = 1;
         _healthBehaviour.OnDeath = Break;
     }
 
