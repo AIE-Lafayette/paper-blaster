@@ -134,7 +134,7 @@ public class PlayerShootingBehavior : MonoBehaviour
         Rigidbody bullet = Instantiate(_projectile, _bulletPoint.position, _bulletPoint.rotation).GetComponent<Rigidbody>();
         bullet.transform.localScale = new Vector3(bullet.transform.localScale.x * .5f, bullet.transform.localScale.y, bullet.transform.localScale.z * 4);
         bullet.AddForce(bullet.transform.forward * 2000);
-        RoutineBehaviour.Instance.StartNewTimedAction(args => _readyToAttack = true, TimedActionCountType.SCALEDTIME, _attackSpeed * .2f);
+        RoutineBehaviour.Instance.StartNewTimedAction(args => _readyToAttack = true, TimedActionCountType.SCALEDTIME, _attackSpeed * .6f);
     }
 
     /// <summary>
@@ -149,7 +149,7 @@ public class PlayerShootingBehavior : MonoBehaviour
         bullet.transform.localScale = new Vector3(bullet.transform.localScale.x + 2, bullet.transform.localScale.y + 2, bullet.transform.localScale.z + 2);
         RocketBehavior bulletBehavior = bullet.GetComponent<RocketBehavior>();
         bulletBehavior.Rigidbody.AddForce(bullet.transform.forward * 700);
-        RoutineBehaviour.Instance.StartNewTimedAction(args => _readyToAttack = true, TimedActionCountType.SCALEDTIME, _attackSpeed * 2.1f);
+        RoutineBehaviour.Instance.StartNewTimedAction(args => _readyToAttack = true, TimedActionCountType.SCALEDTIME, _attackSpeed * 1.5f);
         _rocketShot.Play();
     }
 
