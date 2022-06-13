@@ -102,8 +102,8 @@ public class StickerBehaviour : MonoBehaviour
         _wanderingBehaviour.enabled = true;  
 
         //Change the sticker's texture
-        _neutralSticker.SetActive(false);
-        _aggressiveSticker.SetActive(true);
+        _neutralSticker.SetActive(true);
+        _aggressiveSticker.SetActive(false);
 
         // Changes the sticker's waddling/movement speed
         _waddleBehaviour.Speed = 4;
@@ -115,6 +115,9 @@ public class StickerBehaviour : MonoBehaviour
     {
         _seekingBehaviour.enabled = true;
         _wanderingBehaviour.enabled = false;
+
+        _neutralSticker.SetActive(false);
+        _aggressiveSticker.SetActive(true);
 
         // Changes the sticker's waddling/movement speed
         _waddleBehaviour.Speed = 12;
