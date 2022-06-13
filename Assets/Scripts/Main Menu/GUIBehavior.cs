@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class GUIBehavior : MonoBehaviour
 {
+    //References
     [SerializeField] private HealthBehaviour _playerHealth;
     [SerializeField] private GameManagerBehavior _gameManager;
 
+    // UI Elements
     [SerializeField] private Image _health01;
     [SerializeField] private Image _health02;
     [SerializeField] private Image _health03;
@@ -19,21 +21,21 @@ public class GUIBehavior : MonoBehaviour
     [SerializeField] private Color _deactiveColor;
     [SerializeField] private Color _activeColor;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
+        //Constantly update the texts
         _scoreText.text = "Score: " + GameManagerBehavior.Score;
         _pageText.text = "Page: " + _gameManager.Page;
+
+        //Change the UI images based on player health
         if (_playerHealth.CurrentHealth == 3)
             FullHP();
         if (_playerHealth.CurrentHealth == 2)
             MediumHP();
         if (_playerHealth.CurrentHealth == 1)
             LowHp();
+
+        //Change the Power up image based on the current power up
         if (PlayerShootingBehavior.CurrentPowerupHeld == "Normal")
             Normal();
         if (PlayerShootingBehavior.CurrentPowerupHeld == "LaserPowerup")
@@ -42,6 +44,8 @@ public class GUIBehavior : MonoBehaviour
             Rocket();
         if (PlayerShootingBehavior.CurrentPowerupHeld == "TripleShotPowerup")
             Triple();
+
+        //If the power up is active, change the color of the power up image.
         if (PlayerShootingBehavior.PowerupActive)
         {
             _power01.color = _activeColor;
