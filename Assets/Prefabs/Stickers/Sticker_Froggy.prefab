@@ -322,6 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
+  _seekRange: 5
 --- !u!54 &732730796
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -365,6 +366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0199274f7eb0fac409441e5e106a1d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dissolveSpeed: 12
+  _dissolveValue: {x: 0, y: 0, z: 0}
   _wanderingBehaviour: {fileID: 1827054891}
   _seekingBehaviour: {fileID: 2949097350667779383}
   _healthBehaviour: {fileID: 6826442442617923358}
@@ -372,7 +375,6 @@ MonoBehaviour:
   _stickerMovementBehaviour: {fileID: 8020240914197901398}
   _neutralSticker: {fileID: 6307345450753167891}
   _aggressiveSticker: {fileID: 3905392766386562269}
-  _seekRange: 6
 --- !u!114 &6826442442617923358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,8 +399,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bd9ff79a4b4a68428aa3bae5b030284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startPos: 0
-  _offset: {x: 0, y: 0, z: 0}
   _startYRotation: -10
   _endYRotation: 10
   _speed: 12

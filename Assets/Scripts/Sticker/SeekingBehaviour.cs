@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SeekingBehaviour : SteeringBehaviour
 {
+    // The range that the owner must be in to seek the target
     [SerializeField]
     private float _seekRange = 5;
 
@@ -13,6 +14,7 @@ public class SeekingBehaviour : SteeringBehaviour
         set => _seekRange = value;
     }
 
+    // Returns whether or not the owner is in range of the target
     public bool InRange
     {
         get => (DistanceFromTarget < _seekRange);
@@ -21,6 +23,7 @@ public class SeekingBehaviour : SteeringBehaviour
     //Called every frame
     private void Update()
     {
+        // Changes the owner's movement direction to be towards the target
         OwnerMovementBehaviour.MoveDirection = DirectionToTarget;
     }
 }

@@ -20,6 +20,10 @@ public class StickerBehaviour : MonoBehaviour
     [SerializeField]
     private float _dissolveSpeed;
 
+    // Holds a number between -1 and 1, represents how dissolved the sticker is
+    [SerializeField]
+    private Vector3 _dissolveValue;
+
     //A reference to the sticker's behaviours
     [SerializeField]
     private WanderingBehaviour _wanderingBehaviour;
@@ -45,6 +49,11 @@ public class StickerBehaviour : MonoBehaviour
         get => _afterDissolve;
         set => _afterDissolve = value;
      }
+    public Material AggressiveMaterial 
+    { 
+        get => _aggressiveMaterial;
+         set => _aggressiveMaterial = value;
+    }
 
     // The chance of the stickers to hold power-ups
 
@@ -54,13 +63,16 @@ public class StickerBehaviour : MonoBehaviour
         //Sets the sticker's aggressive texture as inactive
         _aggressiveSticker.SetActive(false);
         _neutralSticker.SetActive(true);
+
+        _aggressiveMaterial = _aggressiveSticker.GetComponent<SpriteRenderer>().material;
+
         _healthBehaviour.CurrentHealth = 3;
     }
 
     //Called when the component is added to the scene
     private void Start()
     {
-        _aggressiveMaterial = _aggressiveSticker.GetComponent<SpriteRenderer>().material;
+        _dissolveValue = new Vector3(-1, 0, 0);
 
         //Increases the current sticker counter
         GameManagerBehavior.CurrentStickerAmount++;
@@ -91,6 +103,7 @@ public class StickerBehaviour : MonoBehaviour
         _neutralSticker.SetActive(false);
         _aggressiveSticker.SetActive(true);
 
+        // Changes the sticker's waddling/movement speed
         _waddleBehaviour.Speed = 4;
         _stickerMovementBehaviour.MaxSpeed = 1.0f;
     }
@@ -101,18 +114,21 @@ public class StickerBehaviour : MonoBehaviour
         _seekingBehaviour.enabled = true;
         _wanderingBehaviour.enabled = false;
 
+        // Changes the sticker's waddling/movement speed
         _waddleBehaviour.Speed = 12;
         _stickerMovementBehaviour.MaxSpeed = 1.5f;
     }
 
+    // Uses LERP to change the sticker's material's dissolve property
     private void Dissolve()
     {
         _neutralSticker.SetActive(false);
         _aggressiveSticker.SetActive(true); 
 
-        _aggressiveMaterial.SetFloat("Dissolve", -0.5f);
-        
-        _afterDissolve.Invoke(gameObject);
+        _dissolveValue = Vector3.LerpUnclamped(new Vector3(-1, 0, 0), new Vector3(1, 0, 0), Time.deltaTime * _dissolveSpeed);
+        _aggressiveMaterial.SetFloat("Vector1_4CAE2BD8", _dissolveValue.x);
+        // Calls the after disolve event
+        //_afterDissolve.Invoke(gameObject);
     }
 
     // Acts on the sticker's current state
@@ -146,6 +162,7 @@ public class StickerBehaviour : MonoBehaviour
     //Changes the sticker's state
     private void UpdateState()
     {
+        // Only update states if the sticker is in neutral and if the sticker's target is in range
         if ((_currentState != StickerState.Neutral) || (!_seekingBehaviour.InRange))
         {
             return;

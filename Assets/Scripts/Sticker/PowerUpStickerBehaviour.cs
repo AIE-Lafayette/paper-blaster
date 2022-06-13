@@ -35,7 +35,9 @@ public class PowerUpStickerBehaviour : MonoBehaviour
 
         // Changes the sticker's material
         _neutralSticker.material = _holographicSticker;
-        _aggressiveSticker.material = _holographicSticker;
+        _aggressiveSticker.material = _holographicSticker;  
+
+        _stickerBehaviour.AggressiveMaterial = _aggressiveSticker.material;
 
         // The sticker whill drop a random power-up on death
         _stickerBehaviour.AfterDissolve += (gameObject) =>

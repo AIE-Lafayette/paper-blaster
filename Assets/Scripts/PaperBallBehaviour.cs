@@ -29,11 +29,14 @@ public class PaperBallBehaviour : MonoBehaviour
     //The owner's health behaviour
     private HealthBehaviour _healthBehaviour;
 
+    // Called when a paper ball is instanciated
     private void Awake()
     {
+        // Sets the paper ball's current health
         _healthBehaviour = GetComponent<HealthBehaviour>();
         _healthBehaviour.CurrentHealth = 1;
 
+        // Gives the paper ball one of the two models
         int num = Random.Range(0, 2);
         
         if (num == 0)
@@ -61,6 +64,7 @@ public class PaperBallBehaviour : MonoBehaviour
         movementBehavior.MoveDirection = _randomDirection;
         movementBehavior.Move();
 
+        // Sets the health behavior's onDeath event
         _healthBehaviour.OnDeath = Break;
     }
 
@@ -103,7 +107,7 @@ public class PaperBallBehaviour : MonoBehaviour
     {
         switch (other.tag)
         {
-                       //If the paper ball collides with a player, break the ball and damage the player.
+            //If the paper ball collides with a player, break the ball and damage the player.
             case "Player": 
             {
                 other.GetComponent<PlayerBehavior>().OnHit();
@@ -139,6 +143,7 @@ public class PaperBallBehaviour : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // Called to set key stats from a paper ball when spawning
     public void Initiate(Vector3 position, PaperBallSize size, Vector3 velocity, float moveSpeed)
     {
         MovementBehavior movementBehavior = GetComponent<MovementBehavior>();
