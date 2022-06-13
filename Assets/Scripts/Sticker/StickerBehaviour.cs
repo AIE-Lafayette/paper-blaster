@@ -125,10 +125,13 @@ public class StickerBehaviour : MonoBehaviour
         _neutralSticker.SetActive(false);
         _aggressiveSticker.SetActive(true); 
 
-        _dissolveValue = Vector3.LerpUnclamped(new Vector3(-1, 0, 0), new Vector3(1, 0, 0), Time.deltaTime * _dissolveSpeed);
+        _dissolveValue += Vector3.LerpUnclamped(new Vector3(-1, 0, 0), new Vector3(1, 0, 0), Time.deltaTime * _dissolveSpeed);
         _aggressiveMaterial.SetFloat("Vector1_4CAE2BD8", _dissolveValue.x);
-        // Calls the after disolve event
-        //_afterDissolve.Invoke(gameObject);
+
+        // if (_dissolveValue.x > 1)
+        // {
+        //     _afterDissolve.Invoke(gameObject);
+        // }
     }
 
     // Acts on the sticker's current state

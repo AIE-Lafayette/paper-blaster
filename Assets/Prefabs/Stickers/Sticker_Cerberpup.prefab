@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0199274f7eb0fac409441e5e106a1d77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dissolveSpeed: 12
+  _dissolveSpeed: 0.01
   _dissolveValue: {x: 0, y: 0, z: 0}
   _wanderingBehaviour: {fileID: 1827054891}
   _seekingBehaviour: {fileID: 2949097350667779383}
