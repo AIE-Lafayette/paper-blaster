@@ -14,6 +14,7 @@ public class GameManagerBehavior : MonoBehaviour
     public static int CurrentStickerAmount;
     private bool _pageCheck;
     private int _stickerThreshold;
+    private bool _startCheck;
     public int Page 
     {
         get { return _page; }
@@ -46,6 +47,7 @@ public class GameManagerBehavior : MonoBehaviour
     //Default variables on game start
     void Start()
     {
+        _startCheck = true;
         pauseCanvas.SetActive(false);
         pauseCheck = false;
         _page = 1;
@@ -59,6 +61,7 @@ public class GameManagerBehavior : MonoBehaviour
         _spawnStickerAction = new RoutineBehaviour.TimedAction();
         PageSetup();
         _audio = _audioRef;
+        RoutineBehaviour.Instance.StartNewTimedAction(args => _startCheck = false, TimedActionCountType.UNSCALEDTIME, 1f);
     }
 
     void Update()
@@ -70,13 +73,14 @@ public class GameManagerBehavior : MonoBehaviour
     void GameLoop()
     {
         // If the board is clear of all paper and stickers, increase difficulty and page count.
-         if (CurrentPaperAmount == 0 && !_pageCheck && CurrentStickerAmount == 0 && _page != 1)
+         if (CurrentPaperAmount == 0 && !_pageCheck && CurrentStickerAmount == 0 && !_startCheck)
         {
             _pageCheck = true;
             Score += 500;
             _paperSpawnAmount = 3 + _page;
             _stickerSpawnSpeed = 5 + Mathf.RoundToInt(_page / 2);
-            RoutineBehaviour.Instance.StartNewTimedAction(args => { PageSetup(); _pageCheck = false; }, TimedActionCountType.SCALEDTIME, 3f);
+            RoutineBehaviour.Instance.StartNewTimedAction(args => { PageSetup(); }, TimedActionCountType.SCALEDTIME, 3f);
+            RoutineBehaviour.Instance.StartNewTimedAction(args => { _pageCheck = false; }, TimedActionCountType.SCALEDTIME, 4f);
             _page++;
         }
 
