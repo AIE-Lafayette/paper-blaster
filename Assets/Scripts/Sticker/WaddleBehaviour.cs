@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class WaddleBehaviour : MonoBehaviour
 {
-    [SerializeField]
-    private float _startPos;
-
-    [SerializeField]
-    private Vector3 _offset;
-
+    // How far the object will waddle
     [SerializeField]
     private float _startYRotation;
     [SerializeField]
     private float _endYRotation;
+
     [SerializeField]
     private float _speed = 1;
 
@@ -24,14 +20,10 @@ public class WaddleBehaviour : MonoBehaviour
         set => _speed = value;
     }
 
-    private float _lerpValue;
-
     private void Update()
     {
+        // Uses LERP to rotate the sticker back and forth, mimicing waddling
         float yRotation = Mathf.LerpAngle(_startYRotation, _endYRotation, Mathf.Sin(Time.time * _speed) * 0.5f + 0.5f);
         transform.rotation = Quaternion.Euler(0, yRotation, 0);
-        // transform.rotation = Quaternion.LerpUnclamped(_startYRotation, _startYRotation., Mathf.Sin(Time.time * _speed)
-        //transform.position = Vector3.LerpUnclamped(_startPos, _startPos + _offset, Mathf.Sin(Time.time * _speed));
-
     }
 }
