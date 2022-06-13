@@ -9,15 +9,20 @@ public class PlayerMovement : MovementBehavior
     private Camera _camera;
     private Vector3 _movePosition;
     private Rigidbody _rb;
-    private bool _thrusterOn;
     private Quaternion _targetRotation;
     private float _rotationTime;
     private Quaternion _previousRotation;
+
+    //Variables for what happens when the player boosts forward
+    private bool _thrusterOn;
     [SerializeField]
     private Renderer _flameRenderer;
     [SerializeField]
     private AudioSource _boosterSound;
 
+    /// <summary>
+    /// True when the player is boosting
+    /// </summary>
     public bool ThrusterOn
     {
         get { return _thrusterOn; }
@@ -44,8 +49,11 @@ public class PlayerMovement : MovementBehavior
     /// </summary>
     private void FixedUpdate()
     {
+        //Makes player rotate towards where the cursor is
         LookAtCursor();
 
+        //If the thruster is on activate it, make the flame renderer turn on
+        //and play the booster sound
         if (_thrusterOn)
         {
             ActivateThruster();
@@ -53,9 +61,12 @@ public class PlayerMovement : MovementBehavior
             _boosterSound.volume = .03f;
             _boosterSound.UnPause();
         }
+        //If the thruster isn't on
         else
         {
+            //turn off the flame renderer
             _flameRenderer.enabled = false;
+            //Make the booster sound fade out quickly
             _boosterSound.volume -= .009f;
             if (_boosterSound.volume == 0)
                 _boosterSound.Pause();
@@ -98,6 +109,9 @@ public class PlayerMovement : MovementBehavior
         transform.rotation = newRot;
     }
 
+    /// <summary>
+    /// Adds force to the player to move it
+    /// </summary>
     public override void Move()
     {
         _rb.AddForce(MoveDirection * MoveSpeed, ForceMode.Acceleration);
