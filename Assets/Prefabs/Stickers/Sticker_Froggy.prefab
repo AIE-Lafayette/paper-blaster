@@ -367,7 +367,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dissolveSpeed: 0.01
-  _dissolveValue: {x: 0, y: 0, z: 0}
   _wanderingBehaviour: {fileID: 1827054891}
   _seekingBehaviour: {fileID: 2949097350667779383}
   _healthBehaviour: {fileID: 6826442442617923358}
