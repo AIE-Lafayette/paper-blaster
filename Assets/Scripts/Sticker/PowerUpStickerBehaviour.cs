@@ -28,7 +28,6 @@ public class PowerUpStickerBehaviour : MonoBehaviour
     // Called when the sticker is added to the scene
     private void Start()
     {
-        Debug.Log("Start");
         // The stickers have a ten percent chance of spawning 
         int randomNumber = Random.Range(0, 101);
         if (randomNumber > _powerUpChance) return;
@@ -47,7 +46,6 @@ public class PowerUpStickerBehaviour : MonoBehaviour
     // Gives the sticker a random powerup to drop on death;
     private void DropRandomPowerUp()
     {
-        Debug.Log("DropRandomPowerUp");
         // Gets a random number from 1 to 3;
         int randomNumber = Random.Range(1, _powerUps.Count);
         GameObject powerUp = _powerUps[randomNumber];
