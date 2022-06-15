@@ -6313,7 +6313,7 @@ ParticleSystem:
     enabled: 1
     mode: 0
     timeMode: 0
-    fps: 30
+    fps: 15
     frameOverTime:
       serializedVersion: 2
       minMaxState: 1
@@ -9793,7 +9793,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2706646009109028740}
   serializedVersion: 7
-  lengthInSec: 0.1
+  lengthInSec: 0.25
   simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
@@ -14655,7 +14655,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8361958619577030640}
   serializedVersion: 7
-  lengthInSec: 0.1
+  lengthInSec: 0.2
   simulationSpeed: 2
   stopAction: 0
   cullingMode: 0
