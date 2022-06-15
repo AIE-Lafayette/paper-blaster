@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxSpeed: 1.25
-  _moveSpeed: 500
+  _moveSpeed: 550
   _xBuffer: 0
   _ZBuffer: 0
 --- !u!114 &2949097350667779383
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _seekRange: 5
+  _seekRange: 6
 --- !u!54 &732730796
 Rigidbody:
   m_ObjectHideFlags: 0
