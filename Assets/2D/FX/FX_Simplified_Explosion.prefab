@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3571553089226058048}
   - component: {fileID: 3571553089226058049}
   - component: {fileID: 3571553089226058050}
+  - component: {fileID: 1421539453854204111}
   m_Layer: 0
   m_Name: FX_Simplified_Explosion
   m_TagString: Untagged
@@ -4863,6 +4864,21 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &1421539453854204111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3571553089226058051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7060710b9c6b80845aeecc0fcc2df725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timer: 2
+  _particleOnDeath: 0
+  _particleEffect: {fileID: 0}
 --- !u!1 &3571553090743111339
 GameObject:
   m_ObjectHideFlags: 0
@@ -4904,7 +4920,7 @@ ParticleSystem:
   m_GameObject: {fileID: 3571553090743111339}
   serializedVersion: 7
   lengthInSec: 0.1
-  simulationSpeed: 1
+  simulationSpeed: 3
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -5147,7 +5163,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
