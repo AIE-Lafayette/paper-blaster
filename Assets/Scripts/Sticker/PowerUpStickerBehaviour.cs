@@ -48,7 +48,6 @@ public class PowerUpStickerBehaviour : MonoBehaviour
     // Gives the sticker a random powerup to drop on death;
     private void DropRandomPowerUp()
     {
-        Debug.Log("DropRandomPowerUp");
         // Gets a random number from 0 to 2;, and uses that number as an index to get a power-up
         int randomNumber = Random.Range(0, _powerUps.Count);
         GameObject powerUp = _powerUps[randomNumber];

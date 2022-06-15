@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1366756390737263531}
   - component: {fileID: 3850196088194151138}
+  - component: {fileID: 5576917210136145713}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3163301931192777444}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.046647005, y: 0.046647005, z: 0.046647005}
+  m_LocalScale: {x: 0.186588, y: 0.186588, z: 0.186588}
   m_Children: []
   m_Father: {fileID: 3700717816359278637}
   m_RootOrder: 1
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b297840f5b5ec8d428f1d8917657cebc, type: 3}
+  m_Sprite: {fileID: 9082429109045791810, guid: 32a6dbefc78b5b6488e5f0b18e31aa4d, type: 3}
   m_Color: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -82,6 +83,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5576917210136145713
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3163301931192777444}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 97ac04e77d59a7647a58468143588dc8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5754346143879162211
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +118,7 @@ GameObject:
   - component: {fileID: -5899898892029206670}
   - component: {fileID: -6632243234764647133}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Laser
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

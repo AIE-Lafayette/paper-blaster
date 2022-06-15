@@ -8,6 +8,7 @@ public class PlayerShootingBehavior : MonoBehaviour
     //Serialized fields for the projectiles and attack speed
     [SerializeField] private BulletBehaviour _projectile;
     [SerializeField] private RocketBehavior _rocketProjectile;
+    [SerializeField] private BulletBehaviour _laserProjectile;
     [SerializeField] private Transform _bulletPoint;
     [SerializeField] private float _attackSpeed;
 
@@ -120,6 +121,7 @@ public class PlayerShootingBehavior : MonoBehaviour
         Rigidbody bullet3 = Instantiate(_projectile, _bulletPoint.position, angleChange3).GetComponent<Rigidbody>();
         bullet3.AddForce(bullet3.transform.forward * 1000);
         RoutineBehaviour.Instance.StartNewTimedAction(args => _readyToAttack = true, TimedActionCountType.SCALEDTIME, _attackSpeed);
+        _normalShot.Play();
     }
 
     /// <summary>
@@ -131,8 +133,8 @@ public class PlayerShootingBehavior : MonoBehaviour
         //Sets a new timer to set ready to attack to be true after a set time
         _readyToAttack = false;
         _laserShot.Play();
-        Rigidbody bullet = Instantiate(_projectile, _bulletPoint.position, _bulletPoint.rotation).GetComponent<Rigidbody>();
-        bullet.transform.localScale = new Vector3(bullet.transform.localScale.x * .5f, bullet.transform.localScale.y, bullet.transform.localScale.z * 4);
+        Rigidbody bullet = Instantiate(_laserProjectile, _bulletPoint.position, _bulletPoint.rotation).GetComponent<Rigidbody>();
+        //bullet.transform.localScale = new Vector3(bullet.transform.localScale.x * .5f, bullet.transform.localScale.y, bullet.transform.localScale.z * 4);
         bullet.AddForce(bullet.transform.forward * 2000);
         RoutineBehaviour.Instance.StartNewTimedAction(args => _readyToAttack = true, TimedActionCountType.SCALEDTIME, _attackSpeed * .6f);
     }
@@ -161,9 +163,10 @@ public class PlayerShootingBehavior : MonoBehaviour
         //Shoots a regular bullet at the regular set speed
         //Sets a new timer to set ready to attack to be true after a set time
         _readyToAttack = false;
+        _normalShot.Play();
         Rigidbody bullet = Instantiate(_projectile, _bulletPoint.position, _bulletPoint.rotation).GetComponent<Rigidbody>();
         bullet.AddForce(bullet.transform.forward * 1000);
         RoutineBehaviour.Instance.StartNewTimedAction(args => _readyToAttack = true, TimedActionCountType.SCALEDTIME, _attackSpeed);
-        _normalShot.Play();
+        
     }
 }

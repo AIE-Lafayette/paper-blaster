@@ -176,8 +176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timer: 0.5
-  _particleOnDeath: 0
-  _particleEffect: {fileID: 0}
+  _particleOnDeath: 1
+  _particleEffect: {fileID: 2706646007677565036, guid: d3d5a1caf66a22e48a18ad20a57e2afa, type: 3}
 --- !u!114 &2684485502313496473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +296,7 @@ Animator:
   m_GameObject: {fileID: 8691505666001850551}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 37f79359d598a864b9e182375db648cc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
