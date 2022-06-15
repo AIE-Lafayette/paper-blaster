@@ -12,6 +12,7 @@ TagManager:
   - RocketPowerup
   - AggressiveSticker
   - NeutralSticker
+  - Rocket
   layers:
   - Default
   - TransparentFX
