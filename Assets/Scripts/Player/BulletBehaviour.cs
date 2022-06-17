@@ -13,6 +13,9 @@ public class BulletBehaviour : MonoBehaviour
     private SphereCollider _collider;
     private HealthBehaviour _health;
 
+    [SerializeField]
+    private int _damage;
+
     public Rigidbody Rigidbody
     {
         get { return _rigidbody; }
@@ -30,9 +33,12 @@ public class BulletBehaviour : MonoBehaviour
         set { _collider = value; }
     }
 
+    public int Damage { get => _damage; set => _damage = value; }
+
     // Called when the object is instantiated
-    private void Awake()
+    virtual protected void Awake()
     {
+        _damage = 1;
         // Gets some of the bullet's components
         _deathTimerBehaviour = GetComponent<DeathTimerBehaviour>();
         _rigidbody = GetComponent<Rigidbody>();
@@ -48,7 +54,7 @@ public class BulletBehaviour : MonoBehaviour
             case "PaperBall":
             case "Sticker":
             {
-                other.attachedRigidbody.GetComponent<HealthBehaviour>().TakeDamage(1);
+                other.attachedRigidbody.GetComponent<HealthBehaviour>().TakeDamage(_damage);
                 _deathTimerBehaviour.Kill();
                 break;
             }

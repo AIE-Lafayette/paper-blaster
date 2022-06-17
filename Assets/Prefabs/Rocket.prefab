@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 1184316310032146422}
   m_Layer: 0
   m_Name: Rocket
-  m_TagString: Untagged
+  m_TagString: Rocket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,6 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3240938375ecf9479b719151ca100f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 3
+  _healthBehaviour: {fileID: 2684485502313496473}
 --- !u!54 &112807332208002186
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -176,8 +178,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timer: 0.5
-  _particleOnDeath: 0
-  _particleEffect: {fileID: 0}
+  _particleOnDeath: 1
+  _particleEffect: {fileID: 2706646007677565036, guid: d3d5a1caf66a22e48a18ad20a57e2afa, type: 3}
 --- !u!114 &2684485502313496473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,7 +187,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8192333821670159980}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2ad8e0b8763a93419649bd3c6b8bf9f, type: 3}
   m_Name: 
@@ -296,7 +298,7 @@ Animator:
   m_GameObject: {fileID: 8691505666001850551}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 37f79359d598a864b9e182375db648cc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

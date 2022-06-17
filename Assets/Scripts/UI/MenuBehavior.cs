@@ -27,7 +27,7 @@ public class MenuBehavior : MonoBehaviour
         _bookAnimator.SetTrigger("Open");
         _canvas.SetActive(false);
         RoutineBehaviour.Instance.StartNewTimedAction(args => SceneManager.LoadScene("play_scene"), 
-        TimedActionCountType.SCALEDTIME, 1.25f);
+        TimedActionCountType.SCALEDTIME, 1.3f);
     }
 
     //Quit the game
@@ -36,13 +36,21 @@ public class MenuBehavior : MonoBehaviour
         Application.Quit();
     }
 
+    //Quit the game to game over
+    public void GameOver() 
+    {
+        PlayerPrefs.SetInt("Score", GameManagerBehavior.Score);
+        Time.timeScale = 1;
+        SceneManager.LoadScene("game_over_scene");
+    }
+
     //Switch to main menu
     public void LoadMainMenu()
     {
         _animating = true;
         _bookAnimator.SetTrigger("Close");
         _canvas.SetActive(false);
-        RoutineBehaviour.Instance.StartNewTimedAction(args => SceneManager.LoadScene("main_menu_scene"),
+        RoutineBehaviour.Instance.StartNewTimedAction(args => { SceneManager.LoadScene("main_menu_scene"); },
         TimedActionCountType.SCALEDTIME, 1.25f);
     }
 
@@ -50,7 +58,7 @@ public class MenuBehavior : MonoBehaviour
     private void Update()
     {
         if(_animating == true)
-            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, _secondPos, 0.03f);
+            Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, _secondPos, 0.0785f);
 
         temp += (0.75f * Time.deltaTime);
         tempScore = Mathf.RoundToInt(Mathf.Lerp(0, PlayerPrefs.GetInt("Score"), temp));

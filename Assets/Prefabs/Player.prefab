@@ -133,8 +133,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectile: {fileID: -4911723792777261306, guid: 7b9cdad4b751da44a914a65c752ab75b, type: 3}
   _rocketProjectile: {fileID: 2196460622533308877, guid: fe32c120c0b806744a6699ca2b193de9, type: 3}
+  _laserProjectile: {fileID: -4911723792777261306, guid: bc7d55553434f324691fbc75c3f48be1, type: 3}
   _bulletPoint: {fileID: 1157618968788879615}
-  _attackSpeed: 0.4
+  _attackSpeed: 0.5
   Sounds:
   - {fileID: 1169372527}
   - {fileID: 1169372533}
