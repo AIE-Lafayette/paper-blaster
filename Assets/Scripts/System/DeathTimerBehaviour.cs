@@ -18,9 +18,19 @@ public class DeathTimerBehaviour : MonoBehaviour
     //Destroy the object but check to spawn particles first.
     public void Kill() 
     {
+
         if (_particleOnDeath)
             Instantiate(_particleEffect, transform.position, Quaternion.identity);
         RoutineBehaviour.Instance.StopTimedAction(_deathTimer);
-        Destroy(gameObject);
+
+        if (!gameObject.CompareTag("Rocket"))
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
+
+        HealthBehaviour healthBehaviour = gameObject.GetComponent<HealthBehaviour>();
+        healthBehaviour.TakeDamage(1);
     }
 }
